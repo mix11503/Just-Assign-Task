@@ -5,7 +5,14 @@
  */
 package com.junior.jat.model;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -84,6 +91,28 @@ public class Task {
         return "Task{" + "taskId=" + taskId + ", subjectId=" + subjectId + ", taskName=" + taskName + ", taskDescription=" + taskDescription + ", status=" + status + ", taskCreateDate=" + taskCreateDate + ", taskDeadlineDate=" + taskDeadlineDate + '}';
     }
     
-    
+    public static ArrayList getTask(){
+        ArrayList tasks = new ArrayList();
+        Task task = new Task();
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "SELECT * FROM jat.task;";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                task = new Task();
+                task.setTaskId(rs.getInt("taskId"));
+                task.setSubjectId(rs.getString("subjectId"));
+                task.setTaskName(rs.getString("taskName"));
+                task.setTaskDescription(rs.getString("taskDescription"));
+                task.setStatus(rs.getString("status"));
+                task.setTaskCreateDate(rs.getDate("taskCreateDate"));
+                task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tasks;
+    }
     
 }

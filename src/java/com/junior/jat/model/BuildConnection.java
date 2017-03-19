@@ -18,15 +18,6 @@ public class BuildConnection {
 
     public static java.sql.Connection getConnection() throws SQLException {
         java.sql.Connection con = null;
-        try {
-            String dbDriver = "com.mysql.jdbc.Driver";
-            String dbUrl = "jdbc:mysql://localhost/?useUnicode=true&characterEncoding=UTF-8";
-            String user = "ชื่อ username";
-            String pw = "รหัสผ่าน";
-            Class.forName(dbDriver);
-            con = DriverManager.getConnection(dbUrl, user, pw);
-
-        } catch (Exception ex) {
             try {
                 String dbDriver = "com.mysql.jdbc.Driver";
                 String dbUrl = "jdbc:mysql://localhost/?useUnicode=true&characterEncoding=UTF-8";
@@ -37,7 +28,6 @@ public class BuildConnection {
             } catch (ClassNotFoundException ex1) {
                 Logger.getLogger(BuildConnection.class.getName()).log(Level.SEVERE, null, ex1);
             }
-        }
         return con;
     }
 }
