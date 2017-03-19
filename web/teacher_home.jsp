@@ -3,8 +3,10 @@
     Created on : Mar 18, 2017, 5:31:20 PM
     Author     : Mix
 --%>
-
+<%@page import="java.util.List"%>
+<%@page import="com.junior.jat.model.Task"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -264,6 +266,7 @@
                                         </div>
                                     </div>
                                 </div><!-- /.box-header -->
+                                <%if(request.getAttribute("")!=null){ %>
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>
@@ -274,6 +277,7 @@
                                             <th>Deadline</th>
                                             <th>Status</th>
                                         </tr>
+                                        <c:forEach items="${keycards}" var="k" varStatus="vs">
                                         <tr>
                                             <td>001</td>
                                             <td>รายงานความคืบหน้าโปรเจค</td>
@@ -282,17 +286,10 @@
                                             <td><font color="red">26-Mar-2017</font></td>
                                             <td><span class="label label-primary">Waiting</span></td>
                                         </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>รายงานความคืบหน้าโปรเจค</td>
-                                            <td>INT201 Java Programing</td>
-                                            <td>19-Mar-2017</td>
-                                            <td><font color="red">26-Mar-2017</font></td>
-                                            <td><span class="label label-danger">Late</span></td>
-                                        </tr>
-                                        
+                                        </c:forEach>
                                     </table>
                                 </div><!-- /.box-body -->
+                                <%}%>
                             </div><!-- /.box -->
                         </div>
                     </div>
