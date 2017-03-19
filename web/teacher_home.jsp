@@ -221,7 +221,7 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="#">
+                            <a href="GetTaskServlet">
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
                         </li>
@@ -266,7 +266,7 @@
                                         </div>
                                     </div>
                                 </div><!-- /.box-header -->
-                                <%if(request.getAttribute("")!=null){ %>
+                                <%if(request.getAttribute("tasks")!=null){ %>
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>
@@ -277,13 +277,13 @@
                                             <th>Deadline</th>
                                             <th>Status</th>
                                         </tr>
-                                        <c:forEach items="${keycards}" var="k" varStatus="vs">
+                                        <c:forEach items="${tasks}" var="t" varStatus="vs">
                                         <tr>
-                                            <td>001</td>
-                                            <td>รายงานความคืบหน้าโปรเจค</td>
-                                            <td>INT201 Java Programing</td>
-                                            <td>19-Mar-2017</td>
-                                            <td><font color="red">26-Mar-2017</font></td>
+                                            <td>${t.taskId}</td>
+                                            <td>${t.taskName}</td>
+                                            <td>${t.subjectId}</td>
+                                            <td>${t.taskCreateDate}</td>
+                                            <td><font color="red">${t.taskDeadlineDate}</font></td>
                                             <td><span class="label label-primary">Waiting</span></td>
                                         </tr>
                                         </c:forEach>

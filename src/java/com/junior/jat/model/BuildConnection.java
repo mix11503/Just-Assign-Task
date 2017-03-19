@@ -20,9 +20,9 @@ public class BuildConnection {
         java.sql.Connection con = null;
             try {
                 String dbDriver = "com.mysql.jdbc.Driver";
-                String dbUrl = "jdbc:mysql://localhost/?useUnicode=true&characterEncoding=UTF-8";
-                String user = "root";
-                String pw = "";
+                String dbUrl = "jdbc:mysql://54.169.83.168/jat?useUnicode=true&characterEncoding=UTF-8";
+                String user = "jatany";
+                String pw = "@Nintendo64";
                 Class.forName(dbDriver);
                 con = DriverManager.getConnection(dbUrl, user, pw);
             } catch (ClassNotFoundException ex1) {

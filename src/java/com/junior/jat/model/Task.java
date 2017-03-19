@@ -96,7 +96,7 @@ public class Task {
         Task task = new Task();
         try {
             Connection conn = BuildConnection.getConnection();
-            String sqlCmd = "SELECT * FROM jat.task;";
+            String sqlCmd = "SELECT * FROM task;";
             PreparedStatement pstm = conn.prepareStatement(sqlCmd);
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
@@ -108,7 +108,8 @@ public class Task {
                 task.setStatus(rs.getString("status"));
                 task.setTaskCreateDate(rs.getDate("taskCreateDate"));
                 task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
-            }
+                tasks.add(task);
+            }            
         } catch (SQLException ex) {
             Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
         }
