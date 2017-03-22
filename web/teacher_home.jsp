@@ -188,7 +188,7 @@
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-pencil"></i>
-                                    <span class="hidden-xs">Assign New Task</span>
+                                    <span class="hidden-xs" data-toggle='modal' data-target='#assign-task-modal'>Assign New Task</span>
                                 </a>
                             </li>
                         </ul>
@@ -278,14 +278,14 @@
                                             <th>Status</th>
                                         </tr>
                                         <c:forEach items="${tasks}" var="t" varStatus="vs">
-                                        <tr>
-                                            <td>${t.taskId}</td>
-                                            <td>${t.taskName}</td>
-                                            <td>${t.subjectId}</td>
-                                            <td>${t.taskCreateDate}</td>
-                                            <td><font color="red">${t.taskDeadlineDate}</font></td>
-                                            <td><span class="label label-primary">Waiting</span></td>
-                                        </tr>
+                                            <tr>
+                                                <td>${t.taskId}</td>
+                                                <td>${t.taskName}</td>
+                                                <td>${t.subjectId}</td>
+                                                <td>${t.taskCreateDate}</td>
+                                                <td><font color="red">${t.taskDeadlineDate}</font></td>
+                                                <td><span class="label label-primary">Waiting</span></td>
+                                            </tr>
                                         </c:forEach>
                                     </table>
                                 </div><!-- /.box-body -->
@@ -302,7 +302,31 @@
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
         </div><!-- ./wrapper -->
-
+        <div class="modal fade" id="assign-task-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="#" method="post">
+                        <div class="modal-header">
+                            <h1>Assign New Task</h1>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control" name="taskname" required="" placeholder="Title" type="text" /><br/>
+                            <textarea class="form-control" name="taskdesc" required="" placeholder="Description" rows="3"></textarea><br/>
+                            <select name="subjectid" class="form-control">
+                                <!--Do Loop Teacher's Subject-->
+                                <option value="INT105">[DUMMY] JAVA Programming II </option>
+                            </select><br/>
+                            <input class="form-control" name="taskstatus" required="" placeholder="" type="" disabled="" value="In Progress..." hidden="" /><br/>
+                            <input class="form-control" name="datelinedate" required="" placeholder="" type="date" /><br/>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-success"/>&nbsp;&nbsp;
+                            <input type="reset" class="btn btn-danger"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->
