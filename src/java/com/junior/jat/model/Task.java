@@ -115,5 +115,27 @@ public class Task {
         }
         return tasks;
     }
+    public void insertTask(String subjectId,String taskName,String taskDescription,String status,Date taskCreateDate,Date taskDeadlineDate){
+        
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd ="INSERT INTO 'task' ('taskId', 'subjectId', 'taskName', 'taskDescription', 'status', 'taskCreateDate', 'taskDeadlineDate' )"+
+            "VALUES (NULL, ?, ?, ?, ?, ?, ?);";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            pstm.setString(1,subjectId);
+            pstm.setString(2,taskName);
+            pstm.setString(3,taskDescription);
+            pstm.setString(4,status);
+            pstm.setDate(5, taskCreateDate);
+            pstm.setDate(6,taskDeadlineDate);
+            
+            pstm.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
     
 }
