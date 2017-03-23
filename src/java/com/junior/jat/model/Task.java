@@ -119,8 +119,8 @@ public class Task {
         
         try {
             Connection conn = BuildConnection.getConnection();
-            String sqlCmd ="INSERT INTO 'task' ('taskId', 'subjectId', 'taskName', 'taskDescription', 'status', 'taskCreateDate', 'taskDeadlineDate' )"+
-            "VALUES (NULL, ?, ?, ?, ?, ?, ?);";
+            String sqlCmd ="INSERT INTO task ( subjectId, taskName, taskDescription, status, taskCreateDate, taskDeadlineDate )"+
+            "VALUES ( ?, ?, ?, ?, ?, ?);";
             PreparedStatement pstm = conn.prepareStatement(sqlCmd);
             pstm.setString(1,subjectId);
             pstm.setString(2,taskName);
