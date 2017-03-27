@@ -4,9 +4,17 @@
         <servlet-name>GetTaskServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.GetTaskServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertTask</servlet-name>
+        <servlet-class>com.junior.jat.servlet.InsertTask</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertTask</servlet-name>
+        <url-pattern>/InsertTask</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

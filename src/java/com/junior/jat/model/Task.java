@@ -96,7 +96,7 @@ public class Task {
         Task task = new Task();
         try {
             Connection conn = BuildConnection.getConnection();
-            String sqlCmd = "SELECT * FROM task;";
+            String sqlCmd = "SELECT * FROM task";
             PreparedStatement pstm = conn.prepareStatement(sqlCmd);
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
@@ -115,17 +115,17 @@ public class Task {
         }
         return tasks;
     }
-    public void insertTask(String subjectId,String taskName,String taskDescription,String status,Date taskCreateDate,Date taskDeadlineDate){
+    public static void insertTask(String subjectId,String taskName,String taskDescription,Date taskCreateDate,Date taskDeadlineDate){
         
         try {
             Connection conn = BuildConnection.getConnection();
-            String sqlCmd ="INSERT INTO task ( subjectId, taskName, taskDescription, status, taskCreateDate, taskDeadlineDate )"+
+            String sqlCmd ="INSERT INTO task (subjectId, taskName, taskDescription, status, taskCreateDate, taskDeadlineDate )"+
             "VALUES ( ?, ?, ?, ?, ?, ?);";
             PreparedStatement pstm = conn.prepareStatement(sqlCmd);
             pstm.setString(1,subjectId);
             pstm.setString(2,taskName);
             pstm.setString(3,taskDescription);
-            pstm.setString(4,status);
+            pstm.setString(4,"1");
             pstm.setDate(5, taskCreateDate);
             pstm.setDate(6,taskDeadlineDate);
             
@@ -137,5 +137,4 @@ public class Task {
         
         
     }
-    
 }

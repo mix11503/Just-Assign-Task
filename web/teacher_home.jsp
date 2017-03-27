@@ -305,7 +305,7 @@
         <div class="modal fade" id="assign-task-modal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="#" method="post">
+                    <form action="InsertTask" method="post">
                         <div class="modal-header">
                             <h1>Assign New Task</h1>
                         </div>
