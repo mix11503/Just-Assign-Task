@@ -5,6 +5,7 @@
  */
 package com.junior.jat.servlet;
 
+import com.junior.jat.model.Subject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -29,9 +30,14 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
+        request.setAttribute("subjects", Subject.getSubject(53130500553l));
+        System.out.println(Subject.getSubject(53130500553l));
         getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
