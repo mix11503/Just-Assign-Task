@@ -31,7 +31,7 @@ public class InsertTask extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String taskname = request.getParameter("taskname");
         String taskdesc = request.getParameter("taskdesc");
         String subjectid = request.getParameter("subjectid");
