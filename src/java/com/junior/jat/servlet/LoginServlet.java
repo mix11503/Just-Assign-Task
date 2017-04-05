@@ -32,8 +32,10 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
-        request.setAttribute("subjects", Subject.getSubject(53130500553l));
-        System.out.println(Subject.getSubject(53130500553l));
+        request.getSession(true).setAttribute("subjects", Subject.getSubject(53130500553l));
+        /* request.getSession(true) เป็นการประกาศสร้าง session ข้อมูล 
+        (เสมือนเราไม่ต้องกรอก username กับ password เข้าแต่ละหน้าของ fb ทุกครั้ง เพราะ fb สร้าง session สำหรับ username password ให้)*/
+        System.out.println(Subject.getSubject(53130500553l)); 
         getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
     }
     
