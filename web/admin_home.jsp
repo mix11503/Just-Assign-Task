@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Teacher Dashboard 2 | Dashboard</title>
+        <title>Admin Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -209,14 +209,7 @@
                         </div>
                     </div>
                     <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+                    
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
@@ -256,6 +249,8 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
+                   
+                    
                     <h1>
                         All Task
                         <small>Control panel</small>
@@ -264,47 +259,7 @@
 
                 <!-- Main content -->
                 <section class="content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">Responsive Hover Table</h3>
-                                    <div class="box-tools">
-                                        <div class="input-group">
-                                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- /.box-header -->
-                                <%if(request.getAttribute("tasks")!=null){ %>
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>Task ID</th>
-                                            <th>Topic</th>
-                                            <th>Subject</th>
-                                            <th>Start</th>
-                                            <th>Deadline</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        <c:forEach items="${tasks}" var="t" varStatus="vs">
-                                            <tr>
-                                                <td>${t.taskId}</td>
-                                                <td>${t.taskName}</td>
-                                                <td>${t.subjectId}</td>
-                                                <td>${t.taskCreateDate}</td>
-                                                <td><font color="red">${t.taskDeadlineDate}</font></td>
-                                                <td><span class="label label-primary">Waiting</span></td>
-                                            </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div><!-- /.box-body -->
-                                <%}%>
-                            </div><!-- /.box -->
-                        </div>
-                    </div>
+                    
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
@@ -379,5 +334,17 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js" type="text/javascript"></script>
+        <form action="Admin_AddUser">
+              ID:<br>
+              <input type="number" name="id"><br>
+              Password:<br>
+              <input type="password" name="password"><br>
+              Name:<br>
+              <input type="text" name="name"><br>
+              <input type="radio" name="status" value="teacher"> Teacher
+              <input type="radio" name="status" value="Student"> Student <br>
+              <input type="submit" name="submit">
+        </form>
+
     </body>
 </html>
