@@ -16,6 +16,14 @@
         <servlet-name>Admin_AddUserServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.Admin_AddUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Admin_DeleteUserServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_DeleteUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Admin_EditUserServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_EditUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>Admin_AddUserServlet</servlet-name>
         <url-pattern>/Admin_AddUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_DeleteUserServlet</servlet-name>
+        <url-pattern>/Admin_DeleteUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_EditUserServlet</servlet-name>
+        <url-pattern>/Admin_EditUserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

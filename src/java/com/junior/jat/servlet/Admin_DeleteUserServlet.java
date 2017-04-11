@@ -8,18 +8,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Admin_AddUserServlet extends HttpServlet {
+public class Admin_DeleteUserServlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("id");
-        String password = request.getParameter("password");
-        String name = request.getParameter("name");
         String status = request.getParameter("status");
         
-        Admin.addUser(id, password, name, status);
-        getServletContext().getRequestDispatcher("/admin_home.jsp").forward(request, response);
+        Admin.deleteUser(id, status);
+        getServletContext().getRequestDispatcher("/admin_deleteUser.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

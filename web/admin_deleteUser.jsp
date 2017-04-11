@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Admin Dashboard</title>
+        <title>Admin deleteUser</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -252,24 +252,20 @@
                    
                     
                     <h1>
-                        Add User
+                        Delete User
                         <small>Control panel</small>
                     </h1>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <form action="Admin_AddUser">
-                        ID:<br>
-                        <input type="number" name="id"><br>
-                        Password:<br>
-                        <input type="password" name="password"><br>
-                        Name:<br>
-                        <input type="text" name="name"><br><br>
+                    <form action="Admin_DeleteUserServlet">
+                        Enter ID <br>
+                        <input type="number" name="id"><br><br>
                         <input type="radio" name="status" value="teacher"> Teacher
                         <input type="radio" name="status" value="Student" checked="checked"> Student <br><br>
                         <input type="submit" name="submit">
-                    </form>
+                     </form>
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
@@ -344,5 +340,7 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js" type="text/javascript"></script>
+        
+
     </body>
 </html>

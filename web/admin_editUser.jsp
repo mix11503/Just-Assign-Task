@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Admin Dashboard</title>
+        <title>Admin edit User</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -252,16 +252,16 @@
                    
                     
                     <h1>
-                        Add User
+                        Edit User
                         <small>Control panel</small>
                     </h1>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <form action="Admin_AddUser">
+                    <form action="Admin_EditUserServlet">
                         ID:<br>
-                        <input type="number" name="id"><br>
+                        <input type="number" name="id" required><br>
                         Password:<br>
                         <input type="password" name="password"><br>
                         Name:<br>
@@ -344,5 +344,7 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js" type="text/javascript"></script>
+        
+
     </body>
 </html>
