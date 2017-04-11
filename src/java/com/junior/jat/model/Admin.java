@@ -16,12 +16,29 @@ public class Admin {
             pstm.setLong(1, Long.parseLong(id));
             pstm.setString(2, password);
             pstm.setString(3, name);
-            pstm.executeUpdate();
-            
+            pstm.executeUpdate();         
         }
         catch(Exception e){
             System.out.println(e);
         }
-        
+    }
+    
+    public static void deleteUser(String id,String status){
+        try{
+            Connection conn = BuildConnection.getConnection();
+            String sql = "";
+            if(status.equalsIgnoreCase("Student")){
+                sql = "DELETE FROM `student` WHERE studentId= ?;";
+            }
+            else{
+                sql = "DELETE FROM `teacher` WHERE teacherId = ?; ";
+            }
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setLong(1, Long.parseLong(id));
+            pstm.executeUpdate(); 
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

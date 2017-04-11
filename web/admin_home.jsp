@@ -252,14 +252,24 @@
                    
                     
                     <h1>
-                        All Task
+                        Add User
                         <small>Control panel</small>
                     </h1>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    
+                    <form action="Admin_AddUser">
+                        ID:<br>
+                        <input type="number" name="id"><br>
+                        Password:<br>
+                        <input type="password" name="password"><br>
+                        Name:<br>
+                        <input type="text" name="name"><br><br>
+                        <input type="radio" name="status" value="teacher"> Teacher
+                        <input type="radio" name="status" value="Student"> Student <br><br>
+                        <input type="submit" name="submit">
+                    </form>
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
@@ -334,17 +344,5 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js" type="text/javascript"></script>
-        <form action="Admin_AddUser">
-              ID:<br>
-              <input type="number" name="id"><br>
-              Password:<br>
-              <input type="password" name="password"><br>
-              Name:<br>
-              <input type="text" name="name"><br>
-              <input type="radio" name="status" value="teacher"> Teacher
-              <input type="radio" name="status" value="Student"> Student <br>
-              <input type="submit" name="submit">
-        </form>
-
     </body>
 </html>
