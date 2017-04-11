@@ -1,5 +1,6 @@
 package com.junior.jat.servlet;
 
+import com.junior.jat.model.Admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,7 +14,13 @@ public class Admin_EditUserServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            String id = request.getParameter("id");
+            String password = request.getParameter("password");
+            String name = request.getParameter("name");
+            String status = request.getParameter("status");
             
+            Admin.editUser(id, password, name, status);
+            getServletContext().getRequestDispatcher("/admin_editUser.jsp").forward(request, response);
         }
     }
 

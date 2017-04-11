@@ -267,7 +267,7 @@
                         Name:<br>
                         <input type="text" name="name"><br><br>
                         <input type="radio" name="status" value="teacher"> Teacher
-                        <input type="radio" name="status" value="Student"> Student <br><br>
+                        <input type="radio" name="status" value="Student" checked="checked"> Student <br><br>
                         <input type="submit" name="submit">
                     </form>
                 </section><!-- /.content -->
