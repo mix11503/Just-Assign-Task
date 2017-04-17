@@ -62,7 +62,7 @@
 
 
 
-                <p>${message}</p>
+                <p><font color ="red"><center> ${message}</font></center></p>
             </div><!-- /.login-box-body -->
         </div><!-- /.login-box -->
 
