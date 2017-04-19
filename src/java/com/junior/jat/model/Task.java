@@ -137,18 +137,20 @@ public class Task {
         //test push
         
     }
-    public static void deleteTask(){
-            ArrayList delete = Task.getTask();
-            try{
+    public static void deleteTask(int taskId){
+           try{
                 Connection conn = BuildConnection.getConnection();
-                String sqlCmd = "SELECT * FROM task";
+                String sqlCmd = "DELETE FROM task WHERE taskId = ?";
                 PreparedStatement pstm = conn.prepareStatement(sqlCmd);
-                ResultSet rs = pstm.executeQuery();
-                while(rs.next()){
-                    delete.clear();
-                }
+                pstm.setInt(1, taskId);
+       
+                pstm.executeUpdate();
+              
+             
             }catch(SQLException se){
                 System.out.println(se);
             }
     }
+    
+    
 }

@@ -28,6 +28,10 @@
         <servlet-name>Admin_CreateSubjectServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.Admin_CreateSubjectServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Teacher_DeleteTaskServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Teacher_DeleteTaskServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>Admin_CreateSubjectServlet</servlet-name>
         <url-pattern>/Admin_CreateSubjectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Teacher_DeleteTaskServlet</servlet-name>
+        <url-pattern>/Teacher_DeleteTaskServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

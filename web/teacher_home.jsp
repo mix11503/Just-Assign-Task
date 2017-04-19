@@ -230,21 +230,21 @@
                                 <i class="fa fa-book"></i> <span>My Subject</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-<!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
-                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
-                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
+                                <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
+                                                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
+                                                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
                                 <c:forEach items="${subjects}" var="s" >
                                     <li>
                                         <a href="#">${s.subjectId} ${s.subjectName} </a>
-                                        
-                                        
-                                    </li>
-                                    
-                                    
-                                </c:forEach>
-                                           
 
-                                
+
+                                    </li>
+
+
+                                </c:forEach>
+
+
+
                             </ul>
                         </li>
                     </ul>
@@ -297,6 +297,7 @@
                                                 <td>${t.taskCreateDate}</td>
                                                 <td><font color="red">${t.taskDeadlineDate}</font></td>
                                                 <td><span class="label label-primary">Waiting</span></td>
+                                                <td><a href = "Teacher_DeleteTaskServlet?taskid=${t.taskId}"><button >Delete</button></a></td>
                                             </tr>
                                         </c:forEach>
                                     </table>

@@ -15,7 +15,6 @@ import java.sql.ResultSet;
  */
 public class Teacher {
     private long teacherId;
-    private String password;
     private String name;
 
     public Teacher() {
@@ -29,13 +28,7 @@ public class Teacher {
         this.teacherId = teacherId;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    
 
     public String getName() {
         return name;
@@ -47,7 +40,7 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" + "teacherId=" + teacherId + ", password=" + password + ", name=" + name + '}';
+        return "Teacher{" + "teacherId=" + teacherId + ", name=" + name + '}';
     }
      public static Teacher login(long id, String password) {
         Teacher t = new Teacher();
