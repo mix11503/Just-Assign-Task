@@ -1,6 +1,7 @@
 package com.junior.jat.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 public class Admin {
     public static void addUser(String id,String password,String name,String status){
         try{
@@ -63,4 +64,6 @@ public class Admin {
             System.out.println(e);
         }
     }
+    
+    
 }

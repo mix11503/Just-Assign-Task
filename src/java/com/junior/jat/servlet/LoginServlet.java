@@ -5,7 +5,9 @@
  */
 package com.junior.jat.servlet;
 
+import com.junior.jat.model.Student;
 import com.junior.jat.model.Subject;
+import com.junior.jat.model.Teacher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,11 +34,25 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
-        request.getSession(true).setAttribute("subjects", Subject.getSubject(53130500553l));
-        /* request.getSession(true) เป็นการประกาศสร้าง session ข้อมูล 
-        (เสมือนเราไม่ต้องกรอก username กับ password เข้าแต่ละหน้าของ fb ทุกครั้ง เพราะ fb สร้าง session สำหรับ username password ให้)*/
-        System.out.println(Subject.getSubject(53130500553l)); 
-        getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
+        String target = "/login.jsp";
+        String message = "";
+        long id = Long.parseLong(request.getParameter("id"));
+        String pass =request.getParameter("pass");
+        Student s = Student.login(id, pass);
+        Teacher t = Teacher.login(id, pass);
+        if(s != null){
+            request.setAttribute("student", s);
+            target = "/index2.html";
+        }
+        else if(t != null){
+            request.setAttribute("teacher", t);
+            target ="/teacher_home.jsp";
+        }
+        else{
+            message = "id หรือ password ไม่ถูกต้อง";
+            request.setAttribute("message", message);
+        }
+        getServletContext().getRequestDispatcher(target).forward(request, response);
     }
     
     
