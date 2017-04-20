@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Admin edit User</title>
+        <title>Admin Edit User</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -268,7 +268,7 @@
                         <input type="text" name="name" required><br><br>
                         <input type="radio" name="status" value="teacher"> Teacher
                         <input type="radio" name="status" value="Student" checked="checked"> Student <br><br>
-                        <input type="submit" name="submit">
+                        <input type="submit" name="submit" onclick="return confirm('Are you sure?')">
                     </form>
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->

@@ -38,6 +38,19 @@ public class Admin {
         }
     }
     
+    public static void deleteSubject(String subjectId){
+        try{
+            Connection conn = BuildConnection.getConnection();
+            String sql = "DELETE FROM `subject` WHERE `subject`.`subjectId` = ?;";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, subjectId);
+            pstm.executeUpdate();     
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
     public static void deleteUser(String id,String status){
         try{
             Connection conn = BuildConnection.getConnection();

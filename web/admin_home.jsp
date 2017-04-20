@@ -232,12 +232,7 @@
                                         
                                         
                                     </li>
-                                    
-                                    
                                 </c:forEach>
-                                           
-
-                                
                             </ul>
                         </li>
                     </ul>
@@ -268,7 +263,7 @@
                         <input type="text" name="name" required><br><br>
                         <input type="radio" name="status" value="teacher"> Teacher
                         <input type="radio" name="status" value="Student" checked="checked"> Student <br><br>
-                        <input type="submit" name="submit">
+                        <input type="submit" name="submit" onclick="return confirm('Are you sure?')">
                     </form>
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->

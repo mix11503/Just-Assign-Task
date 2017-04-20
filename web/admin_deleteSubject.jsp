@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Admin Create Subject</title>
+        <title>Admin Delete Subject</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -186,10 +186,7 @@
                         <ul class="nav navbar-nav">
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-pencil"></i>
-                                    <span class="hidden-xs" data-toggle='modal' data-target='#assign-task-modal'>Assign New Task</span>
-                                </a>
+                                <a href ="Logout">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -252,22 +249,18 @@
                    
                     
                     <h1>
-                        Create Subject
+                        Delete Subject
                         <small>Control panel</small>
                     </h1>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <form action="Admin_CreateSubjectServlet">
-                        Subject ID:<br>
-                        <input type="text" name="id" required><br>
-                        Subject Name:<br>
-                        <input type="text" name="subjectName" required><br>
-                        Subject's Owner ID:<br>
-                        <input type="number" name="teacherId" required><br><br>
+                    <form action="Admin_DeleteSubjectServlet">
+                        Enter Subject ID :<br>
+                        <input type="text" name="subjectId" required><br><br>
                         <input type="submit" name="submit" onclick="return confirm('Are you sure?')">
-                    </form>
+                     </form>
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
@@ -277,31 +270,6 @@
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
         </div><!-- ./wrapper -->
-        <div class="modal fade" id="assign-task-modal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="InsertTask" method="post">
-                        <div class="modal-header">
-                            <h1>Assign New Task</h1>
-                        </div>
-                        <div class="modal-body">
-                            <input class="form-control" name="taskname" required="" placeholder="Title" type="text" /><br/>
-                            <textarea class="form-control" name="taskdesc" required="" placeholder="Description" rows="3"></textarea><br/>
-                            <select name="subjectid" class="form-control">
-                                <!--Do Loop Teacher's Subject-->
-                                <option value="INT105">[DUMMY] JAVA Programming II </option>
-                            </select><br/>
-                            <input class="form-control" name="taskstatus" required="" placeholder="" type="" disabled="" value="In Progress..." hidden="" /><br/>
-                            <input class="form-control" name="datelinedate" required="" placeholder="" type="date" /><br/>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-success"/>&nbsp;&nbsp;
-                            <input type="reset" class="btn btn-danger"/>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->
@@ -342,5 +310,7 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js" type="text/javascript"></script>
+        <script src="dist/js/demo.js" type="text/javascript"></script>
+
     </body>
 </html>

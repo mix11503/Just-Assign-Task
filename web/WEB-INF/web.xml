@@ -36,6 +36,10 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Admin_DeleteSubjectServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_DeleteSubjectServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_DeleteSubjectServlet</servlet-name>
+        <url-pattern>/Admin_DeleteSubjectServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
