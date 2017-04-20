@@ -32,6 +32,10 @@
         <servlet-name>Teacher_DeleteTaskServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.Teacher_DeleteTaskServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.LogoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>Teacher_DeleteTaskServlet</servlet-name>
         <url-pattern>/Teacher_DeleteTaskServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
