@@ -261,11 +261,11 @@
                 <section class="content">
                     <form action="Admin_AddUser">
                         ID:<br>
-                        <input type="number" name="id"><br>
+                        <input type="number" name="id" required><br>
                         Password:<br>
-                        <input type="password" name="password"><br>
+                        <input type="password" name="password" required><br>
                         Name:<br>
-                        <input type="text" name="name"><br><br>
+                        <input type="text" name="name" required><br><br>
                         <input type="radio" name="status" value="teacher"> Teacher
                         <input type="radio" name="status" value="Student" checked="checked"> Student <br><br>
                         <input type="submit" name="submit">

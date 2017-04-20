@@ -261,11 +261,11 @@
                 <section class="content">
                     <form action="Admin_CreateSubjectServlet">
                         Subject ID:<br>
-                        <input type="text" name="id"><br>
+                        <input type="text" name="id" required><br>
                         Subject Name:<br>
-                        <input type="text" name="subjectName"><br>
+                        <input type="text" name="subjectName" required><br>
                         Subject's Owner ID:<br>
-                        <input type="number" name="teacherId"><br><br>
+                        <input type="number" name="teacherId" required><br><br>
                         <input type="submit" name="submit">
                     </form>
                 </section><!-- /.content -->

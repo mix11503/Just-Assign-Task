@@ -261,8 +261,8 @@
                 <section class="content">
                     <form action="Admin_DeleteUserServlet">
                         Enter ID <br>
-                        <input type="number" name="id"><br><br>
-                        <input type="radio" name="status" value="teacher"> Teacher
+                        <input type="number" name="id" required><br><br>
+                        <input type="radio" name="status" value="teacher" required> Teacher
                         <input type="radio" name="status" value="Student" checked="checked"> Student <br><br>
                         <input type="submit" name="submit">
                      </form>

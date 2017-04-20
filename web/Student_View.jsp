@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Admin edit User</title>
+        <title>Student Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -187,8 +187,7 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-pencil"></i>
-                                    <span class="hidden-xs" data-toggle='modal' data-target='#assign-task-modal'>Assign New Task</span>
+                                   
                                 </a>
                             </li>
                         </ul>
@@ -209,12 +208,19 @@
                         </div>
                     </div>
                     <!-- search form -->
-                    
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                            <span class="input-group-btn">
+                                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="GetTaskServlet">
+                            <a href="#">
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
                         </li>
@@ -223,21 +229,21 @@
                                 <i class="fa fa-book"></i> <span>My Subject</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-<!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
-                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
-                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
+                                <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
+                                                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
+                                                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
                                 <c:forEach items="${subjects}" var="s" >
                                     <li>
                                         <a href="#">${s.subjectId} ${s.subjectName} </a>
-                                        
-                                        
-                                    </li>
-                                    
-                                    
-                                </c:forEach>
-                                           
 
-                                
+
+                                    </li>
+
+
+                                </c:forEach>
+
+
+
                             </ul>
                         </li>
                     </ul>
@@ -249,27 +255,57 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                   
-                    
                     <h1>
-                        Edit User
+                        All Task
                         <small>Control panel</small>
                     </h1>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <form action="Admin_EditUserServlet">
-                        ID:<br>
-                        <input type="number" name="id" required><br>
-                        Password:<br>
-                        <input type="password" name="password" required><br>
-                        Name:<br>
-                        <input type="text" name="name" required><br><br>
-                        <input type="radio" name="status" value="teacher"> Teacher
-                        <input type="radio" name="status" value="Student" checked="checked"> Student <br><br>
-                        <input type="submit" name="submit">
-                    </form>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Responsive Hover Table</h3>
+                                    <div class="box-tools">
+                                        <div class="input-group">
+                                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <h1>Hello ${student.name}</h1>
+                                <%if(request.getAttribute("list")!=null){ %>
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <th>Task ID</th>
+                                            <th>Topic</th>
+                                            <th>Subject</th>
+                                            <th>Start</th>
+                                            <th>Deadline</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        <c:forEach items="${list}" var="t" varStatus="vs">
+                                            <tr>
+                                                <td>${t.taskId}</td>
+                                                <td>${t.taskName}</td>
+                                                <td>${t.subjectId}</td>
+                                                <td>${t.taskCreateDate}</td>
+                                                <td><font color="red">${t.taskDeadlineDate}</font></td>
+                                                <td><span class="label label-primary">Waiting</span></td>
+                                              
+                                            </tr>
+                                        </c:forEach>
+                                    </table>
+                                </div><!-- /.box-body -->
+                                <%}%>
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
@@ -279,31 +315,7 @@
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
         </div><!-- ./wrapper -->
-        <div class="modal fade" id="assign-task-modal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="InsertTask" method="post">
-                        <div class="modal-header">
-                            <h1>Assign New Task</h1>
-                        </div>
-                        <div class="modal-body">
-                            <input class="form-control" name="taskname" required="" placeholder="Title" type="text" /><br/>
-                            <textarea class="form-control" name="taskdesc" required="" placeholder="Description" rows="3"></textarea><br/>
-                            <select name="subjectid" class="form-control">
-                                <!--Do Loop Teacher's Subject-->
-                                <option value="INT105">[DUMMY] JAVA Programming II </option>
-                            </select><br/>
-                            <input class="form-control" name="taskstatus" required="" placeholder="" type="" disabled="" value="In Progress..." hidden="" /><br/>
-                            <input class="form-control" name="datelinedate" required="" placeholder="" type="date" /><br/>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-success"/>&nbsp;&nbsp;
-                            <input type="reset" class="btn btn-danger"/>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->
@@ -344,7 +356,5 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js" type="text/javascript"></script>
-        
-
     </body>
 </html>

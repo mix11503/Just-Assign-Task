@@ -41,18 +41,22 @@ public class LoginServlet extends HttpServlet {
         Student s = Student.login(id, pass);
         Teacher t = Teacher.login(id, pass);
         if(s != null){
-            request.setAttribute("student", s);
-            target = "/index2.html";
+       
+            request.getSession(true).setAttribute("student", s);
+            request.setAttribute("list", Student.gettaskstudent(id));
+            target = "/Student_View.jsp";
         }
         else if(t != null){
-            request.setAttribute("teacher", t);
+            request.getSession(true).setAttribute("subjects", Subject.getSubject(id));
+            request.getSession(true).setAttribute("teacher", t);
             target ="/teacher_home.jsp";
         }
         else{
-            message = "id หรือ password ไม่ถูกต้อง";
+            message = "id หรือ password ไม่ถูกต้อง ";
             request.setAttribute("message", message);
         }
         getServletContext().getRequestDispatcher(target).forward(request, response);
+   
     }
     
     
