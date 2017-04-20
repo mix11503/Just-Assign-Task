@@ -7,7 +7,7 @@ public class Admin {
             Connection conn = BuildConnection.getConnection();
             String sql = "";
             if(status.equalsIgnoreCase("Student")){
-                sql = "INSERT INTO `student` (`studentId`, `password`, `name`) VALUES (?, ?, ?);";
+                sql = "INSERT INTO `student` (`studentId`, `pass`, `name`) VALUES (?, ?, ?);";
             }
             else{
                 sql = "INSERT INTO `teacher` (`teacherId`, `password`, `name`) VALUES (?, ?, ?);";
@@ -62,7 +62,7 @@ public class Admin {
             Connection conn = BuildConnection.getConnection();
             String sql = "";
             if(status.equalsIgnoreCase("Student")){
-                sql = "UPDATE `student` SET `password`= ? ,`name`= ? WHERE studentId = ?;";
+                sql = "UPDATE `student` SET `pass`= ? ,`name`= ? WHERE studentId = ?;";
             }
             else{
                 sql = "UPDATE `teacher` SET `password`= ? ,`name`= ? WHERE teacherId = ?;";
