@@ -296,7 +296,7 @@
                                                 <td>${t.subjectId}</td>
                                                 <td>${t.taskCreateDate}</td>
                                                 <td><font color="red">${t.taskDeadlineDate}</font></td>
-                                                <td><span class="label label-primary">Waiting</span></td>
+                                                <td><span class="label label-primary">In Progress...</span></td>
                                                 <td><a href = "Teacher_DeleteTaskServlet?taskid=${t.taskId}"><button >Delete</button></a></td>
                                             </tr>
                                         </c:forEach>
