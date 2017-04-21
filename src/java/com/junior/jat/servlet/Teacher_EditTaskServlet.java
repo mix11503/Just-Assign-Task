@@ -8,6 +8,7 @@ package com.junior.jat.servlet;
 import com.junior.jat.model.Task;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Kittisak
  */
-public class Teacher_DeleteTaskServlet extends HttpServlet {
+public class Teacher_EditTaskServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,11 +32,25 @@ public class Teacher_DeleteTaskServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            int taskId = Integer.parseInt(request.getParameter("taskid"));
-            Task.deleteTask(taskId);
-             getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
-        }
+            String option = request.getParameter("option");
+            switch(option){
+                case "sendEdit" : 
+                    String taskName = request.getParameter("taskName");
+                    String taskDescription = request.getParameter("taskDescription");
+                    int status = Integer.parseInt(request.getParameter("status"));
+                    Date taskDeadlineDate = Date.valueOf(request.getParameter("taskDeadlineDate"));
+                    int taskId = Integer.parseInt(request.getParameter("taskid"));
+                    Task.editTask(taskName, taskDescription, status, taskDeadlineDate, taskId);
+                    break; 
+                case "getForEdit" :
+                    Task task = new Task();
+                    Task.getSingleTask(Integer.parseInt(request.getParameter("taskId")));
+                    request.setAttribute("task", task);
+                    break;
+            }
+                    
+            getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

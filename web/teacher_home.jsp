@@ -7,6 +7,9 @@
 <%@page import="com.junior.jat.model.Task"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -298,6 +301,7 @@
                                                 <td><font color="red">${t.taskDeadlineDate}</font></td>
                                                 <td><span class="label label-primary">In Progress...</span></td>
                                                 <td><a href = "Teacher_DeleteTaskServlet?taskid=${t.taskId}"><button >Delete</button></a></td>
+                                                <td><a href = "Teacher_EditTaskServlet?taskid=${t.taskId}"><button >Edit</button></a></td>
                                             </tr>
                                         </c:forEach>
                                     </table>
@@ -340,6 +344,7 @@
                 </div>
             </div>
         </div>
+         
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->

@@ -151,6 +151,43 @@ public class Task {
                 System.out.println(se);
             }
     }
-    
+    public static void editTask(String taskName,String taskDescription,int status,Date taskDeadlineDate,int taskId){
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String updateCmd = "UPDATE task SET = taskName = ? ,taskDescription = ? , status = ? "
+                    + ", taskDeadlineDate = ? WHERE  taskId = ?;";
+            PreparedStatement pstm = conn.prepareStatement(updateCmd);
+            pstm.setString(1, taskName);
+            pstm.setString(2, taskDescription);
+            pstm.setInt(3, status);
+            pstm.setDate(4, taskDeadlineDate);
+            pstm.setInt(5, taskId);
+            
+            pstm.executeUpdate();
+            
+        }catch(SQLException se){
+            System.out.println(se);
+        }
+    }
+    public static Task getSingleTask(int taskId){
+         Task task = new Task();
+         try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "SELECT * FROM task WHERE taskId = ?;";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            pstm.setInt(1, taskId);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                task.setTaskName(rs.getString("taskName"));
+                task.setTaskDescription(rs.getString("taskDescription"));
+                task.setStatus(rs.getString("status"));
+                task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
+                task.setTaskId(rs.getInt("taskId"));
+            }
+         }catch(SQLException se){
+             System.out.println(se);
+         }
+         return task;
+    }
     
 }
