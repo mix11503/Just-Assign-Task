@@ -154,7 +154,7 @@ public class Task {
     public static void editTask(String taskName,String taskDescription,int status,Date taskDeadlineDate,int taskId){
         try {
             Connection conn = BuildConnection.getConnection();
-            String updateCmd = "UPDATE task SET = taskName = ? ,taskDescription = ? , status = ? "
+            String updateCmd = "UPDATE task SET taskName = ? ,taskDescription = ? , status = ? "
                     + ", taskDeadlineDate = ? WHERE  taskId = ?;";
             PreparedStatement pstm = conn.prepareStatement(updateCmd);
             pstm.setString(1, taskName);

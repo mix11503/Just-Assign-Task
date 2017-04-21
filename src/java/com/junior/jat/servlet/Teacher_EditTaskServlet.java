@@ -39,17 +39,19 @@ public class Teacher_EditTaskServlet extends HttpServlet {
                     String taskDescription = request.getParameter("taskDescription");
                     int status = Integer.parseInt(request.getParameter("status"));
                     Date taskDeadlineDate = Date.valueOf(request.getParameter("taskDeadlineDate"));
-                    int taskId = Integer.parseInt(request.getParameter("taskid"));
+                    int taskId = Integer.parseInt(request.getParameter("taskId"));
                     Task.editTask(taskName, taskDescription, status, taskDeadlineDate, taskId);
+                    getServletContext().getRequestDispatcher("/teacher_editTask.jsp").forward(request, response);
                     break; 
                 case "getForEdit" :
                     Task task = new Task();
-                    Task.getSingleTask(Integer.parseInt(request.getParameter("taskId")));
+                    task = Task.getSingleTask(Integer.parseInt(request.getParameter("taskId")));
                     request.setAttribute("task", task);
+                    getServletContext().getRequestDispatcher("/teacher_editTask.jsp").forward(request, response);
                     break;
             }
-                    
-            getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
+                   
+           
         
     }
 
