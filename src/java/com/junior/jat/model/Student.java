@@ -99,4 +99,23 @@ public class Student {
         System.out.println(gettaskstudent(59130500048L));
     }
 
+    public static ArrayList getStudent(){
+        ArrayList students = new ArrayList();
+        Student student = new Student();
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "SELECT * FROM student";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                student = new Student();
+                student.setName(rs.getString("name"));
+                student.setStudentId(rs.getLong("studentId"));
+                students.add(student);
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return students;
+    }
 }

@@ -8,6 +8,10 @@ package com.junior.jat.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -62,6 +66,26 @@ public class Teacher {
             System.out.println(e);
         }
         return t;
+    }
+     
+    public static ArrayList getTeacher(){
+        ArrayList teachers = new ArrayList();
+        Teacher teacher = new Teacher();
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "SELECT * FROM teacher";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                teacher = new Teacher();
+                teacher.setName(rs.getString("name"));
+                teacher.setTeacherId(rs.getLong("teacherId"));
+                teachers.add(teacher);
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(Teacher.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return teachers;
     }
     
 }

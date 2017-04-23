@@ -44,6 +44,14 @@
         <servlet-name>Teacher_EditTaskServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.Teacher_EditTaskServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Admin_GetStudentServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_GetStudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Admin_GetTeacherServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_GetTeacherServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>Teacher_EditTaskServlet</servlet-name>
         <url-pattern>/Teacher_EditTaskServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_GetStudentServlet</servlet-name>
+        <url-pattern>/Admin_GetStudentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_GetTeacherServlet</servlet-name>
+        <url-pattern>/Admin_GetTeacherServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

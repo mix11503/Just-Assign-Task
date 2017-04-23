@@ -5,15 +5,13 @@
 --%>
 <%@page import="java.util.List"%>
 <%@page import="com.junior.jat.model.Task"%>
-<%@page import="com.junior.jat.model.Student"%>
-<%@page import="com.junior.jat.model.Teacher"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Admin Dashboard</title>
+        <title>Admin Add User</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -249,62 +247,24 @@
                    
                     
                     <h1>
-                        User Lists
+                        Add User
                         <small>Control panel</small>
                     </h1>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">Responsive Hover Table</h3>
-                                    <div class="box-tools">
-                                        <div class="input-group">
-                                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- /.box-header -->
-                                <%if(request.getAttribute("students")!=null){ %>
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>Student ID</th>
-                                            <th>Name</th>
-                                        </tr>
-                                        <c:forEach items="${students}" var="s" varStatus="vs">
-                                            <tr>
-                                                <td>${s.studentId}</td>
-                                                <td>${s.name}</td>
-                                            </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div><!-- /.box-body -->
-                                <%}%>
-                                <%if(request.getAttribute("teachers")!=null){ %>
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>Teacher ID</th>
-                                            <th>Name</th>
-                                        </tr>
-                                        <c:forEach items="${teachers}" var="t" varStatus="vs">
-                                            <tr>
-                                                <td>${t.teacherId}</td>
-                                                <td>${t.name}</td>
-                                            </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div><!-- /.box-body -->
-                                <%}%>
-                            </div><!-- /.box -->
-                        </div>
-                    </div>
+                    <form action="Admin_AddUser">
+                        ID:<br>
+                        <input type="number" name="id" required><br>
+                        Password:<br>
+                        <input type="password" name="password" required><br>
+                        Name:<br>
+                        <input type="text" name="name" required><br><br>
+                        <input type="radio" name="status" value="teacher"> Teacher
+                        <input type="radio" name="status" value="Student" checked="checked"> Student <br><br>
+                        <input type="submit" name="submit" onclick="return confirm('Are you sure?')">
+                    </form>
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
