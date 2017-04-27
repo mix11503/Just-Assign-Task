@@ -68,6 +68,22 @@
         <servlet-name>Admin_EditStudentServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.Admin_EditStudentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetNearestSrevlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.GetNearestSrevlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetLatestServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.GetLatestServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetTaskDetailServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.GetTaskDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchTaskServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.SearchTaskServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -135,6 +151,22 @@
     <servlet-mapping>
         <servlet-name>Admin_EditStudentServlet</servlet-name>
         <url-pattern>/Admin_EditStudentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetNearestSrevlet</servlet-name>
+        <url-pattern>/GetNearestSrevlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetLatestServlet</servlet-name>
+        <url-pattern>/GetLatestServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetTaskDetailServlet</servlet-name>
+        <url-pattern>/GetTaskDetailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchTaskServlet</servlet-name>
+        <url-pattern>/SearchTaskServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

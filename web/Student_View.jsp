@@ -205,18 +205,11 @@
                             <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <p>${student.name}</p>
                         </div>
                     </div>
                     <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+                    
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
@@ -229,7 +222,20 @@
                             <a href="#">
                                 <i class="fa fa-book"></i> <span>My Subject</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
+                        <li>
+                            <a href="GetNearestSrevlet">
+                                <i class="glyphicon glyphicon-time"></i> <span>Nearest</span> 
+                                
+                            </a>
+                        </li>  
+                        <li>
+                            <a href="GetLatestServlet">
+                                <i class="glyphicon glyphicon-time"></i> <span>Latest</span> 
+                                
+                            </a>
+                        </li>    
                             <ul class="treeview-menu">
+                                
                                 <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
                                                                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
                                                                 <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
@@ -256,6 +262,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
+                    
                     <h1>
                         All Task
                         <small>Control panel</small>
@@ -265,7 +272,7 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-xs-12"> 
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Responsive Hover Table</h3>
@@ -278,7 +285,6 @@
                                         </div>
                                     </div>
                                 </div><!-- /.box-header -->
-                                <h1>Hello ${student.name}</h1>
                                 <%if(request.getAttribute("list")!=null){ %>
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
@@ -289,6 +295,8 @@
                                             <th>Start</th>
                                             <th>Deadline</th>
                                             <th>Status</th>
+                                            <th>Detail</th>
+                                            
                                         </tr>
                                         <c:forEach items="${list}" var="t" varStatus="vs">
                                             <tr>
@@ -298,7 +306,7 @@
                                                 <td>${t.taskCreateDate}</td>
                                                 <td><font color="red">${t.taskDeadlineDate}</font></td>
                                                 <td><span class="label label-primary">Waiting</span></td>
-                                              
+                                                <td><a href ="GetTaskDetailServlet?taskId=${t.taskId}">Detail</a></td>
                                             </tr>
                                         </c:forEach>
                                     </table>

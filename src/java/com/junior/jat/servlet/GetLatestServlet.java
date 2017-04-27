@@ -1,27 +1,44 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.junior.jat.servlet;
 
-import com.junior.jat.model.Admin;
+import com.junior.jat.model.Student;
+import com.junior.jat.model.Task;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Admin_EditUserServlet extends HttpServlet {
+/**
+ *
+ * @author maypt
+ */
+public class GetLatestServlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+  
+  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String id = request.getParameter("id");
-            String password = request.getParameter("password");
-            String name = request.getParameter("name");
-            String status = request.getParameter("status");
-            
-//            Admin.editUser(id, password, name, status);
-            getServletContext().getRequestDispatcher("/admin_editUser.jsp").forward(request, response);
-        }
+        Student s = (Student)request.getSession().getAttribute("student");
+        List<Task> tasks = Task.getLatestTask(s.getStudentId());
+        request.setAttribute("list", tasks);
+        System.out.println(tasks.toString());
+        getServletContext().getRequestDispatcher("/Student_View.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,3 +81,4 @@ public class Admin_EditUserServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+ 
