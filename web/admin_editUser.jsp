@@ -182,17 +182,6 @@
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <!-- User Account: style can be found in dropdown.less -->
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-pencil"></i>
-                                    <span class="hidden-xs" data-toggle='modal' data-target='#assign-task-modal'>Assign New Task</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
@@ -209,35 +198,40 @@
                         </div>
                     </div>
                     <!-- search form -->
-                    
+
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="GetTaskServlet">
-                                <i class="fa fa-tasks"></i> <span>All Task</span>
+                            <a href="admin_addUser.jsp">
+                                <i class="fa fa-tasks"></i> <span>Add User</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="admin_createSubject.jsp">
+                                <i class="fa fa-tasks"></i> <span>Create Subject</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Admin_GetSubjectServlet">
+                            <i class="fa fa-tasks"></i> <span>View Subjects</span>
                             </a>
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-book"></i> <span>My Subject</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-book"></i> <span>View User</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-<!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
-                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
-                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
-                                <c:forEach items="${subjects}" var="s" >
-                                    <li>
-                                        <a href="#">${s.subjectId} ${s.subjectName} </a>
-                                        
-                                        
-                                    </li>
-                                    
-                                    
-                                </c:forEach>
-                                           
-
-                                
+                                <li>
+                                    <a href="Admin_GetStudentServlet">
+                                        <i class="fa fa-tasks"></i> <span>Student</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="Admin_GetTeacherServlet">
+                                        <i class="fa fa-tasks"></i> <span>Teacher</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -249,8 +243,8 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                   
-                    
+
+
                     <h1>
                         Edit User
                         <small>Control panel</small>
@@ -267,7 +261,7 @@
                         Name:<br>
                         <input type="text" name="name" required><br><br>
                         <input type="radio" name="status" value="teacher"> Teacher
-                        <input type="radio" name="status" value="Student" checked="checked"> Student <br><br>
+                        <input type="radio" name="status" value="student" checked="checked"> Student <br><br>
                         <input type="submit" name="submit" onclick="return confirm('Are you sure?')">
                     </form>
                 </section><!-- /.content -->
@@ -310,7 +304,7 @@
         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-            $.widget.bridge('uibutton', $.ui.button);
+                            $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.2 JS -->
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    
@@ -344,7 +338,7 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js" type="text/javascript"></script>
-        
+
 
     </body>
 </html>

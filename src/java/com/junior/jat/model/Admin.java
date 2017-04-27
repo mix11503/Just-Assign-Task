@@ -51,46 +51,24 @@ public class Admin {
         }
     }
     
-    public static void deleteUser(String id,String status){
+    public static void editUser(String id,String pass,String name,String status){
         try{
             Connection conn = BuildConnection.getConnection();
             String sql = "";
-            if(status.equalsIgnoreCase("Student")){
-                sql = "DELETE FROM `student` WHERE studentId= ?;";
+            if(status.equals("student")){
+                sql = "UPDATE `student` SET `pass` = ?, `name` = ? WHERE `student`.`studentId` = ?;";
             }
             else{
-                sql = "DELETE FROM `teacher` WHERE teacherId = ?; ";
+                sql = "UPDATE `teacher` SET `password` = ?, `name` = ? WHERE `teacher`.`teacherId` = ?;";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setLong(1, Long.parseLong(id));
-            pstm.executeUpdate(); 
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
-    
-    public static void editUser(String id,String password,String name,String status){
-        try{
-            Connection conn = BuildConnection.getConnection();
-            String sql = "";
-            if(status.equalsIgnoreCase("Student")){
-                sql = "UPDATE `student` SET `pass`= ? ,`name`= ? WHERE studentId = ?;";
-            }
-            else{
-                sql = "UPDATE `teacher` SET `password`= ? ,`name`= ? WHERE teacherId = ?;";
-            }
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1, password);
+            pstm.setString(1, pass);
             pstm.setString(2, name);
-            pstm.setLong(3, Long.parseLong(id));
-            pstm.executeUpdate();
-            System.out.println("work!!");
+            pstm.setString(3, id);
+            pstm.executeUpdate();     
         }
         catch(Exception e){
             System.out.println(e);
         }
     }
-    
-    
 }

@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -73,5 +75,26 @@ public class Subject {
     
     public static void main(String[] args) {
         System.out.println(getSubject(53130500553L).toString());;
+    }
+    
+    public static ArrayList getSubject(){
+        ArrayList subjects = new ArrayList();
+        Subject subject = new Subject();
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "SELECT * FROM subject";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                subject = new Subject();
+                subject.setSubjectId(rs.getString("subjectId"));
+                subject.setSubjectName(rs.getString("subjectName"));
+                subject.setTeacherId(rs.getLong("teacherId"));
+                subjects.add(subject);
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(Subject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return subjects;
     }
 }

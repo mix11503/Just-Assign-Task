@@ -60,6 +60,22 @@
         <servlet-name>Teacher_ViewDetailServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.Teacher_ViewDetailServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Admin_GetSubjectServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_GetSubjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Admin_DeleteStudentServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_DeleteStudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Admin_DeleteTeacherServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_DeleteTeacherServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Admin_EditStudentServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_EditStudentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -119,6 +135,22 @@
     <servlet-mapping>
         <servlet-name>Teacher_ViewDetailServlet</servlet-name>
         <url-pattern>/Teacher_ViewDetailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_GetSubjectServlet</servlet-name>
+        <url-pattern>/Admin_GetSubjectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_DeleteStudentServlet</servlet-name>
+        <url-pattern>/Admin_DeleteStudentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_DeleteTeacherServlet</servlet-name>
+        <url-pattern>/Admin_DeleteTeacherServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_EditStudentServlet</servlet-name>
+        <url-pattern>/Admin_EditStudentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -118,4 +118,32 @@ public class Student {
         }
         return students;
     }
+    
+    public static void deleteStudent(String studentId){
+        try{
+            Connection conn = BuildConnection.getConnection();
+            String sql = "DELETE FROM `student` WHERE `student`.`studentId` = ?;";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, studentId);
+            pstm.executeUpdate();     
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    public static void editStudent(String id,String password,String name){
+        try{
+            Connection conn = BuildConnection.getConnection();
+            String sql = "UPDATE `student` SET `pass`= ? ,`name`= ? WHERE studentId = ?;";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, password);
+            pstm.setString(2, name);
+            pstm.setLong(3, Long.parseLong(id));
+            pstm.executeUpdate();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
 }

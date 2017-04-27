@@ -34,7 +34,7 @@ public class Admin_DeleteSubjectServlet extends HttpServlet {
         String subjectId = request.getParameter("subjectId");
         Admin.deleteSubject(subjectId);
         
-        getServletContext().getRequestDispatcher("/admin_deleteSubject.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/admin_home.jsp").forward(request, response);
        
     }
 
