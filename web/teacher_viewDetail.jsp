@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -250,46 +251,37 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        All Task
+                        Details
                         <small>Control panel</small>
                     </h1>
                 </section>
-
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">Responsive Hover Table</h3>
-                                    <div class="box-tools">
-                                        <div class="input-group">
-                                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- /.box-header -->
                                 
-                                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
-                        <tr>
-                            <th>Topic</th>
-                            <th>Subject</th>
-                            <th>Start</th>
-                            <th>Deadline</th>
-                            <th>Status</th>
-                    </tr>
-                    <tr>
-                            <td>${task.taskName}</td>
-                            <td>${task.subjectId}</td>
-                            <td>${task.taskCreateDate}</td>
-                            <td><font color="red">${task.taskDeadlineDate}</font></td>
-                            
-                            <td><span class="label label-primary">In Progress...</span></td>
-                        </tr>
-                    </table>
+                                
+                <div class="box-body table-responsive no-padding">
+                    <h2>Topic</h2>
+                        <h4>${task.taskName}</h4>
+                    <h2>Subject</h2>
+                        <h4>${task.subjectId}</h4>
+                    <h2>Start</h2>
+                        <h4>${task.taskCreateDate}</h4>
+                    <h2>Deadline</h2>
+                        <h4><font color="red">${task.taskDeadlineDate}</h4></font>
+                    <h2>Description</h2>
+                        <h4>${task.taskDescription}</h4>
+                    <h2>Status</h2>
+                        <h4><c:choose>
+                                <c:when test="${task.status == 1}">
+                                    <span class="label label-primary">In Progress...</span>
+                                </c:when>
+                                <c:otherwise>
+                                    <span class="label label-success">Done</span>
+                                </c:otherwise>
+                            </c:choose></h4>  <br><br>  
                 </div><!-- /.box-body -->
                                
                             </div><!-- /.box -->

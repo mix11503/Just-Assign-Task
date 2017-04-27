@@ -181,8 +181,10 @@ public class Task {
                 task.setTaskName(rs.getString("taskName"));
                 task.setTaskDescription(rs.getString("taskDescription"));
                 task.setStatus(rs.getString("status"));
+                task.setTaskCreateDate(rs.getDate("taskCreateDate"));
                 task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
                 task.setTaskId(rs.getInt("taskId"));
+                task.setSubjectId(rs.getString("subjectId"));
             }
          }catch(SQLException se){
              System.out.println(se);
