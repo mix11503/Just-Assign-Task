@@ -189,5 +189,57 @@ public class Task {
          }
          return task;
     }
-    
+    public static ArrayList getAllTask(long teacherId){
+        ArrayList tasks = new ArrayList();
+        Task task = new Task();
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "SELECT * FROM task ta JOIN subject st ON ta.subjectId = st.subjectId JOIN teacher "
+                    + "te ON te.teacherId = st.teacherId WHERE te.teacherId = ?;";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            pstm.setLong(1, teacherId);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                task = new Task();
+                task.setTaskId(rs.getInt("taskId"));
+                task.setSubjectId(rs.getString("subjectId"));
+                task.setTaskName(rs.getString("taskName"));
+                task.setTaskDescription(rs.getString("taskDescription"));
+                task.setStatus(rs.getString("status"));
+                task.setTaskCreateDate(rs.getDate("taskCreateDate"));
+                task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
+                tasks.add(task);
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tasks;
+    }
+    public static ArrayList getTaskInSubject(long teacherId,String subjectId){
+        ArrayList tasks = new ArrayList();
+        Task task = new Task();
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "SELECT * FROM task ta JOIN subject st ON ta.subjectId = st.subjectId "
+                    + "JOIN teacher te ON te.teacherId = st.teacherId WHERE te.teacherId = ? AND ta.subjectId = ?;";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            pstm.setLong(1, teacherId);
+            pstm.setString(2, subjectId);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                task = new Task();
+                task.setTaskId(rs.getInt("taskId"));
+                task.setSubjectId(rs.getString("subjectId"));
+                task.setTaskName(rs.getString("taskName"));
+                task.setTaskDescription(rs.getString("taskDescription"));
+                task.setStatus(rs.getString("status"));
+                task.setTaskCreateDate(rs.getDate("taskCreateDate"));
+                task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
+                tasks.add(task);
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tasks;
+    }
 }

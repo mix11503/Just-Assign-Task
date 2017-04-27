@@ -224,9 +224,10 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="GetTaskServlet">
+                            <a href="Teacher_GetTask?option=AllTask&teacherId=${teacher.teacherId}">
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
+                            
                         </li>
                         <li class="treeview">
                             <a href="#">
@@ -238,16 +239,10 @@
                                                                 <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
                                 <c:forEach items="${subjects}" var="s" >
                                     <li>
-                                        <a href="#">${s.subjectId} ${s.subjectName} </a>
-
-
-                                    </li>
-
-
-                                </c:forEach>
-
-
-
+                                        <a href="Teacher_GetTask?option=InSubject&teacherId=${teacher.teacherId}&subjectId=${s.subjectId}">
+                                            <i class="fa fa-tasks"></i> <span>${s.subjectName}</span>
+                                        </a>
+                                    </li></c:forEach>
                             </ul>
                         </li>
                     </ul>
@@ -285,23 +280,25 @@
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>
-                                            <th>Task ID</th>
                                             <th>Topic</th>
                                             <th>Subject</th>
                                             <th>Start</th>
                                             <th>Deadline</th>
                                             <th>Status</th>
+                                            <th>Details</th> 
+                                            <th>Edit</th>
+                                            <th>Delete</th> 
                                         </tr>
                                         <c:forEach items="${tasks}" var="t" varStatus="vs">
                                             <tr>
-                                                <td>${t.taskId}</td>
                                                 <td>${t.taskName}</td>
                                                 <td>${t.subjectId}</td>
                                                 <td>${t.taskCreateDate}</td>
                                                 <td><font color="red">${t.taskDeadlineDate}</font></td>
                                                 <td><span class="label label-primary">In Progress...</span></td>
-                                                <td><a href = "Teacher_DeleteTaskServlet?taskid=${t.taskId}"><button >Delete</button></a></td>
-                                                <td><a href = "teacher_editTask.jsp?taskId=${t.taskId}"><button >Edit</button></a></td>
+                                                <td><a href = "Teacher_ViewDetailServlet?taskId=${t.taskId}"><button>Details</button></a></td>
+                                                <td><a href = "Teacher_EditTaskServlet?taskId=${t.taskId}&option=getForEdit"><button>Edit</button></a></td>
+                                                <td><a href = "Teacher_DeleteTaskServlet?taskid=${t.taskId}"><button onclick="return confirm('Do you want to delete?')">Delete</button></a></td>
                                             </tr>
                                         </c:forEach>
                                     </table>
@@ -344,14 +341,13 @@
                 </div>
             </div>
         </div>
-         
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->
         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-            $.widget.bridge('uibutton', $.ui.button);
+                                                                    $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.2 JS -->
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    
