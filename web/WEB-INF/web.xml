@@ -119,6 +119,20 @@
     <servlet-mapping>
         <servlet-name>GetLatestServlet</servlet-name>
         <url-pattern>/GetLatestServlet</url-pattern>
+        <servlet-name>Admin_GetSubjectServlet</servlet-name>
+        <url-pattern>/Admin_GetSubjectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_DeleteStudentServlet</servlet-name>
+        <url-pattern>/Admin_DeleteStudentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_DeleteTeacherServlet</servlet-name>
+        <url-pattern>/Admin_DeleteTeacherServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_EditStudentServlet</servlet-name>
+        <url-pattern>/Admin_EditStudentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

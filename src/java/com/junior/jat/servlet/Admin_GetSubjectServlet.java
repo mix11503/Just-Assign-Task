@@ -5,9 +5,10 @@
  */
 package com.junior.jat.servlet;
 
-import com.junior.jat.model.Admin;
+import com.junior.jat.model.Subject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author USER
  */
-public class Admin_DeleteSubjectServlet extends HttpServlet {
+public class Admin_GetSubjectServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,11 +32,11 @@ public class Admin_DeleteSubjectServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String subjectId = request.getParameter("subjectId");
-        Admin.deleteSubject(subjectId);
-        
+        ArrayList<Subject> subjects = Subject.getSubject();
+        request.setAttribute("subjects", subjects);
+        System.out.println(subjects.toString());
         getServletContext().getRequestDispatcher("/admin_home.jsp").forward(request, response);
-       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

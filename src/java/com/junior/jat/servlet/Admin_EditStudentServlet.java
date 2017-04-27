@@ -6,6 +6,7 @@
 package com.junior.jat.servlet;
 
 import com.junior.jat.model.Admin;
+import com.junior.jat.model.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author USER
  */
-public class Admin_DeleteSubjectServlet extends HttpServlet {
+public class Admin_EditStudentServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,11 +32,12 @@ public class Admin_DeleteSubjectServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String subjectId = request.getParameter("subjectId");
-        Admin.deleteSubject(subjectId);
-        
-        getServletContext().getRequestDispatcher("/admin_home.jsp").forward(request, response);
-       
+            String id = request.getParameter("id");
+            String password = request.getParameter("password");
+            String name = request.getParameter("name");
+            
+            Student.editStudent(id, password, name);
+            getServletContext().getRequestDispatcher("/Admin_GetStudentServlet").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

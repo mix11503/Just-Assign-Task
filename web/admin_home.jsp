@@ -7,6 +7,7 @@
 <%@page import="com.junior.jat.model.Task"%>
 <%@page import="com.junior.jat.model.Student"%>
 <%@page import="com.junior.jat.model.Teacher"%>
+<%@page import="com.junior.jat.model.Subject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -184,17 +185,6 @@
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <!-- User Account: style can be found in dropdown.less -->
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-pencil"></i>
-                                    <span class="hidden-xs" data-toggle='modal' data-target='#assign-task-modal'>Assign New Task</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
@@ -218,6 +208,16 @@
                         <li>
                             <a href="admin_addUser.jsp">
                                 <i class="fa fa-tasks"></i> <span>Add User</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="admin_createSubject.jsp">
+                                <i class="fa fa-tasks"></i> <span>Create Subject</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Admin_GetSubjectServlet">
+                            <i class="fa fa-tasks"></i> <span>View Subjects</span>
                             </a>
                         </li>
                         <li class="treeview">
@@ -276,11 +276,15 @@
                                         <tr>
                                             <th>Student ID</th>
                                             <th>Name</th>
+                                            <th>Delete</th>
+                                            <th>Edit</th>
                                         </tr>
                                         <c:forEach items="${students}" var="s" varStatus="vs">
                                             <tr>
                                                 <td>${s.studentId}</td>
                                                 <td>${s.name}</td>
+                                                <td><a href = "Admin_DeleteStudentServlet?studentId=${s.studentId}"><button>Delete</button></a></td>
+                                                <td><a href = "Admin?studentId=${s.studentId}"><button>Delete</button></a></td>
                                             </tr>
                                         </c:forEach>
                                     </table>
@@ -292,11 +296,34 @@
                                         <tr>
                                             <th>Teacher ID</th>
                                             <th>Name</th>
+                                            <th>Delete</th>
+                                            <th>Edit</th>
                                         </tr>
                                         <c:forEach items="${teachers}" var="t" varStatus="vs">
                                             <tr>
                                                 <td>${t.teacherId}</td>
                                                 <td>${t.name}</td>
+                                                <td><a href = "Admin_DeleteTeacherServlet?teacherId=${t.teacherId}"><button>Delete</button></a></td>
+                                            </tr>
+                                        </c:forEach>
+                                    </table>
+                                </div><!-- /.box-body -->
+                                <%}%>
+                                <%if(request.getAttribute("subjects")!=null){ %>
+                                <div class="box-body table-responsive no-padding">
+                                     <table class="table table-hover">
+                                        <tr>
+                                            <th>Subject ID</th>
+                                            <th>Subject Name</th>
+                                            <th>Teacher Id</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                        <c:forEach items="${subjects}" var="u" varStatus="vs">
+                                            <tr>
+                                                <td>${u.subjectId}</td>
+                                                <td>${u.subjectName}</td>
+                                                <td>${u.teacherId}</td>
+                                                <td><a href = "Admin_DeleteSubjectServlet?subjectId=${u.subjectId}"><button >Delete</button></a></td>
                                             </tr>
                                         </c:forEach>
                                     </table>
@@ -313,8 +340,7 @@
                 </div>
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
-        </div><!-- ./wrapper -->
-        <div class="modal fade" id="assign-task-modal">
+            <div class="modal fade" id="assign-task-modal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="InsertTask" method="post">
@@ -339,6 +365,7 @@
                 </div>
             </div>
         </div>
+        </div><!-- ./wrapper -->
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->
