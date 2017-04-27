@@ -18,7 +18,7 @@ public class Admin_EditUserServlet extends HttpServlet {
             String password = request.getParameter("password");
             String name = request.getParameter("name");
             String status = request.getParameter("status");
-            
+
             Admin.editUser(id, password, name, status);
             getServletContext().getRequestDispatcher("/admin_editUser.jsp").forward(request, response);
         }
