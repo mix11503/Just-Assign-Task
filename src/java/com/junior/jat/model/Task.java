@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,6 +20,7 @@ import java.util.logging.Logger;
  * @author maypt
  */
 public class Task {
+
     private int taskId;
     private String subjectId;
     private String taskName;
@@ -90,8 +92,8 @@ public class Task {
     public String toString() {
         return "Task{" + "taskId=" + taskId + ", subjectId=" + subjectId + ", taskName=" + taskName + ", taskDescription=" + taskDescription + ", status=" + status + ", taskCreateDate=" + taskCreateDate + ", taskDeadlineDate=" + taskDeadlineDate + '}';
     }
-    
-    public static ArrayList getTask(){
+
+    public static ArrayList getTask() {
         ArrayList tasks = new ArrayList();
         Task task = new Task();
         try {
@@ -99,7 +101,7 @@ public class Task {
             String sqlCmd = "SELECT * FROM task";
             PreparedStatement pstm = conn.prepareStatement(sqlCmd);
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 task = new Task();
                 task.setTaskId(rs.getInt("taskId"));
                 task.setSubjectId(rs.getString("subjectId"));
@@ -109,49 +111,51 @@ public class Task {
                 task.setTaskCreateDate(rs.getDate("taskCreateDate"));
                 task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
                 tasks.add(task);
-            }            
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
         }
         return tasks;
     }
-    public static void insertTask(String subjectId,String taskName,String taskDescription,Date taskCreateDate,Date taskDeadlineDate){
-        
+
+    public static void insertTask(String subjectId, String taskName, String taskDescription, Date taskCreateDate, Date taskDeadlineDate) {
+
         try {
             Connection conn = BuildConnection.getConnection();
-            String sqlCmd ="INSERT INTO task (subjectId, taskName, taskDescription, status, taskCreateDate, taskDeadlineDate )"+
-            "VALUES ( ?, ?, ?, ?, ?, ?);";
+            String sqlCmd = "INSERT INTO task (subjectId, taskName, taskDescription, status, taskCreateDate, taskDeadlineDate )"
+                    + "VALUES ( ?, ?, ?, ?, ?, ?);";
             PreparedStatement pstm = conn.prepareStatement(sqlCmd);
-            pstm.setString(1,subjectId);
-            pstm.setString(2,taskName);
-            pstm.setString(3,taskDescription);
-            pstm.setString(4,"1");
+            pstm.setString(1, subjectId);
+            pstm.setString(2, taskName);
+            pstm.setString(3, taskDescription);
+            pstm.setString(4, "1");
             pstm.setDate(5, taskCreateDate);
-            pstm.setDate(6,taskDeadlineDate);
-            
+            pstm.setDate(6, taskDeadlineDate);
+
             pstm.executeUpdate();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
         }
         //test push
-        
+
     }
-    public static void deleteTask(int taskId){
-           try{
-                Connection conn = BuildConnection.getConnection();
-                String sqlCmd = "DELETE FROM task WHERE taskId = ?";
-                PreparedStatement pstm = conn.prepareStatement(sqlCmd);
-                pstm.setInt(1, taskId);
-       
-                pstm.executeUpdate();
-              
-             
-            }catch(SQLException se){
-                System.out.println(se);
-            }
+
+    public static void deleteTask(int taskId) {
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "DELETE FROM task WHERE taskId = ?";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            pstm.setInt(1, taskId);
+
+            pstm.executeUpdate();
+
+        } catch (SQLException se) {
+            System.out.println(se);
+        }
     }
-    public static void editTask(String taskName,String taskDescription,int status,Date taskDeadlineDate,int taskId){
+
+    public static void editTask(String taskName, String taskDescription, int status, Date taskDeadlineDate, int taskId) {
         try {
             Connection conn = BuildConnection.getConnection();
             String updateCmd = "UPDATE task SET taskName = ? ,taskDescription = ? , status = ? "
@@ -162,32 +166,101 @@ public class Task {
             pstm.setInt(3, status);
             pstm.setDate(4, taskDeadlineDate);
             pstm.setInt(5, taskId);
-            
+
             pstm.executeUpdate();
-            
-        }catch(SQLException se){
+
+        } catch (SQLException se) {
             System.out.println(se);
         }
     }
-    public static Task getSingleTask(int taskId){
-         Task task = new Task();
-         try {
+
+    public static Task getSingleTask(int taskId) {
+        Task task = new Task();
+        try {
             Connection conn = BuildConnection.getConnection();
             String sqlCmd = "SELECT * FROM task WHERE taskId = ?;";
             PreparedStatement pstm = conn.prepareStatement(sqlCmd);
             pstm.setInt(1, taskId);
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 task.setTaskName(rs.getString("taskName"));
                 task.setTaskDescription(rs.getString("taskDescription"));
                 task.setStatus(rs.getString("status"));
                 task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
                 task.setTaskId(rs.getInt("taskId"));
             }
-         }catch(SQLException se){
-             System.out.println(se);
-         }
-         return task;
+        } catch (SQLException se) {
+            System.out.println(se);
+        }
+        return task;
     }
-    
+
+    public static List<Task> getNearTask(long studentId) {
+        ArrayList<Task> list = new ArrayList();
+        try {
+
+            Task task = null;
+            Connection conn = BuildConnection.getConnection();
+            String sql = "SELECT t.* FROM `map_st_subj` mts JOIN `task` t ON mts.subjectId = t.subjectId WHERE mts.studentId = ? and t.taskDeadlineDate >= ? ORDER BY t.taskDeadlineDate ASC;;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setLong(1, studentId);
+            pst.setDate(2, new Date(System.currentTimeMillis()));
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                task = new Task();
+                task.setStatus(rs.getString("status"));
+                task.setSubjectId(rs.getString("subjectId"));
+                task.setTaskCreateDate(rs.getDate("taskCreateDate"));
+                task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
+                task.setTaskDescription(rs.getString("taskDescription"));
+                task.setTaskId(rs.getInt("taskId"));
+                task.setTaskName(rs.getString("taskName"));
+                list.add(task);
+            }
+
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+     public static List<Task> getLatestTask(long studentId) {
+        ArrayList<Task> list = new ArrayList();
+        try {
+
+            Task task = null;
+            Connection conn = BuildConnection.getConnection();
+            String sql = "SELECT t.* FROM `map_st_subj` mts JOIN `task` t ON mts.subjectId = t.subjectId WHERE mts.studentId = ? and t.taskDeadlineDate = ? ORDER BY t.taskDeadlineDate ASC;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setLong(1, studentId);
+            pst.setDate(2, new Date(System.currentTimeMillis()));
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                task = new Task();
+                task.setStatus(rs.getString("status"));
+                task.setSubjectId(rs.getString("subjectId"));
+                task.setTaskCreateDate(rs.getDate("taskCreateDate"));
+                task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
+                task.setTaskDescription(rs.getString("taskDescription"));
+                task.setTaskId(rs.getInt("taskId"));
+                task.setTaskName(rs.getString("taskName"));
+                list.add(task);
+            }
+
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    public static void main(String[] args) {
+        System.out.println(getLatestTask(59130500048L));
+    }
 }
+
+
+
+    
+
+
+
