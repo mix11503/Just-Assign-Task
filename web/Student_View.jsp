@@ -229,20 +229,7 @@
                             <a href="#">
                                 <i class="fa fa-book"></i> <span>My Subject</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
-                        <li>
-                            <a href="GetNearestSrevlet">
-                                <i class="glyphicon glyphicon-time"></i> <span>Nearest</span> 
-                                
-                            </a>
-                        </li>  
-                        <li>
-                            <a href="GetLatestServlet">
-                                <i class="glyphicon glyphicon-time"></i> <span>Latest</span> 
-                                
-                            </a>
-                        </li>    
                             <ul class="treeview-menu">
-                                
                                 <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
                                                                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
                                                                 <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
