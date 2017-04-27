@@ -88,4 +88,16 @@ public class Teacher {
         return teachers;
     }
     
+    public static void deleteTeacher(String teacherId){
+        try{
+            Connection conn = BuildConnection.getConnection();
+            String sql = "DELETE FROM `teacher` WHERE `teacher`.`teacherId` = ?;";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, teacherId);
+            pstm.executeUpdate();     
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
 }
