@@ -1,23 +1,15 @@
 <%-- 
-    Document   : teacher_editTask
-    Created on : Apr 21, 2017, 11:53:24 PM
+    Document   : teacher_viewDetail
+    Created on : Apr 27, 2017, 6:31:28 PM
     Author     : Kittisak
 --%>
-<%@page import="com.junior.jat.model.Task"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% Task task = (Task)request.getAttribute("task");
-if(task == null){
-response.sendRedirect("Teacher_EditTaskServlet?option=getForEdit&taskId="+request.getParameter("taskId"));
-}  else {
-pageContext.setAttribute("task", task);
-}%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Teacher Edit Task</title>  
+        <title>View Details</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -227,9 +219,10 @@ pageContext.setAttribute("task", task);
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="GetTaskServlet">
+                            <a href="Teacher_GetTask?option=AllTask&teacherId=${teacher.teacherId}">
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
+                            
                         </li>
                         <li class="treeview">
                             <a href="#">
@@ -241,11 +234,10 @@ pageContext.setAttribute("task", task);
                                                                 <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
                                 <c:forEach items="${subjects}" var="s" >
                                     <li>
-                                        <a href="#">${s.subjectId} ${s.subjectName} </a>
+                                        <a href="Teacher_GetTask?option=InSubject&teacherId=${teacher.teacherId}&subjectId=${s.subjectId}">
+                                            <i class="fa fa-tasks"></i> <span>${s.subjectName}</span>
+                                        </a>
                                     </li></c:forEach>
-
-
-
                             </ul>
                         </li>
                     </ul>
@@ -258,7 +250,7 @@ pageContext.setAttribute("task", task);
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Edit Task
+                        All Task
                         <small>Control panel</small>
                     </h1>
                 </section>
@@ -268,59 +260,38 @@ pageContext.setAttribute("task", task);
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
-                                <div class="" id="edit-task-modal">
-                <div class="">
-                    <div class="">
-                        <form action="Teacher_EditTaskServlet?option=sendEdit" method="post">
-                            <div class="">
-                                <h1>Edit Task</h1>
-                            </div>
-                            <div class="">
-                                <input class="form-control" name="taskName" required="" placeholder="Title" type="text" value="${task.taskName}"/><br/>
-                                <textarea class="form-control" name="taskDescription" required="" placeholder="Description" rows="3" value="${task.taskDescription}"></textarea><br/>
-                                <input class="form-control" name="taskDeadlineDate" required="" placeholder="" type="date" value="${task.taskDeadlineDate}"/><br/>
-                                <input name="taskId" type="hidden" value="${task.taskId}"/>
-                                <select name="status">
-                                    <option value="1">In Progress</option>
-                                    <option value="2">Done</option>
-                                </select>
-                            </div>
-                                <br>
-                            <div class="">
-                                <input type="submit" class="btn btn-success" />&nbsp;&nbsp;
-                                <input type="reset" class="btn btn-danger" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-                               
-                                <%if(request.getAttribute("tasks")!=null){ %>
+                                <div class="box-header">
+                                    <h3 class="box-title">Responsive Hover Table</h3>
+                                    <div class="box-tools">
+                                        <div class="input-group">
+                                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                
                                 <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>Task ID</th>
-                                            <th>Topic</th>
-                                            <th>Subject</th>
-                                            <th>Start</th>
-                                            <th>Deadline</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        <c:forEach items="${tasks}" var="t" varStatus="vs">
-                                            <tr>
-                                                <td>${t.taskId}</td>
-                                                <td>${t.taskName}</td>
-                                                <td>${t.subjectId}</td>
-                                                <td>${t.taskCreateDate}</td>
-                                                <td><font color="red">${t.taskDeadlineDate}</font></td>
-                                                <td><span class="label label-primary">In Progress...</span></td>
-                                                <td><a href = "Teacher_DeleteTaskServlet?taskid=${t.taskId}"><button onclick="return confirm('Do you want to delete?')">Delete</button></a></td>
-                                                <td><a href = "Teacher_EditTaskServlet?taskId=${t.taskId}&option=getForEdit"><button>Edit</button></a></td>
-                                            </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div><!-- /.box-body -->
-                                <%}%>
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Topic</th>
+                            <th>Subject</th>
+                            <th>Start</th>
+                            <th>Deadline</th>
+                            <th>Status</th>
+                    </tr>
+                    <tr>
+                            <td>${task.taskName}</td>
+                            <td>${task.subjectId}</td>
+                            <td>${task.taskCreateDate}</td>
+                            <td><font color="red">${task.taskDeadlineDate}</font></td>
+                            
+                            <td><span class="label label-primary">In Progress...</span></td>
+                        </tr>
+                    </table>
+                </div><!-- /.box-body -->
+                               
                             </div><!-- /.box -->
                         </div>
                     </div>

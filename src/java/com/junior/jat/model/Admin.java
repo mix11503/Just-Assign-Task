@@ -51,4 +51,24 @@ public class Admin {
         }
     }
     
+    public static void editUser(String id,String pass,String name,String status){
+        try{
+            Connection conn = BuildConnection.getConnection();
+            String sql = "";
+            if(status.equals("student")){
+                sql = "UPDATE `student` SET `pass` = ?, `name` = ? WHERE `student`.`studentId` = ?;";
+            }
+            else{
+                sql = "UPDATE `teacher` SET `password` = ?, `name` = ? WHERE `teacher`.`teacherId` = ?;";
+            }
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, pass);
+            pstm.setString(2, name);
+            pstm.setString(3, id);
+            pstm.executeUpdate();     
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
 }
