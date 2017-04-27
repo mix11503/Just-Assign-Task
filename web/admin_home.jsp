@@ -284,7 +284,7 @@
                                                 <td>${s.studentId}</td>
                                                 <td>${s.name}</td>
                                                 <td><a href = "Admin_DeleteStudentServlet?studentId=${s.studentId}"><button>Delete</button></a></td>
-                                                <td><a href = "Admin?studentId=${s.studentId}"><button>Delete</button></a></td>
+                                                <td><a href = "admin_editUser.jsp"><button>Edit</button></a></td>
                                             </tr>
                                         </c:forEach>
                                     </table>
@@ -304,6 +304,7 @@
                                                 <td>${t.teacherId}</td>
                                                 <td>${t.name}</td>
                                                 <td><a href = "Admin_DeleteTeacherServlet?teacherId=${t.teacherId}"><button>Delete</button></a></td>
+                                                <td><a href = "admin_editUser.jsp"><button>Edit</button></a></td>
                                             </tr>
                                         </c:forEach>
                                     </table>
