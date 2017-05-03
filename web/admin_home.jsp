@@ -211,7 +211,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="admin_createSubject.jsp">
+                            <a href="Admin_RedirectServlet">
                                 <i class="fa fa-tasks"></i> <span>Create Subject</span>
                             </a>
                         </li>

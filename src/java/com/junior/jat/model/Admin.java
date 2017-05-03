@@ -2,6 +2,9 @@ package com.junior.jat.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 public class Admin {
+    private String name;
+    private long adminId;
+    
     public static void addUser(String id,String password,String name,String status){
         try{
             Connection conn = BuildConnection.getConnection();

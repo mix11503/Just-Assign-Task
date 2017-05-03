@@ -5,6 +5,7 @@
 --%>
 <%@page import="java.util.List"%>
 <%@page import="com.junior.jat.model.Task"%>
+<%@page import="com.junior.jat.model.Teacher"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -198,7 +199,7 @@
                         </div>
                     </div>
                     <!-- search form -->
-                    
+
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
@@ -208,13 +209,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="admin_createSubject.jsp">
+                            <a href="Admin_RedirectServlet">
                                 <i class="fa fa-tasks"></i> <span>Create Subject</span>
                             </a>
                         </li>
                         <li>
                             <a href="Admin_GetSubjectServlet">
-                            <i class="fa fa-tasks"></i> <span>View Subjects</span>
+                                <i class="fa fa-tasks"></i> <span>View Subjects</span>
                             </a>
                         </li>
                         <li class="treeview">
@@ -243,8 +244,8 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                   
-                    
+
+
                     <h1>
                         Create Subject
                         <small>Control panel</small>
@@ -259,8 +260,25 @@
                         Subject Name:<br>
                         <input type="text" name="subjectName" required><br>
                         Subject's Owner ID:<br>
-                        <input type="number" name="teacherId" required><br><br>
-                        <input type="submit" name="submit" onclick="return confirm('Are you sure?')">
+                        <input type="number" name="teacherId" required id="input-teacher-id" readonly=""><br><br>                  
+                        <%if(request.getAttribute("teachers")!=null){ %>
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Teacher ID</th>
+                                    <th>Name</th>
+                                    <th>Assign</th>
+                                </tr>
+                                <c:forEach items="${teachers}" var="t" varStatus="vs">
+                                    <tr>
+                                        <td>${t.teacherId}</td>
+                                        <td>${t.name}</td>
+                                        <td><a href = "#"><button>Assign</button></a></td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </div><!-- /.box-body -->
+                        <%}%>
                     </form>
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->
@@ -302,7 +320,7 @@
         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-            $.widget.bridge('uibutton', $.ui.button);
+                            $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.2 JS -->
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    
@@ -336,5 +354,10 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js" type="text/javascript"></script>
+        <script>
+                            $('table tr td').on('click', 'a', function () {
+                                $('#input-teacher-id').val($(this).closest('tr').children('td:eq(0)').text());
+                            });
+        </script>
     </body>
 </html>

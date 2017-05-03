@@ -5,7 +5,6 @@
  */
 package com.junior.jat.servlet;
 
-import com.junior.jat.model.Student;
 import com.junior.jat.model.Teacher;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Margoreth
+ * @author USER
  */
-public class Admin_GetTeacherServlet extends HttpServlet {
+public class Admin_RedirectServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +34,7 @@ public class Admin_GetTeacherServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<Teacher> teachers = Teacher.getTeacher();
         request.setAttribute("teachers", teachers);
-        getServletContext().getRequestDispatcher("/admin_home.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/admin_createSubject.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

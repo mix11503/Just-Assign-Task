@@ -6,10 +6,11 @@
 package com.junior.jat.servlet;
 
 import com.junior.jat.model.Student;
+import com.junior.jat.model.Subject;
 import com.junior.jat.model.Teacher;
+import com.junior.jat.model.Admin;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Margoreth
+ * @author USER
  */
-public class Admin_GetTeacherServlet extends HttpServlet {
+public class Admin_LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,9 +34,28 @@ public class Admin_GetTeacherServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ArrayList<Teacher> teachers = Teacher.getTeacher();
-        request.setAttribute("teachers", teachers);
-        getServletContext().getRequestDispatcher("/admin_home.jsp").forward(request, response);
+        String target = "/login.jsp";
+        String message = "";
+        long id = Long.parseLong(request.getParameter("id"));
+        String pass =request.getParameter("pass");
+        Student s = Student.login(id, pass);
+        Teacher t = Teacher.login(id, pass);
+        if(s != null){
+       
+            request.getSession(true).setAttribute("student", s);
+            request.setAttribute("list", Student.gettaskstudent(id));
+            target = "/Student_View.jsp";
+        }
+        else if(t != null){
+            request.getSession(true).setAttribute("subjects", Subject.getSubject(id));
+            request.getSession(true).setAttribute("teacher", t);
+            target ="/teacher_home.jsp";
+        }
+        else{
+            message = "id หรือ password ไม่ถูกต้อง ";
+            request.setAttribute("message", message);
+        }
+        getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
