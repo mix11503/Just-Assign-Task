@@ -192,10 +192,6 @@
                         <ul class="nav navbar-nav">
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-pencil"></i>
-                                    <span class="hidden-xs" data-toggle='modal' data-target='#assign-task-modal'>Assign New Task</span>     
-                                </a>    
                                 <a href="Logout">
                                     <i class="fa fa-power-off" aria-hidden="true"></i>
                                     <span class="hidden-xs" data-toggle='modal' >Logout</span> 
@@ -211,11 +207,8 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                        </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <h4>${teacher.name}</h4>
                         </div>
                     </div>
                     <!-- search form -->
@@ -231,10 +224,15 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-pencil"></i>
+                                <span class="hidden-xs" data-toggle='modal' data-target='#assign-task-modal'>Assign New Task</span>     
+                            </a>    
+                        </li>
+                        <li>
                             <a href="Teacher_GetTask?option=AllTask&teacherId=${teacher.teacherId}">
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
-
                         </li>
                         <li class="treeview">
                             <a href="#">
@@ -338,7 +336,9 @@
                             <p>Subjects :</p>
                             <select name="subjectid" class="form-control">
                                 <!--Do Loop Teacher's Subject-->
-                                <option value="INT105">[DUMMY] JAVA Programming II </option>
+                                <c:forEach items="${subjects}" var="s" >
+                                    <option value="${s.subjectId}">${s.subjectName}</option>
+                                </c:forEach>
                             </select><br/>
                             <p>Status :</p>
                             <input class="form-control" name="taskstatus" required="" placeholder="" type="" disabled="" value="In Progress..." hidden="" /><br/>

@@ -35,14 +35,13 @@ public class Teacher_GetTask extends HttpServlet {
         long teacherId = Long.parseLong(request.getParameter("teacherId"));
         switch (option) {
             case "AllTask":;
-                request.setAttribute("tasks",Task.getAllTask(teacherId));
+                request.setAttribute("tasks", Task.getAllTask(teacherId));
                 getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
                 break;
             case "InSubject":
                 String subjectId = request.getParameter("subjectId");
                 request.setAttribute("tasks", Task.getTaskInSubject(teacherId, subjectId));
                 getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
-
                 break;
         }
 

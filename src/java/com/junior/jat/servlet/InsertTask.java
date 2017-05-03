@@ -37,8 +37,8 @@ public class InsertTask extends HttpServlet {
         String subjectid = request.getParameter("subjectid");
         String datelinedate = request.getParameter("datelinedate");
         Date dateline = Date.valueOf(datelinedate);
-        Date currentDay =  new Date(System.currentTimeMillis());
-        Task.insertTask( subjectid, taskname, taskdesc, currentDay, dateline);
+        Date currentDay = new Date(System.currentTimeMillis());
+        Task.insertTask(subjectid, taskname, taskdesc, currentDay, dateline);
 
         getServletContext().getRequestDispatcher("/GetTaskServlet").forward(request, response);
 

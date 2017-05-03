@@ -189,8 +189,8 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="Logout">
-                                <i class="fa fa-power-off" aria-hidden="true"></i>
-                                <span class="hidden-xs" data-toggle='modal' >Logout</span> 
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                                    <span class="hidden-xs" data-toggle='modal' >Logout</span> 
                                 </a>
                             </li>
                         </ul>
@@ -203,11 +203,8 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                        </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <h4>${teacher.name}</h4>
                         </div>
                     </div>
                     <!-- search form -->
@@ -301,7 +298,7 @@
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
         </div><!-- ./wrapper -->
-        
+
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->

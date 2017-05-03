@@ -199,8 +199,8 @@ pageContext.setAttribute("task", task);
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="Logout">
-                                <i class="fa fa-power-off" aria-hidden="true"></i>
-                                <span class="hidden-xs" data-toggle='modal' >Logout</span> 
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                                    <span class="hidden-xs" data-toggle='modal' >Logout</span> 
                                 </a>
                             </li>
                         </ul>
@@ -213,11 +213,8 @@ pageContext.setAttribute("task", task);
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                        </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <h4>${teacher.name}</h4>
                         </div>
                     </div>
                     <!-- search form -->
@@ -233,7 +230,7 @@ pageContext.setAttribute("task", task);
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="GetTaskServlet">
+                            <a href="Teacher_GetTask?option=AllTask&teacherId=${teacher.teacherId}"">
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
                         </li>
@@ -242,16 +239,13 @@ pageContext.setAttribute("task", task);
                                 <i class="fa fa-book"></i> <span>My Subject</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
-                                                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
-                                                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
+                                <!--<li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
+                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
+                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
                                 <c:forEach items="${subjects}" var="s" >
                                     <li>
                                         <a href="#">${s.subjectId} ${s.subjectName} </a>
                                     </li></c:forEach>
-
-
-
                                 </ul>
                             </li>
                         </ul>
@@ -281,7 +275,7 @@ pageContext.setAttribute("task", task);
                                                     <div class="">
                                                         <p>Topic :</p>
                                                         <input class="form-control" name="taskName" required="" placeholder="Title" type="text" value="${task.taskName}"/><br/>
-                                                        <p>Description :</p>
+                                                    <p>Description :</p>
                                                     <textarea class="form-control" name="taskDescription" required="" placeholder="Description" rows="3" value="${task.taskDescription}"></textarea><br/>
                                                     <p>Deatline Date :</p>
                                                     <input class="form-control" name="taskDeadlineDate" required="" placeholder="" type="date" value="${task.taskDeadlineDate}"/><br/>
@@ -314,14 +308,14 @@ pageContext.setAttribute("task", task);
             </footer>
         </div><!-- ./wrapper -->
 
-            
+
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->
         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-                                                    $.widget.bridge('uibutton', $.ui.button);
+            $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.2 JS -->
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    
