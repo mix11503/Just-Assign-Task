@@ -34,22 +34,14 @@ public class Admin_LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String target = "/login.jsp";
+        String target = "/admin_login.jsp";
         String message = "";
         long id = Long.parseLong(request.getParameter("id"));
         String pass =request.getParameter("pass");
-        Student s = Student.login(id, pass);
-        Teacher t = Teacher.login(id, pass);
-        if(s != null){
-       
-            request.getSession(true).setAttribute("student", s);
-            request.setAttribute("list", Student.gettaskstudent(id));
-            target = "/Student_View.jsp";
-        }
-        else if(t != null){
-            request.getSession(true).setAttribute("subjects", Subject.getSubject(id));
-            request.getSession(true).setAttribute("teacher", t);
-            target ="/teacher_home.jsp";
+        Admin a = Admin.login(id, pass);
+        if(a != null){
+            request.getSession(true).setAttribute("admin", a);
+            target = "/admin_home.jsp";
         }
         else{
             message = "id หรือ password ไม่ถูกต้อง ";

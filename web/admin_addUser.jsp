@@ -182,6 +182,17 @@
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">   
+                                <a href="Logout">
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                                    <span class="hidden-xs" data-toggle='modal' >Logout</span> 
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->

@@ -34,7 +34,7 @@
             </div><!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="Login" method="post">
+                <form action="Admin_LoginServlet" method="post">
                     <div class="form-group has-feedback">
                         <input type="text" class="form-control" placeholder="Admin Username" name="id"/>
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
