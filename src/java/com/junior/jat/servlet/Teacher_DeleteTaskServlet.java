@@ -30,12 +30,20 @@ public class Teacher_DeleteTaskServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            int taskId = Integer.parseInt(request.getParameter("taskid"));
-            Task.deleteTask(taskId);
-             getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");       
+       
+        String option = request.getParameter("option");
+        int taskId = Integer.parseInt(request.getParameter("taskid"));
+        long teacherId = Long.parseLong(request.getParameter("teacherId"));
+        Task.deleteTask(taskId);
+        switch(option) {
+            case "AllTask":;
+                request.setAttribute("tasks", Task.getAllTask(teacherId));
+                getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
         }
+        
+           //getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -271,7 +271,7 @@ pageContext.setAttribute("task", task);
                                     <div class="bodybox" id="edit-task-modal">
                                         <div class="">
                                             <div class="">
-                                                <form action="Teacher_EditTaskServlet?option=sendEdit" method="post">
+                                                <form action="Teacher_EditTaskServlet?option=sendEdit&teacherId=${teacher.teacherId}" method="post">
                                                     <div class="">
                                                         <p>Topic :</p>
                                                         <input class="form-control" name="taskName" required="" placeholder="Title" type="text" value="${task.taskName}"/><br/>
@@ -287,8 +287,8 @@ pageContext.setAttribute("task", task);
                                                     </select>
                                                 </div>
                                                 <br>
-                                                <div class="footbodybox">
-                                                    <input type="submit" class="btn btn-success" />&nbsp;&nbsp;
+                                                <div class="footbodybox">                                                    
+                                                    <input type="submit" class="btn btn-success"> &nbsp;&nbsp;                        
                                                     <input type="reset" class="btn btn-danger" />
                                                 </div><br>
                                             </form>

@@ -32,15 +32,24 @@ public class InsertTask extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String taskname = request.getParameter("taskname");
-        String taskdesc = request.getParameter("taskdesc");
-        String subjectid = request.getParameter("subjectid");
-        String datelinedate = request.getParameter("datelinedate");
-        Date dateline = Date.valueOf(datelinedate);
-        Date currentDay = new Date(System.currentTimeMillis());
-        Task.insertTask(subjectid, taskname, taskdesc, currentDay, dateline);
-
-        getServletContext().getRequestDispatcher("/GetTaskServlet").forward(request, response);
+        String option = request.getParameter("option");
+        switch(option){
+            case "AllTask" :
+                String taskname = request.getParameter("taskname");
+                String taskdesc = request.getParameter("taskdesc");
+                String subjectid = request.getParameter("subjectid");
+                String datelinedate = request.getParameter("datelinedate");
+                Date dateline = Date.valueOf(datelinedate);
+                Date currentDay = new Date(System.currentTimeMillis());
+                Task.insertTask(subjectid, taskname, taskdesc, currentDay, dateline);
+                long teacherId = Long.parseLong(request.getParameter("teacherId"));
+                request.setAttribute("tasks", Task.getAllTask(teacherId));
+                getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
+                break;
+        }
+        
+        
+        
 
     }
 

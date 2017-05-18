@@ -33,14 +33,17 @@ public class Teacher_EditTaskServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
             String option = request.getParameter("option");
-            switch(option){
+            int taskId = Integer.parseInt(request.getParameter("taskId")); 
+            //long teacherId = Long.parseLong(request.getParameter("teacherId"));
+            switch(option){ 
                 case "sendEdit" : 
+                    long teacherId = Long.parseLong(request.getParameter("teacherId"));                 
                     String taskName = request.getParameter("taskName");
                     String taskDescription = request.getParameter("taskDescription");
                     int status = Integer.parseInt(request.getParameter("status"));
                     Date taskDeadlineDate = Date.valueOf(request.getParameter("taskDeadlineDate"));
-                    int taskId = Integer.parseInt(request.getParameter("taskId"));
                     Task.editTask(taskName, taskDescription, status, taskDeadlineDate, taskId);
+                    request.setAttribute("tasks", Task.getAllTask(teacherId));
                     getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
                     break; 
                 case "getForEdit" :

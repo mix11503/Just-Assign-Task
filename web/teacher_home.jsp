@@ -303,7 +303,7 @@
                                                 <td><span class="label label-primary">In Progress...</span></td>
                                                 <td><a href = "Teacher_ViewDetailServlet?taskId=${t.taskId}"><button>Details</button></a></td>
                                                 <td><a href = "Teacher_EditTaskServlet?taskId=${t.taskId}&option=getForEdit"><button>Edit</button></a></td>
-                                                <td><a href = "Teacher_DeleteTaskServlet?taskid=${t.taskId}"><button onclick="return confirm('Do you want to delete?')">Delete</button></a></td>                                              
+                                                <td><a href = "Teacher_DeleteTaskServlet?taskid=${t.taskId}&option=AllTask&teacherId=${teacher.teacherId}"><button onclick="return confirm('Do you want to delete?')">Delete</button></a></td>                                              
                                             </tr>
                                         </c:forEach>
                                     </table>
@@ -324,7 +324,7 @@
         <div class="modal fade" id="assign-task-modal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="InsertTask" method="post">
+                    <form action="InsertTask?option=AllTask&teacherId=${teacher.teacherId}" method="post">
                         <div class="modal-header">
                             <h1>Assign New Task</h1>
                         </div>
