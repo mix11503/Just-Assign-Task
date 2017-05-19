@@ -201,9 +201,6 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="dist/img/adminPic.jpg" class="img-circle" alt="User Image" />
-                        </div>
                         <div class="pull-left info">
                             <h4>${admin.name}</h4>
                         </div>

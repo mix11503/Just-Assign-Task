@@ -190,7 +190,7 @@
                             <li class="dropdown user user-menu">   
                                 <a href="Logout">
                                     <i class="fa fa-power-off" aria-hidden="true"></i>
-                                    <span class="hidden-xs" data-toggle='modal' >Logout</span> 
+                                    <span class="hidden-xs" data-toggle='modal'>Logout</span> 
                                 </a>
                             </li>
                         </ul>
@@ -202,10 +202,7 @@
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="dist/img/adminPic.jpg" class="img-circle" alt="User Image" />
-                        </div>
+                    <div class="user-panel"> 
                         <div class="pull-left info">
                             <h4>${admin.name}</h4>
                         </div>
@@ -256,13 +253,13 @@
                     <h1>
                         User Lists
                         <small>Control panel</small>
-                    </h1>
+                    </h1><br>
                     <%}%>
                     <%if(request.getAttribute("subjects")!=null){ %>
                     <h1>
                         Subject Lists
                         <small>Control panel</small>
-                    </h1>
+                    </h1><br>
                     <%}%>
                 </section>
                 <!-- Main content -->
@@ -329,7 +326,7 @@
                                         </c:forEach>
                                     </table>
                                 </div><!-- /.box-body -->
-                                <%}%>
+                                <%}%> 
                             </div><!-- /.box -->
                         </div>
                     </div>
