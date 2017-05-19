@@ -209,19 +209,16 @@
                             <h4>${admin.name}</h4>
                         </div>
                     </div>
-                    <!-- search form -->
-
-                    <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
                             <a href="Admin_GetSubjectServlet">
-                                <i class="fa fa-tasks"></i> <span>View Subjects</span>
+                                <i class="fa fa-book"></i> <span>View Subjects</span>
                             </a>
                         </li>
                         <li>
                             <a href="Admin_RedirectServlet">
-                                <i class="fa fa-tasks"></i> <span>Create Subject</span>
+                                <i class="fa fa-pencil"></i> <span>Create Subject</span>
                             </a>
                         </li>
                         <li>
@@ -250,30 +247,19 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
-
             <!-- Right side column. Contains the navbar and content of the page -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
                         Create Subject
-                        <small>Control panel</small>
-                    </h1>
+                        <small>Choose subject's teacher</small>
+                    </h1><br>
                 </section>
                 <!-- Main content -->
                 <section class="content">
                     <form action="Admin_CreateSubjectServlet">
-                        Subject ID:<br>
-                        <input type="text" name="id" required><br>
-                        Subject Name:<br>
-                        <input type="text" name="subjectName" required><br>
-                        Subject's Owner ID:<br>
-                        <input type="number" name="teacherId" required id="input-teacher-id" readonly=""><br><br>                  
                         <%if(request.getAttribute("teachers")!=null){ %>
-                            <h1>
-                                Teacher List
-                                <small>Choose subject's teacher</small>
-                            </h1>
                             <div class="box">
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
@@ -293,6 +279,13 @@
                                 </div><!-- /.box-body -->
                             </div>
                         <%}%>
+                        Subject's Owner ID:<br>
+                        <input type="number" name="teacherId" required id="input-teacher-id" readonly=""><br>
+                        Subject ID:<br>
+                        <input type="text" name="id" required><br>
+                        Subject Name:<br>
+                        <input type="text" name="subjectName" required><br>
+                                          
                     </form>
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->

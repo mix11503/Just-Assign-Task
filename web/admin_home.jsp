@@ -214,12 +214,12 @@
                     <ul class="sidebar-menu">
                         <li>
                             <a href="Admin_GetSubjectServlet">
-                                <i class="fa fa-tasks"></i> <span>View Subjects</span>
+                                <i class="fa fa-book"></i> <span>View Subjects</span>
                             </a>
                         </li>
                         <li>
                             <a href="Admin_RedirectServlet">
-                                <i class="fa fa-tasks"></i> <span>Create Subject</span>
+                                <i class="fa fa-pencil"></i> <span>Create Subject</span>
                             </a>
                         </li>
                         <li>
@@ -310,7 +310,7 @@
                                     </table>
                                 </div><!-- /.box-body -->
                                 <%}%>
-                                <%if(request.getAttribute("subjects")!=null){ %>
+                                <%if(request.getAttribute("subjects")!=null | request.getAttribute("admin")!=null){ %>
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>

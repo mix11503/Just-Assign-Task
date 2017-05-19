@@ -37,6 +37,9 @@ public class Admin_CreateSubjectServlet extends HttpServlet {
         String subjectName = request.getParameter("subjectName");
         String teacherId = request.getParameter("teacherId");
         
+        ArrayList<Teacher> teachers = Teacher.getTeacher();
+        request.setAttribute("teachers", teachers);
+        
         Admin.createSubject(id, subjectName, teacherId);
         getServletContext().getRequestDispatcher("/admin_createSubject.jsp").forward(request, response);
     }
