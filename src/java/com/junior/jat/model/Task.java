@@ -284,9 +284,7 @@ public class Task {
         }
         return list;
     }
-    public static void main(String[] args) {
-        System.out.println(getsearchTask("java i" , 59130500048L));
-    }
+
     public static ArrayList getAllTask(long teacherId){
         ArrayList tasks = new ArrayList();
         Task task = new Task();
@@ -313,6 +311,7 @@ public class Task {
         }
         return tasks;
     }
+    
     public static ArrayList getTaskInSubject(long teacherId,String subjectId){
         ArrayList tasks = new ArrayList();
         Task task = new Task();

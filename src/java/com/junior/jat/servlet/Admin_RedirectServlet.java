@@ -34,6 +34,7 @@ public class Admin_RedirectServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<Teacher> teachers = Teacher.getTeacher();
         request.setAttribute("teachers", teachers);
+        
         getServletContext().getRequestDispatcher("/admin_createSubject.jsp").forward(request, response);
     }
 

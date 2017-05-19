@@ -29,9 +29,13 @@ public class LogoutServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String target = "/login.jsp";
         if(request.getSession(false).getAttribute("student") != null ||request.getSession(false).getAttribute("teacher") != null)
         request.getSession(false).invalidate();
-         getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+        else if(request.getSession(false).getAttribute("admin") != null){
+            target = "/admin_login.jsp";
+        }
+        getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

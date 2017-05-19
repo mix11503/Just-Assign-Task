@@ -30,7 +30,7 @@
     <body class="login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="Login"><b>JAT</b></a>
+                <a href="Login"><b>JAT<br>Administration</b></a>
             </div><!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Sign in to start your session</p>

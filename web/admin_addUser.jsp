@@ -175,7 +175,7 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index2.html" class="logo"><b>JAT</b></a>
+                <a href="Admin_GetSubjectServlet" class="logo"><b>JAT</b></a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
@@ -202,20 +202,20 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                            <img src="dist/img/adminPic.jpg" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <h4>${admin.name}</h4>
                         </div>
                     </div>
                     <!-- search form -->
-                    
+
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="admin_addUser.jsp">
-                                <i class="fa fa-tasks"></i> <span>Add User</span>
+                            <a href="Admin_GetSubjectServlet">
+                                <i class="fa fa-tasks"></i> <span>View Subjects</span>
                             </a>
                         </li>
                         <li>
@@ -224,8 +224,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="Admin_GetSubjectServlet">
-                            <i class="fa fa-tasks"></i> <span>View Subjects</span>
+                            <a href="admin_addUser.jsp">
+                                <i class="fa fa-tasks"></i> <span>Add User</span>
                             </a>
                         </li>
                         <li class="treeview">
@@ -254,8 +254,6 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                   
-                    
                     <h1>
                         Add User
                         <small>Control panel</small>
@@ -284,38 +282,13 @@
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
         </div><!-- ./wrapper -->
-        <div class="modal fade" id="assign-task-modal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="InsertTask" method="post">
-                        <div class="modal-header">
-                            <h1>Assign New Task</h1>
-                        </div>
-                        <div class="modal-body">
-                            <input class="form-control" name="taskname" required="" placeholder="Title" type="text" /><br/>
-                            <textarea class="form-control" name="taskdesc" required="" placeholder="Description" rows="3"></textarea><br/>
-                            <select name="subjectid" class="form-control">
-                                <!--Do Loop Teacher's Subject-->
-                                <option value="INT105">[DUMMY] JAVA Programming II </option>
-                            </select><br/>
-                            <input class="form-control" name="taskstatus" required="" placeholder="" type="" disabled="" value="In Progress..." hidden="" /><br/>
-                            <input class="form-control" name="datelinedate" required="" placeholder="" type="date" /><br/>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-success"/>&nbsp;&nbsp;
-                            <input type="reset" class="btn btn-danger"/>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->
         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-            $.widget.bridge('uibutton', $.ui.button);
+                            $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.2 JS -->
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    

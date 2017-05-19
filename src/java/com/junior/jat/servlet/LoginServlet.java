@@ -42,7 +42,6 @@ public class LoginServlet extends HttpServlet {
         Student s = Student.login(id, pass);
         Teacher t = Teacher.login(id, pass);
         if (s != null) {
-
             request.getSession(true).setAttribute("student", s);
             request.setAttribute("list", Student.gettaskstudent(id));
             target = "/Student_View.jsp";

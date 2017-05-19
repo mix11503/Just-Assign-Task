@@ -296,7 +296,6 @@
                                             <th>Deadline</th>
                                             <th>Status</th>
                                             <th>Detail</th>
-                                            
                                         </tr>
                                         <c:forEach items="${list}" var="t" varStatus="vs">
                                             <tr>
