@@ -51,6 +51,11 @@
                 font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 font-weight: 500;
             }
+            .modal-content{
+                padding: 30px;
+                font-size: 35px;
+                text-align: center;
+            }
             .navbar-custom-menu{
                 text-align: center;
             }
@@ -335,8 +340,19 @@
                 </div>
             </div>
         </div>
+       <div class="modal fade" id="message-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <span>${message}</span>
+                </div>
+            </div>
+        </div>    
         <!-- jQuery 2.1.3 -->
-        <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
         <!-- jQuery UI 1.11.2 -->
         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -375,5 +391,12 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js" type="text/javascript"></script>
+        <% if(request.getAttribute("message") != null){%>
+            <script>
+                $('document').ready(function () {
+                    $('#message-modal').modal();
+                });
+            </script>
+        <%}%>
     </body>
 </html>

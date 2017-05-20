@@ -41,7 +41,16 @@ public class InsertTask extends HttpServlet {
                 String datelinedate = request.getParameter("datelinedate");
                 Date dateline = Date.valueOf(datelinedate);
                 Date currentDay = new Date(System.currentTimeMillis());
-                Task.insertTask(subjectid, taskname, taskdesc, currentDay, dateline);
+                int result = Task.insertTask(subjectid, taskname, taskdesc, currentDay, dateline);
+                String message = "";
+                if(result==1){
+                    message = "Teacher assign successful";
+                    request.setAttribute("message", message);
+                }
+                else{
+                    message = "Teacher assign fail";
+                    request.setAttribute("message", message);
+                }
                 long teacherId = Long.parseLong(request.getParameter("teacherId"));
                 request.setAttribute("tasks", Task.getAllTask(teacherId));
                 getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);

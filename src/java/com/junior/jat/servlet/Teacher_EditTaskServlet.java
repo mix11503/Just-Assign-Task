@@ -42,7 +42,16 @@ public class Teacher_EditTaskServlet extends HttpServlet {
                     String taskDescription = request.getParameter("taskDescription");
                     int status = Integer.parseInt(request.getParameter("status"));
                     Date taskDeadlineDate = Date.valueOf(request.getParameter("taskDeadlineDate"));
-                    Task.editTask(taskName, taskDescription, status, taskDeadlineDate, taskId);
+                    int result = Task.editTask(taskName, taskDescription, status, taskDeadlineDate, taskId);
+                    String message = "";
+                    if(result==1){
+                        message = "Teacher edit successful";
+                        request.setAttribute("message", message);
+                    }
+                    else{
+                        message = "Teacher edit fail";
+                        request.setAttribute("message", message);
+                    }
                     request.setAttribute("tasks", Task.getAllTask(teacherId));
                     getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
                     break; 
