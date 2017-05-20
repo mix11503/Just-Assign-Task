@@ -277,7 +277,7 @@ pageContext.setAttribute("task", task);
                                                         <input class="form-control" name="taskName" required="" placeholder="Title" type="text" value="${task.taskName}"/><br/>
                                                     <p>Description :</p>
                                                     <textarea class="form-control" name="taskDescription" required="" placeholder="Description" rows="3" value="${task.taskDescription}"></textarea><br/>
-                                                    <p>Deatline Date :</p>
+                                                    <p>Deadline Date :</p>
                                                     <input class="form-control" name="taskDeadlineDate" required="" placeholder="" type="date" value="${task.taskDeadlineDate}"/><br/>
                                                     <input name="taskId" type="hidden" value="${task.taskId}"/>
                                                     <p>Status :</p>
