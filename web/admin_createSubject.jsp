@@ -225,7 +225,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-book"></i> <span>View User</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-book"></i> <span>User Management Panel</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li>

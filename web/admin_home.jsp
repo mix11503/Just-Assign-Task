@@ -226,7 +226,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-book"></i> <span>View User</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-book"></i> <span>User Management Panel</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li>
@@ -250,10 +250,18 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <%if(request.getAttribute("students")!=null ||request.getAttribute("teachers")!=null){ %>
-                    <h1>
-                        User Lists
-                        <small>Control panel</small>
-                    </h1><br>
+                        <%if(request.getAttribute("students")!=null){%>
+                            <h1>
+                                Student Lists
+                                <small>Control panel</small>
+                            </h1><br>
+                        <%}%>
+                        <%if(request.getAttribute("teachers")!=null){%>
+                            <h1>
+                                Teacher Lists
+                                <small>Control panel</small>
+                            </h1><br>
+                        <%}%>
                     <%}
                     else{%>
                         <h1>
