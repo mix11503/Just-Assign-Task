@@ -176,7 +176,7 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="Student_View.jsp" class="logo"><b>JAT</b></a>
+                <a href="AllTaskServlet" class="logo"><b>JAT</b></a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
@@ -187,10 +187,10 @@
                         <ul class="nav navbar-nav">
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                   
+                                <a href ="Logout">
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                                    <span class="hidden-xs" data-toggle='modal' >Logout</span> 
                                 </a>
-                                <a href ="Logout">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -202,16 +202,10 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                        </div>
                         <div class="pull-left info">
-                            <p>${student.name}</p>
+                            <h4>${student.name}</h4>
                         </div>
                     </div>
-                    <!-- search form -->
-                    
-                    <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
@@ -219,10 +213,6 @@
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
                         </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-book"></i> <span>My Subject</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
                         <li>
                             <a href="GetNearestSrevlet">
                                 <i class="glyphicon glyphicon-time"></i> <span>Nearest</span> 
@@ -241,21 +231,16 @@
                                 
                             </a>
                         </li>    
-                            <ul class="treeview-menu">
-                                
-                                <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
+                        <ul class="treeview-menu"> 
+                                <!--                            <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
                                                                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
                                                                 <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
-                                <c:forEach items="${subjects}" var="s" >
-                                    <li>
-                                        <a href="#">${s.subjectId} ${s.subjectName} </a>
-                                    </li>
-                                </c:forEach>
-
-
-
-                            </ul>
-                        </li>
+                            <c:forEach items="${subjects}" var="s" >
+                                <li>
+                                    <a href="#">${s.subjectId} ${s.subjectName} </a>
+                                </li>
+                            </c:forEach>
+                        </ul>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -265,7 +250,6 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    
                     <h1>
                         All Task
                         <small>Control panel</small>
@@ -281,21 +265,19 @@
                                     <h3 class="box-title">Responsive Hover Table</h3>
                                     <div class="box-tools">
                                         <form action="SearchTaskServlet">
-                                        <div class="input-group">
-                                            <input type="text" name="keyword" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></button>
-                                                
+                                            <div class="input-group">
+                                                <input type="text" name="keyword" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></button>  
+                                                </div>
                                             </div>
-                                        </div>
-                                            </form>
+                                        </form>
                                     </div>
                                 </div><!-- /.box-header -->
                                 <%if(request.getAttribute("list")!=null){ %>
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>
-                                            <th>Task ID</th>
                                             <th>Topic</th>
                                             <th>Subject</th>
                                             <th>Start</th>
@@ -305,13 +287,12 @@
                                         </tr>
                                         <c:forEach items="${list}" var="t" varStatus="vs">
                                             <tr>
-                                                <td>${t.taskId}</td>
                                                 <td>${t.taskName}</td>
                                                 <td>${t.subjectId}</td>
                                                 <td>${t.taskCreateDate}</td>
                                                 <td><font color="red">${t.taskDeadlineDate}</font></td>
                                                 <td><span class="label label-primary">Waiting</span></td>
-                                                <td><a href ="GetTaskDetailServlet?taskId=${t.taskId}">Detail</a></td>
+                                                <td><a href ="GetTaskDetailServlet?taskId=${t.taskId}"><button>Detail</button></a></td>
                                             </tr>
                                         </c:forEach>
                                     </table>

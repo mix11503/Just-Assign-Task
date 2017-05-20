@@ -48,6 +48,9 @@
                 font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 font-weight: 500;
             }
+            .bodybox{
+                padding: 30px;
+            }
             .content-wrapper {
                 padding: 0 10px;
                 font-size: 14px;
@@ -175,7 +178,7 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index2.html" class="logo"><b>JAT</b></a>
+                <a href="AllTaskServlet" class="logo"><b>JAT</b></a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
@@ -186,10 +189,10 @@
                         <ul class="nav navbar-nav">
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
+                                <a href ="Logout">
+                                   <i class="fa fa-power-off" aria-hidden="true"></i>
+                                    <span class="hidden-xs" data-toggle='modal' >Logout</span>
                                 </a>
-                                <a href ="Logout">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -201,23 +204,10 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                        </div>
                         <div class="pull-left info">
-                            <p>${student.name}</p>
+                            <h4>${student.name}</h4>
                         </div>
                     </div>
-                    <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
-                    <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
@@ -225,10 +215,6 @@
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
                         </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-book"></i> <span>My Subject</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
                         <li>
                             <a href="GetNearestSrevlet">
                                 <i class="glyphicon glyphicon-time"></i> <span>Nearest</span>
@@ -241,25 +227,16 @@
 
                             </a>
                         </li>
-                            <ul class="treeview-menu">
-
-                                <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
+                        <ul class="treeview-menu">
+                                <!--                            <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
                                                                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
                                                                 <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
-                                <c:forEach items="${subjects}" var="s" >
-                                    <li>
-                                        <a href="#">${s.subjectId} ${s.subjectName} </a>
-
-
-                                    </li>
-
-
-                                </c:forEach>
-
-
-
-                            </ul>
-                        </li>
+                            <c:forEach items="${subjects}" var="s" >
+                                <li>
+                                    <a href="#">${s.subjectId} ${s.subjectName} </a>
+                                </li>
+                            </c:forEach>
+                         </ul>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -271,7 +248,7 @@
                 <section class="content-header">
 
                     <h1>
-
+                        Details
                         <small>Control panel</small>
                     </h1>
                 </section>
@@ -281,18 +258,24 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
-
-                                <%if(request.getAttribute("task")!=null){ %>
-                                <center><h2>${task.subjectId} ${task.taskName}</h2></center>
-                                <br><h2>Description</h2>
-                                    <font color ="red">${task.taskDescription}</font>
-                                    <br><h3>CreateDate</h3>
-                                    <font color ="red">${task.taskCreateDate}</font>
-                                    <br><h3>DeadlineDate</h3>
-                                    <font color ="red">${task.taskDeadlineDate}</font>
+                                <div class="bodybox">
+                                    <%if(request.getAttribute("task")!=null){ %>
+                                    <h3>Topic :</h3>
+                                    <h4>${task.taskName}</h4>
+                                    <hr>
+                                    <h3>Subject :</h3>
+                                    <h4>${task.subjectId}</h4>
+                                    <hr>
+                                    <h3>Description :</h3>
+                                    <h4><font color ="red">${task.taskDescription}</font></h4>
+                                    <hr>
+                                    <h3>DeadlineDate :</h3>
+                                    <h4><font color ="red">${task.taskDeadlineDate}</font></h4>
+                                    <hr>
 
 
                                 <%}%>
+                                </div>
                             </div><!-- /.box -->
                         </div>
                     </div>

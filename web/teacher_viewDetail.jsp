@@ -177,7 +177,7 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index2.html" class="logo"><b>JAT</b></a>
+                <a href="Teacher_GetTask?option=AllTask&teacherId=${teacher.teacherId}" class="logo"><b>JAT</b></a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
@@ -207,16 +207,6 @@
                             <h4>${teacher.name}</h4>
                         </div>
                     </div>
-                    <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
-                    <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
@@ -263,28 +253,30 @@
                                     <div class="bodybox">
                                         <h3>Topic :</h3>
                                         <h4>${task.taskName}</h4>
-                                    <hr>
-                                    <h3>Subject :</h3>
-                                    <h4>${task.subjectId}</h4>
-                                    <hr>
-                                    <h3>Start :</h3>
-                                    <h4>${task.taskCreateDate}</h4>
-                                    <hr>
-                                    <h3>Deadline :</h3>
-                                    <h4><font color="red">${task.taskDeadlineDate}</h4></font>
-                                    <hr>
-                                    <h3>Description :</h3>
-                                    <h4>${task.taskDescription}</h4>
-                                    <hr>
-                                    <h3>Status :</h3>
-                                    <h4><c:choose>
+                                        <hr>
+                                        <h3>Subject :</h3>
+                                        <h4>${task.subjectId}</h4>
+                                        <hr>
+                                        <h3>Start :</h3>
+                                        <h4>${task.taskCreateDate}</h4>
+                                        <hr>
+                                        <h3>Deadline :</h3>
+                                        <h4><font color="red">${task.taskDeadlineDate}</font></h4>
+                                        <hr>
+                                        <h3>Description :</h3>
+                                        <h4>${task.taskDescription}</h4>
+                                        <hr>
+                                        <h3>Status :</h3>
+                                        <h4><c:choose>
                                             <c:when test="${task.status == 1}">
                                                 <span class="label label-primary">In Progress...</span>
                                             </c:when>
                                             <c:otherwise>
                                                 <span class="label label-success">Done</span>
                                             </c:otherwise>
-                                        </c:choose></h4> <hr> <br> 
+                                        </c:choose></h4> 
+                                        <hr>
+                                        <br> 
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
