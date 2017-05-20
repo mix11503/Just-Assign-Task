@@ -20,8 +20,18 @@ public class Admin_AddUserServlet extends HttpServlet {
         String name = request.getParameter("name");
         String status = request.getParameter("status");
         
-        Admin.addUser(id, password, name, status);
-        getServletContext().getRequestDispatcher("/admin_home.jsp").forward(request, response);
+        int result = Admin.addUser(id, password, name, status);
+        String message = "";
+        if(result==1){
+            message = "User adding successful";
+            request.setAttribute("message", message);
+        }
+        else{
+            message = "User adding fail";
+            request.setAttribute("message", message);
+        }
+ 
+        getServletContext().getRequestDispatcher("/admin_addUser.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -51,7 +51,8 @@ public class Admin {
         return a;
     }
 
-    public static void addUser(String id, String password, String name, String status) {
+    public static int addUser(String id, String password, String name, String status) {
+        int result = 0;
         try {
             Connection conn = BuildConnection.getConnection();
             String sql = "";
@@ -64,10 +65,11 @@ public class Admin {
             pstm.setLong(1, Long.parseLong(id));
             pstm.setString(2, password);
             pstm.setString(3, name);
-            pstm.executeUpdate();
+            result = pstm.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
         }
+        return result;
     }
 
     public static void createSubject(String id, String subjectName, String teacherId) {
