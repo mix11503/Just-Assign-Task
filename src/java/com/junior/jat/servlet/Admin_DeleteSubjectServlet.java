@@ -32,8 +32,17 @@ public class Admin_DeleteSubjectServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String subjectId = request.getParameter("subjectId");
-        Admin.deleteSubject(subjectId);
         
+        int result = Admin.deleteSubject(subjectId);
+        String message = "";
+        if(result==1){
+            message = "delete success";
+            request.setAttribute("message", message);
+        }
+        else{
+            message = "delete fail";
+            request.setAttribute("message", message);
+        }
         getServletContext().getRequestDispatcher("/admin_home.jsp").forward(request, response);
        
     }

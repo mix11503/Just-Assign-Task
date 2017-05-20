@@ -293,8 +293,18 @@
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
         </div><!-- ./wrapper -->
+        <div class="modal fade" id="message-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <h1>${message}</h1>
+                </div>
+            </div>
+        </div>   
         <!-- jQuery 2.1.3 -->
-        <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
         <!-- jQuery UI 1.11.2 -->
         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -338,5 +348,12 @@
                                 $('#input-teacher-id').val($(this).closest('tr').children('td:eq(0)').text());
                             });
         </script>
+        <% if(request.getAttribute("message") != null){%>
+            <script>
+                $('document').ready(function () {
+                    $('#message-modal').modal();
+                });
+            </script>
+        <%}%>
     </body>
 </html>

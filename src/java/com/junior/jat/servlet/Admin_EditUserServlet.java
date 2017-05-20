@@ -13,15 +13,23 @@ public class Admin_EditUserServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String id = request.getParameter("id");
-            String password = request.getParameter("password");
-            String name = request.getParameter("name");
-            String status = request.getParameter("status");
+        String id = request.getParameter("id");
+        String password = request.getParameter("password");
+        String name = request.getParameter("name");
+        String status = request.getParameter("status");
 
-            Admin.editUser(id, password, name, status);
-            getServletContext().getRequestDispatcher("/admin_editUser.jsp").forward(request, response);
+        int result = Admin.editUser(id, password, name, status);
+        String message = "";
+        if(result==1){
+            message = "Edit successful";
+            request.setAttribute("message", message);
         }
+        else{
+            message = "Edit fail";
+            request.setAttribute("message", message);
+        }
+        getServletContext().getRequestDispatcher("/admin_editUser.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

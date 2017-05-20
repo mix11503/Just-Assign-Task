@@ -23,11 +23,11 @@ public class Admin_AddUserServlet extends HttpServlet {
         int result = Admin.addUser(id, password, name, status);
         String message = "";
         if(result==1){
-            message = "User adding successful";
+            message = "Add successful";
             request.setAttribute("message", message);
         }
         else{
-            message = "User adding fail";
+            message = "Add fail";
             request.setAttribute("message", message);
         }
  

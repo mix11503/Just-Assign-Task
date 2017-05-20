@@ -40,7 +40,16 @@ public class Admin_CreateSubjectServlet extends HttpServlet {
         ArrayList<Teacher> teachers = Teacher.getTeacher();
         request.setAttribute("teachers", teachers);
         
-        Admin.createSubject(id, subjectName, teacherId);
+        int result = Admin.createSubject(id, subjectName, teacherId);
+        String message = "";
+        if(result==1){
+            message = "Create successful";
+            request.setAttribute("message", message);
+        }
+        else{
+            message = "Create fail";
+            request.setAttribute("message", message);
+        }
         getServletContext().getRequestDispatcher("/admin_createSubject.jsp").forward(request, response);
     }
 

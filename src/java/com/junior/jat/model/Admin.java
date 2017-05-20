@@ -72,7 +72,8 @@ public class Admin {
         return result;
     }
 
-    public static void createSubject(String id, String subjectName, String teacherId) {
+    public static int createSubject(String id, String subjectName, String teacherId) {
+        int result = 0;
         try {
             Connection conn = BuildConnection.getConnection();
             String sql = "INSERT INTO `subject` (`subjectId`, `subjectName`, `teacherId`) VALUES (?, ?, ?);";
@@ -80,25 +81,29 @@ public class Admin {
             pstm.setString(1, id);
             pstm.setString(2, subjectName);
             pstm.setLong(3, Long.parseLong(teacherId));
-            pstm.executeUpdate();
+            result = pstm.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
         }
+        return result;
     }
 
-    public static void deleteSubject(String subjectId) {
+    public static int deleteSubject(String subjectId) {
+        int result = 0;
         try {
             Connection conn = BuildConnection.getConnection();
             String sql = "DELETE FROM `subject` WHERE `subject`.`subjectId` = ?;";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, subjectId);
-            pstm.executeUpdate();
+            result = pstm.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
         }
+        return result;
     }
 
-    public static void editUser(String id, String pass, String name, String status) {
+    public static int editUser(String id, String pass, String name, String status) {
+        int result = 0;
         try {
             Connection conn = BuildConnection.getConnection();
             String sql = "";
@@ -112,9 +117,10 @@ public class Admin {
             pstm.setString(1, pass);
             pstm.setString(2, name);
             pstm.setString(3, id);
-            pstm.executeUpdate();
+            result = pstm.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
         }
+        return result;
     }
 }

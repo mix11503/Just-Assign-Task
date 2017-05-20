@@ -88,16 +88,18 @@ public class Teacher {
         return teachers;
     }
     
-    public static void deleteTeacher(String teacherId){
+    public static int deleteTeacher(String teacherId){
+        int result = 0;
         try{
             Connection conn = BuildConnection.getConnection();
             String sql = "DELETE FROM `teacher` WHERE `teacher`.`teacherId` = ?;";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, teacherId);
-            pstm.executeUpdate();     
+            result = pstm.executeUpdate();     
         }
         catch(Exception e){
             System.out.println(e);
         }
+        return result;
     }
 }

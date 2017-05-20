@@ -33,7 +33,16 @@ public class Admin_DeleteStudentServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String studentId = request.getParameter("studentId");
-        Student.deleteStudent(studentId);
+        int result = Student.deleteStudent(studentId);
+        String message = "";
+        if(result==1){
+            message = "Delete successful";
+            request.setAttribute("message", message);
+        }
+        else{
+            message = "Delete fail";
+            request.setAttribute("message", message);
+        }
         
         getServletContext().getRequestDispatcher("/Admin_GetStudentServlet").forward(request, response);
     }

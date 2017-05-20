@@ -115,17 +115,19 @@ public class Student {
         return students;
     }
     
-    public static void deleteStudent(String studentId){
+    public static int deleteStudent(String studentId){
+        int result = 0;
         try{
             Connection conn = BuildConnection.getConnection();
             String sql = "DELETE FROM `student` WHERE `student`.`studentId` = ?;";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, studentId);
-            pstm.executeUpdate();     
+            result = pstm.executeUpdate();     
         }
         catch(Exception e){
             System.out.println(e);
         }
+        return result;
     }
     
     public static void editStudent(String id,String password,String name){
