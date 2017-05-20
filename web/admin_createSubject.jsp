@@ -49,6 +49,11 @@
                 font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 font-weight: 500;
             }
+            .modal-content{
+                padding: 30px;
+                font-size: 35px;
+                text-align: center;
+            }
             .content-wrapper {
                 padding: 0 10px;
                 font-size: 14px;
@@ -296,7 +301,8 @@
         <div class="modal fade" id="message-modal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <h1>${message}</h1>
+                    <i class="fa fa-exclamation-circle"></i>
+                    <span>${message}</span>
                 </div>
             </div>
         </div>   
