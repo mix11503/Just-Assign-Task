@@ -7,6 +7,7 @@ package com.junior.jat.servlet;
 
 import com.junior.jat.model.Student;
 import com.junior.jat.model.Subject;
+import com.junior.jat.model.Task;
 import com.junior.jat.model.Teacher;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,34 +33,30 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("text/html;charset=UTF-8");
         String target = "/login.jsp";
         String message = "";
         long id = Long.parseLong(request.getParameter("id"));
-        String pass =request.getParameter("pass");
+        String pass = request.getParameter("pass");
         Student s = Student.login(id, pass);
         Teacher t = Teacher.login(id, pass);
-        if(s != null){
-       
+        if (s != null) {
             request.getSession(true).setAttribute("student", s);
             request.setAttribute("list", Student.gettaskstudent(id));
             target = "/Student_View.jsp";
-        }
-        else if(t != null){
+        } else if (t != null) {
             request.getSession(true).setAttribute("subjects", Subject.getSubject(id));
             request.getSession(true).setAttribute("teacher", t);
-            target ="/teacher_home.jsp";
-        }
-        else{
+            request.setAttribute("tasks", Task.getAllTask(id));
+            target = "/teacher_home.jsp";
+        } else {
             message = "id หรือ password ไม่ถูกต้อง ";
             request.setAttribute("message", message);
         }
         getServletContext().getRequestDispatcher(target).forward(request, response);
-   
+
     }
-    
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

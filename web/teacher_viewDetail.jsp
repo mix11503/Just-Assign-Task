@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,6 +46,9 @@
             body {
                 font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 font-weight: 500;
+            }
+            .bodybox{
+                margin: 50px;
             }
             .content-wrapper {
                 padding: 0 10px;
@@ -184,9 +188,9 @@
                         <ul class="nav navbar-nav">
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-pencil"></i>
-                                    <span class="hidden-xs" data-toggle='modal' data-target='#assign-task-modal'>Assign New Task</span>
+                                <a href="Logout">
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                                    <span class="hidden-xs" data-toggle='modal' >Logout</span> 
                                 </a>
                             </li>
                         </ul>
@@ -199,11 +203,8 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                        </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <h4>${teacher.name}</h4>
                         </div>
                     </div>
                     <!-- search form -->
@@ -222,7 +223,7 @@
                             <a href="Teacher_GetTask?option=AllTask&teacherId=${teacher.teacherId}">
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
-                            
+
                         </li>
                         <li class="treeview">
                             <a href="#">
@@ -238,60 +239,53 @@
                                             <i class="fa fa-tasks"></i> <span>${s.subjectName}</span>
                                         </a>
                                     </li></c:forEach>
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
-                <!-- /.sidebar -->
-            </aside>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <!-- /.sidebar -->
+                </aside>
 
-            <!-- Right side column. Contains the navbar and content of the page -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        All Task
-                        <small>Control panel</small>
-                    </h1>
-                </section>
-
-                <!-- Main content -->
-                <section class="content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">Responsive Hover Table</h3>
-                                    <div class="box-tools">
-                                        <div class="input-group">
-                                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- /.box-header -->
-                                
-                                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
-                        <tr>
-                            <th>Topic</th>
-                            <th>Subject</th>
-                            <th>Start</th>
-                            <th>Deadline</th>
-                            <th>Status</th>
-                    </tr>
-                    <tr>
-                            <td>${task.taskName}</td>
-                            <td>${task.subjectId}</td>
-                            <td>${task.taskCreateDate}</td>
-                            <td><font color="red">${task.taskDeadlineDate}</font></td>
-                            
-                            <td><span class="label label-primary">In Progress...</span></td>
-                        </tr>
-                    </table>
-                </div><!-- /.box-body -->
-                               
+                <!-- Right side column. Contains the navbar and content of the page -->
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            Details
+                            <small>Control panel</small>
+                        </h1>
+                    </section>
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <div class="bodybox">
+                                        <h3>Topic :</h3>
+                                        <h4>${task.taskName}</h4>
+                                    <hr>
+                                    <h3>Subject :</h3>
+                                    <h4>${task.subjectId}</h4>
+                                    <hr>
+                                    <h3>Start :</h3>
+                                    <h4>${task.taskCreateDate}</h4>
+                                    <hr>
+                                    <h3>Deadline :</h3>
+                                    <h4><font color="red">${task.taskDeadlineDate}</h4></font>
+                                    <hr>
+                                    <h3>Description :</h3>
+                                    <h4>${task.taskDescription}</h4>
+                                    <hr>
+                                    <h3>Status :</h3>
+                                    <h4><c:choose>
+                                            <c:when test="${task.status == 1}">
+                                                <span class="label label-primary">In Progress...</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="label label-success">Done</span>
+                                            </c:otherwise>
+                                        </c:choose></h4> <hr> <br> 
+                                </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
                     </div>
@@ -304,38 +298,14 @@
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
         </div><!-- ./wrapper -->
-        <div class="modal fade" id="assign-task-modal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="InsertTask" method="post">
-                        <div class="modal-header">
-                            <h1>Assign New Task</h1>
-                        </div>
-                        <div class="modal-body">
-                            <input class="form-control" name="taskname" required="" placeholder="Title" type="text" /><br/>
-                            <textarea class="form-control" name="taskdesc" required="" placeholder="Description" rows="3"></textarea><br/>
-                            <select name="subjectid" class="form-control">
-                                <!--Do Loop Teacher's Subject-->
-                                <option value="INT105">[DUMMY] JAVA Programming II </option>
-                            </select><br/>
-                            <input class="form-control" name="taskstatus" required="" placeholder="" type="" disabled="" value="In Progress..." hidden="" /><br/>
-                            <input class="form-control" name="datelinedate" required="" placeholder="" type="date" /><br/>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-success"/>&nbsp;&nbsp;
-                            <input type="reset" class="btn btn-danger"/>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->
         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-                                                                    $.widget.bridge('uibutton', $.ui.button);
+            $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.2 JS -->
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    

@@ -54,6 +54,12 @@ pageContext.setAttribute("task", task);
                 font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 font-weight: 500;
             }
+            .bodybox{
+                margin: 25px;
+            }
+            .footbodybox{
+                text-align: right;
+            }
             .content-wrapper {
                 padding: 0 10px;
                 font-size: 14px;
@@ -192,9 +198,9 @@ pageContext.setAttribute("task", task);
                         <ul class="nav navbar-nav">
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-pencil"></i>
-                                    <span class="hidden-xs" data-toggle='modal' data-target='#assign-task-modal'>Assign New Task</span>
+                                <a href="Logout">
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                                    <span class="hidden-xs" data-toggle='modal' >Logout</span> 
                                 </a>
                             </li>
                         </ul>
@@ -207,11 +213,8 @@ pageContext.setAttribute("task", task);
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                        </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <h4>${teacher.name}</h4>
                         </div>
                     </div>
                     <!-- search form -->
@@ -227,7 +230,7 @@ pageContext.setAttribute("task", task);
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="GetTaskServlet">
+                            <a href="Teacher_GetTask?option=AllTask&teacherId=${teacher.teacherId}"">
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
                         </li>
@@ -236,91 +239,62 @@ pageContext.setAttribute("task", task);
                                 <i class="fa fa-book"></i> <span>My Subject</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
-                                                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
-                                                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
+                                <!--<li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
+                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
+                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
                                 <c:forEach items="${subjects}" var="s" >
                                     <li>
                                         <a href="#">${s.subjectId} ${s.subjectName} </a>
                                     </li></c:forEach>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <!-- /.sidebar -->
+                </aside>
 
+                <!-- Right side column. Contains the navbar and content of the page -->
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            Edit Task
+                            <small>Control panel</small>
+                        </h1>
+                    </section>
 
-
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
-                <!-- /.sidebar -->
-            </aside>
-
-            <!-- Right side column. Contains the navbar and content of the page -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        Edit Task
-                        <small>Control panel</small>
-                    </h1>
-                </section>
-
-                <!-- Main content -->
-                <section class="content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="" id="edit-task-modal">
-                <div class="">
-                    <div class="">
-                        <form action="Teacher_EditTaskServlet?option=sendEdit" method="post">
-                            <div class="">
-                                <h1>Edit Task</h1>
-                            </div>
-                            <div class="">
-                                <input class="form-control" name="taskName" required="" placeholder="Title" type="text" value="${task.taskName}"/><br/>
-                                <textarea class="form-control" name="taskDescription" required="" placeholder="Description" rows="3" value="${task.taskDescription}"></textarea><br/>
-                                <input class="form-control" name="taskDeadlineDate" required="" placeholder="" type="date" value="${task.taskDeadlineDate}"/><br/>
-                                <input name="taskId" type="hidden" value="${task.taskId}"/>
-                                <select name="status">
-                                    <option value="1">In Progress</option>
-                                    <option value="2">Done</option>
-                                </select>
-                            </div>
-                                <br>
-                            <div class="">
-                                <input type="submit" class="btn btn-success" />&nbsp;&nbsp;
-                                <input type="reset" class="btn btn-danger" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-                               
-                                <%if(request.getAttribute("tasks")!=null){ %>
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>Task ID</th>
-                                            <th>Topic</th>
-                                            <th>Subject</th>
-                                            <th>Start</th>
-                                            <th>Deadline</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        <c:forEach items="${tasks}" var="t" varStatus="vs">
-                                            <tr>
-                                                <td>${t.taskId}</td>
-                                                <td>${t.taskName}</td>
-                                                <td>${t.subjectId}</td>
-                                                <td>${t.taskCreateDate}</td>
-                                                <td><font color="red">${t.taskDeadlineDate}</font></td>
-                                                <td><span class="label label-primary">In Progress...</span></td>
-                                                <td><a href = "Teacher_DeleteTaskServlet?taskid=${t.taskId}"><button onclick="return confirm('Do you want to delete?')">Delete</button></a></td>
-                                                <td><a href = "Teacher_EditTaskServlet?taskId=${t.taskId}&option=getForEdit"><button>Edit</button></a></td>
-                                            </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div><!-- /.box-body -->
-                                <%}%>
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <div class="bodybox" id="edit-task-modal">
+                                        <div class="">
+                                            <div class="">
+                                                <form action="Teacher_EditTaskServlet?option=sendEdit&teacherId=${teacher.teacherId}" method="post">
+                                                    <div class="">
+                                                        <p>Topic :</p>
+                                                        <input class="form-control" name="taskName" required="" placeholder="Title" type="text" value="${task.taskName}"/><br/>
+                                                    <p>Description :</p>
+                                                    <textarea class="form-control" name="taskDescription" required="" placeholder="Description" rows="3" value="${task.taskDescription}"></textarea><br/>
+                                                    <p>Deatline Date :</p>
+                                                    <input class="form-control" name="taskDeadlineDate" required="" placeholder="" type="date" value="${task.taskDeadlineDate}"/><br/>
+                                                    <input name="taskId" type="hidden" value="${task.taskId}"/>
+                                                    <p>Status :</p>
+                                                    <select name="status">
+                                                        <option value="1">In Progress</option>
+                                                        <option value="2">Done</option>
+                                                    </select>
+                                                </div>
+                                                <br>
+                                                <div class="footbodybox">                                                    
+                                                    <input type="submit" class="btn btn-success"> &nbsp;&nbsp;                        
+                                                    <input type="reset" class="btn btn-danger" />
+                                                </div><br>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div><!-- /.box -->
                         </div>
                     </div>
@@ -333,38 +307,15 @@ pageContext.setAttribute("task", task);
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
         </div><!-- ./wrapper -->
-        <div class="modal fade" id="assign-task-modal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="InsertTask" method="post">
-                        <div class="modal-header">
-                            <h1>Assign New Task</h1>
-                        </div>
-                        <div class="modal-body">
-                            <input class="form-control" name="taskname" required="" placeholder="Title" type="text" /><br/>
-                            <textarea class="form-control" name="taskdesc" required="" placeholder="Description" rows="3"></textarea><br/>
-                            <select name="subjectid" class="form-control">
-                                <!--Do Loop Teacher's Subject-->
-                                <option value="INT105">[DUMMY] JAVA Programming II </option>
-                            </select><br/>
-                            <input class="form-control" name="taskstatus" required="" placeholder="" type="" disabled="" value="In Progress..." hidden="" /><br/>
-                            <input class="form-control" name="datelinedate" required="" placeholder="" type="date" /><br/>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-success"/>&nbsp;&nbsp;
-                            <input type="reset" class="btn btn-danger"/>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+
+
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->
         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-                                                                    $.widget.bridge('uibutton', $.ui.button);
+            $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.2 JS -->
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    

@@ -104,6 +104,14 @@
         <servlet-name>SubSubjectRedirectServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.SubSubjectRedirectServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Admin_LoginServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Admin_RedirectServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.Admin_RedirectServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -197,6 +205,7 @@
         <url-pattern>/SearchTaskServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>AllTaskServlet</servlet-name>
         <url-pattern>/AllTaskServlet</url-pattern>
     </servlet-mapping>
@@ -207,6 +216,14 @@
     <servlet-mapping>
         <servlet-name>SubSubjectRedirectServlet</servlet-name>
         <url-pattern>/SubSubjectRedirectServlet</url-pattern>
+=======
+        <servlet-name>Admin_LoginServlet</servlet-name>
+        <url-pattern>/Admin_LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_RedirectServlet</servlet-name>
+        <url-pattern>/Admin_RedirectServlet</url-pattern>
+>>>>>>> 4e4089cc4a61f03cb752fb1f70942d38ab975287
     </servlet-mapping>
     <session-config>
         <session-timeout>

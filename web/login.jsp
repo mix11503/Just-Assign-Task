@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="col-xs-8">    
                             <div class="checkbox icheck">
-                                
+
                             </div>                        
                         </div><!-- /.col -->
                         <div class="col-xs-4">
@@ -80,6 +80,6 @@
                     increaseArea: '20%' // optional
                 });
             });
-        </script>a
+        </script>
     </body>
 </html>

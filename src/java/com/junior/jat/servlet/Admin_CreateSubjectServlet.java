@@ -6,8 +6,10 @@
 package com.junior.jat.servlet;
 
 import com.junior.jat.model.Admin;
+import com.junior.jat.model.Teacher;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +36,9 @@ public class Admin_CreateSubjectServlet extends HttpServlet {
         String id = request.getParameter("id");
         String subjectName = request.getParameter("subjectName");
         String teacherId = request.getParameter("teacherId");
+        
+        ArrayList<Teacher> teachers = Teacher.getTeacher();
+        request.setAttribute("teachers", teachers);
         
         Admin.createSubject(id, subjectName, teacherId);
         getServletContext().getRequestDispatcher("/admin_createSubject.jsp").forward(request, response);

@@ -95,10 +95,6 @@ public class Student {
         return list;
     }
 
-    public static void main(String[] args) {
-        System.out.println(gettaskstudent(59130500048L));
-    }
-
     public static ArrayList getStudent(){
         ArrayList students = new ArrayList();
         Student student = new Student();

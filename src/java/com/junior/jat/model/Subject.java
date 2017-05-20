@@ -73,10 +73,6 @@ public class Subject {
         return "Subject{" + "subjectId=" + subjectId + ", subjectName=" + subjectName + ", teacherId=" + teacherId + '}';
     }
     
-    public static void main(String[] args) {
-        System.out.println(getSubject(53130500553L).toString());;
-    }
-    
     public static ArrayList getSubject(){
         ArrayList subjects = new ArrayList();
         Subject subject = new Subject();
@@ -97,4 +93,5 @@ public class Subject {
         }
         return subjects;
     }
+    
 }

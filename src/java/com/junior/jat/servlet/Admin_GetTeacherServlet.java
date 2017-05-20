@@ -36,7 +36,6 @@ public class Admin_GetTeacherServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<Teacher> teachers = Teacher.getTeacher();
         request.setAttribute("teachers", teachers);
-        System.out.println(teachers.toString());
         getServletContext().getRequestDispatcher("/admin_home.jsp").forward(request, response);
     }
 
