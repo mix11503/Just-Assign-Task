@@ -35,7 +35,7 @@ public class UnsubServlet extends HttpServlet {
         long id= ((Student)(request.getSession(false).getAttribute("student"))).getStudentId();
        
         Student.UnsubSubject(id , subjectId);
-         getServletContext().getRequestDispatcher("/Student_View.jsp").forward(request, response);
+         getServletContext().getRequestDispatcher("/SubSubjectRedirectServlet").forward(request, response);
        
     }
 

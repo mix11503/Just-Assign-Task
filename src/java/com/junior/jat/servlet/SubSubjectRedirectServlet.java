@@ -33,7 +33,7 @@ public class SubSubjectRedirectServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         long id=((Student)(request.getSession(false).getAttribute("student"))).getStudentId();
-        request.setAttribute("subjects",Subject.getSubjectWithState(id));
+       request.setAttribute("subjects",Subject.getSubjectWithState(id));
        
        getServletContext().getRequestDispatcher("/AllSubject.jsp").forward(request, response);
         

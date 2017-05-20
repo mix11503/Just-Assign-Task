@@ -36,7 +36,7 @@ public class SubSubjectServlet extends HttpServlet {
         long id= ((Student)(request.getSession(false).getAttribute("student"))).getStudentId();
        
         Student.subSubject(id , subjectId);
-         getServletContext().getRequestDispatcher("/Student_View.jsp").forward(request, response);
+         getServletContext().getRequestDispatcher("/SubSubjectRedirectServlet").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

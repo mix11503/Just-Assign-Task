@@ -100,9 +100,10 @@ public class Admin {
         try {
             Connection conn = BuildConnection.getConnection();
             String sql = "";
-            if (status.equals("student")) {
+            if (status.equals("Student")) {
                 sql = "UPDATE `student` SET `pass` = ?, `name` = ? WHERE `student`.`studentId` = ?;";
-            } else {
+            } 
+            else {
                 sql = "UPDATE `teacher` SET `password` = ?, `name` = ? WHERE `teacher`.`teacherId` = ?;";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);

@@ -181,7 +181,7 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index2.html" class="logo"><b>JAT</b></a>
+                <a href="Teacher_GetTask?option=AllTask&teacherId=${teacher.teacherId}" class="logo"><b>JAT</b></a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
@@ -212,14 +212,7 @@
                         </div>
                     </div>
                     <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+                    
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
@@ -270,30 +263,19 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="box">
-                                    <div class="box-header">
-                                        <h3 class="box-title">Responsive Hover Table</h3>
-                                        <div class="box-tools">
-                                            <div class="input-group">
-                                                <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                                <div class="input-group-btn">
-                                                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.box-header -->
-                                <%if(request.getAttribute("tasks")!=null){ %>
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>Topic</th>
-                                            <th>Subject</th>
-                                            <th>Start</th>
-                                            <th>Deadline</th>
-                                            <th>Status</th>
-                                            <th>Details</th> 
-                                            <th>Edit</th>
-                                            <th>Delete</th> 
-                                        </tr>
+                                    <%if(request.getAttribute("tasks")!=null){ %>
+                                        <div class="box-body table-responsive no-padding">
+                                            <table class="table table-hover">
+                                                <tr>
+                                                    <th>Topic</th>
+                                                    <th>Subject</th>
+                                                    <th>Start</th>
+                                                    <th>Deadline</th>
+                                                    <th>Status</th>
+                                                    <th>Details</th> 
+                                                    <th>Edit</th>
+                                                <th>Delete</th> 
+                                                </tr>
                                         <c:forEach items="${tasks}" var="t" varStatus="vs">
                                             <tr>
                                                 <td>${t.taskName}</td>

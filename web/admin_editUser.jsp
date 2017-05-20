@@ -5,6 +5,8 @@
 --%>
 <%@page import="java.util.List"%>
 <%@page import="com.junior.jat.model.Task"%>
+<%@page import="com.junior.jat.model.Student"%>
+<%@page import="com.junior.jat.model.Teacher"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -213,7 +215,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="Admin_RedirectServlet">
+                            <a href="Admin_RedirectServlet?option=createSubject">
                                 <i class="fa fa-pencil"></i> <span>Create Subject</span>
                             </a>
                         </li>
@@ -255,14 +257,14 @@
                 <!-- Main content -->
                 <section class="content">
                     <form action="Admin_EditUserServlet">
-                        ID:<br>
-                        <input type="number" name="id" required><br>
-                        Password:<br>
+                        ID :<br>
+                        <input type="number" name="id" value="${param.id}" required><br>
+                        Password :<br>
                         <input type="password" name="password" required><br>
-                        Name:<br>
+                        Name :<br>
                         <input type="text" name="name" required><br><br>
-                        <input type="radio" name="status" value="teacher"> Teacher
-                        <input type="radio" name="status" value="student" checked="checked"> Student <br><br>
+                        User status :<br>
+                        <input type="text" name="status" value="${param.status}" disabled><br><br>
                         <input type="submit" name="submit" onclick="return confirm('Are you sure?')">
                     </form>
                 </section><!-- /.content -->

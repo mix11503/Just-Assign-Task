@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("tasks", Task.getAllTask(id));
             target = "/teacher_home.jsp";
         } else {
-            message = "id หรือ password ไม่ถูกต้อง ";
+            message = "Your ID or Password is invalid ";
             request.setAttribute("message", message);
         }
         getServletContext().getRequestDispatcher(target).forward(request, response);
