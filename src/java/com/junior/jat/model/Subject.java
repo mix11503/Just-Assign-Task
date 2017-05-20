@@ -21,6 +21,17 @@ public class Subject {
     private String subjectId;
     private String subjectName;
     private long teacherId;
+    private String state;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+    
+    
 
     public String getSubjectId() {
         return subjectId;
@@ -94,4 +105,27 @@ public class Subject {
         return subjects;
     }
     
+    public static ArrayList getSubjectWithState(long studentId){
+        ArrayList subjects = new ArrayList();
+        Subject subject = new Subject();
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "SELECT * FROM subject s left join map_st_subj mst on s.subjectId = mst.subjectId where mst.studentId = ? or mst.studentId IS NULL;";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            pstm.setLong(1,studentId);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                subject = new Subject();
+                subject.setSubjectId(rs.getString("subjectId"));
+                subject.setSubjectName(rs.getString("subjectName"));
+                subject.setTeacherId(rs.getLong("teacherId"));
+                subject.setState(rs.getString("approve_state"));
+                subjects.add(subject);
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(Subject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return subjects;
+    }
+            
 }

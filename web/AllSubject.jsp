@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : teacher_home
     Created on : Mar 18, 2017, 5:31:20 PM
     Author     : Mix
@@ -14,14 +14,14 @@
         <title>Student Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- FontAwesome 4.3.0 -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons 2.0.0 -->
-        <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />    
+        <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-        <!-- AdminLTE Skins. Choose a skin from the css/skins 
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link href="dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
         <!-- iCheck -->
@@ -53,7 +53,7 @@
                 font-size: 14px;
             }
             .page-header {
-                border: 0;        
+                border: 0;
                 margin: 0 0 20px 0;
                 padding: 0;
                 position: relative;
@@ -187,8 +187,8 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href ="Logout">
-                                   <i class="fa fa-power-off" aria-hidden="true"></i>
-                                    <span class="hidden-xs" data-toggle='modal' >Logout</span> 
+                                  <i class="fa fa-power-off" aria-hidden="true"></i>
+                                   <span class="hidden-xs" data-toggle='modal' >Logout</span>
                                 </a>
                             </li>
                         </ul>
@@ -201,11 +201,12 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
+                        
                         <div class="pull-left info">
                             <h4>${student.name}</h4>
                         </div>
                     </div>
-                    
+
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
@@ -215,32 +216,28 @@
                         </li>
                         <li>
                             <a href="GetNearestSrevlet">
-                                <i class="glyphicon glyphicon-time"></i> <span>Nearest</span> 
-                                
+                                <i class="fa fa-info-circle"></i> <span>Deadline</span>
+
                             </a>
-                        </li>  
+                        </li>
                         <li>
                             <a href="GetLatestServlet">
-                                <i class="glyphicon glyphicon-time"></i> <span>Latest</span> 
-                                
+                                <i class="fa fa-arrow-up"></i> <span>New Task</span>
                             </a>
                         </li>
                         <li>
                             <a href="SubSubjectRedirectServlet">
-                                <i class="glyphicon glyphicon-time"></i> <span>Subscribe</span> 
-                                
+                                <i class="fa fa-check-square"></i> <span>Subscribe</span>
+
                             </a>
                         </li>
                         <ul class="treeview-menu">
-                                <!--                            <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
-                                                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
-                                                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
-                            <c:forEach items="${subjects}" var="s" >
-                                <li>
-                                    <a href="#">${s.subjectId} ${s.subjectName} </a>
-                                </li>
-                            </c:forEach>
+
+                            <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
+                                                            <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
+                                                            <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
                         </ul>
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -250,16 +247,13 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
+
                     <h1>
                         All Task
                         <small>Control panel</small>
                     </h1>
-                </section>
-
-                <!-- Main content -->
-                <section class="content">
                     <div class="row">
-                        <div class="col-xs-12"> 
+                        <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Responsive Hover Table</h3>
@@ -268,32 +262,39 @@
                                             <div class="input-group">
                                                 <input type="text" name="keyword" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
                                                 <div class="input-group-btn">
-                                                    <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></button>  
+                                                    <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div><!-- /.box-header -->
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>SubjectId</th>
-                                            <th>SubjectName</th> 
-                                            <th>Subscribe</th>
-                                        </tr>
-                                        <c:forEach items="${subjects}" var="s" varStatus="vs">
-                                            <tr>
-                                                <td>${s.subjectId}</td>
-                                                <td>${s.subjectName}</td>
-                                                <td><a href ="SubSubjectServlet?subjectId=${s.subjectId}&studentId="${student.studentId}><button>Subscribe</button></a></td>
-                                              </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div><!-- /.box-body -->
-                            </div><!-- /.box -->
-                        </div>
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>SubjectId</th>
+                                <th>SubjectName</th>
+                                <th>Subscribe</th>
+                            </tr>
+                            <c:forEach items="${subjects}" var="s" varStatus="vs">
+                                <tr>
+                                    <td>${s.subjectId}</td>
+                                    <td>${s.subjectName}</td>
+                                    <c:choose>
+                                        <c:when test="${s.state == 'OK'}" >
+                                            <td><a href ="UnsubServlet?subjectId=${s.subjectId}&studentId="${student.studentId}><button>Unsubscribe</button></a></td>
+                                        </c:when>
+                                        <c:when test="${s.state != 'OK'}">
+                                            <td><a href ="SubSubjectServlet?subjectId=${s.subjectId}&studentId="${student.studentId}><button>Subscribe</button></a></td>
+                                        </c:when>
+                                    </c:choose>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </div>
-                </section><!-- /.content -->
+                    </div>
+                    </div>
+                    </div><!-- /.box-body -->
+                </section>
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
@@ -302,7 +303,7 @@
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
         </div><!-- ./wrapper -->
-        
+
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->
@@ -312,7 +313,7 @@
             $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.2 JS -->
-        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    
+        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- Morris.js charts -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
         <script src="plugins/morris/morris.min.js" type="text/javascript"></script>

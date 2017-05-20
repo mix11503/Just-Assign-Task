@@ -37,6 +37,7 @@ public class GetLatestServlet extends HttpServlet {
         Student s = (Student)request.getSession().getAttribute("student");
         List<Task> tasks = Task.getLatestTask(s.getStudentId());
         request.setAttribute("list", tasks);
+        request.setAttribute("prop", "latest");
         System.out.println(tasks.toString());
         getServletContext().getRequestDispatcher("/Student_View.jsp").forward(request, response);
     }

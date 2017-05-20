@@ -217,13 +217,19 @@
                         </li>
                         <li>
                             <a href="GetNearestSrevlet">
-                                <i class="glyphicon glyphicon-time"></i> <span>Nearest</span>
+                                <i class="fa fa-info-circle"></i> <span>Deadline</span>
 
                             </a>
                         </li>
                         <li>
                             <a href="GetLatestServlet">
-                                <i class="glyphicon glyphicon-time"></i> <span>Latest</span>
+                                <i class="fa fa-arrow-up"></i> <span>New Task</span>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="SubSubjectRedirectServlet">
+                                <i class="fa fa-check-square"></i> <span>Subscribe</span>
 
                             </a>
                         </li>

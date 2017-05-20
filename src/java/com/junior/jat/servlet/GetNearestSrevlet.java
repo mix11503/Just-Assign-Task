@@ -37,6 +37,8 @@ public class GetNearestSrevlet extends HttpServlet {
         Student s = (Student)request.getSession().getAttribute("student");
         List<Task> tasks = Task.getNearTask(s.getStudentId());
         request.setAttribute("list", tasks);
+        
+        request.setAttribute("prop","nearest");
         System.out.println(tasks.toString());
         getServletContext().getRequestDispatcher("/Student_View.jsp").forward(request, response);
     }

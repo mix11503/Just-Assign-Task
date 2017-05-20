@@ -6,7 +6,6 @@
 package com.junior.jat.servlet;
 
 import com.junior.jat.model.Student;
-import com.junior.jat.model.Subject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author maypt
  */
-public class SubSubjectRedirectServlet extends HttpServlet {
+public class UnsubServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,12 +30,13 @@ public class SubSubjectRedirectServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        long id=((Student)(request.getSession(false).getAttribute("student"))).getStudentId();
-       request.setAttribute("subjects",Subject.getSubjectWithState(id));
+      
+        String subjectId=request.getParameter("subjectId");
+        long id= ((Student)(request.getSession(false).getAttribute("student"))).getStudentId();
        
-       getServletContext().getRequestDispatcher("/AllSubject.jsp").forward(request, response);
-        
+        Student.UnsubSubject(id , subjectId);
+         getServletContext().getRequestDispatcher("/SubSubjectRedirectServlet").forward(request, response);
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

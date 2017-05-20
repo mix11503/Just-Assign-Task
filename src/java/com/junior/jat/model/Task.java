@@ -227,6 +227,39 @@ public class Task {
         }
         return list;
     }
+    public static List<Task> getSearchNearTask(long studentId, String keyword) {
+        ArrayList<Task> list = new ArrayList();
+        try {
+
+            Task task = null;
+            Connection conn = BuildConnection.getConnection();
+            String sql = "SELECT t.* FROM `map_st_subj` mts JOIN `task` t ON mts.subjectId = t.subjectId WHERE mts.studentId = ? and t.taskDeadlineDate >= ? and t.taskName like ? ORDER BY t.taskDeadlineDate ASC;;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setLong(1, studentId);
+            pst.setDate(2, new Date(System.currentTimeMillis()));
+            pst.setString(3,"%"+keyword+"%");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                task = new Task();
+                task.setStatus(rs.getString("status"));
+                task.setSubjectId(rs.getString("subjectId"));
+                task.setTaskCreateDate(rs.getDate("taskCreateDate"));
+                task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
+                task.setTaskDescription(rs.getString("taskDescription"));
+                task.setTaskId(rs.getInt("taskId"));
+                task.setTaskName(rs.getString("taskName"));
+                list.add(task);
+            }
+
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    
+    
+    
      public static List<Task> getLatestTask(long studentId) {
         ArrayList<Task> list = new ArrayList();
         try {
@@ -237,6 +270,36 @@ public class Task {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setLong(1, studentId);
             pst.setDate(2, new Date(System.currentTimeMillis()));
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                task = new Task();
+                task.setStatus(rs.getString("status"));
+                task.setSubjectId(rs.getString("subjectId"));
+                task.setTaskCreateDate(rs.getDate("taskCreateDate"));
+                task.setTaskDeadlineDate(rs.getDate("taskDeadlineDate"));
+                task.setTaskDescription(rs.getString("taskDescription"));
+                task.setTaskId(rs.getInt("taskId"));
+                task.setTaskName(rs.getString("taskName"));
+                list.add(task);
+            }
+
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+     public static List<Task> getSearchLatestTask(long studentId,String keyword) {
+        ArrayList<Task> list = new ArrayList();
+        try {
+
+            Task task = null;
+            Connection conn = BuildConnection.getConnection();
+            String sql = "SELECT t.* FROM `map_st_subj` mts JOIN `task` t ON mts.subjectId = t.subjectId WHERE mts.studentId = ? and t.taskCreateDate = ? and t.taskName like ?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setLong(1, studentId);
+            pst.setDate(2, new Date(System.currentTimeMillis()));
+            pst.setString(3,"%"+keyword+"%");
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 task = new Task();

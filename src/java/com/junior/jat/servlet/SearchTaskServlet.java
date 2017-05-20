@@ -32,13 +32,28 @@ public class SearchTaskServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
         String keyword = request.getParameter("keyword");
 //        long id = Long.parseLong(request.getParameter("studentId"));Ï
-        long id = ((Student) (request.getSession(false).getAttribute("student"))).getStudentId();
-        System.out.println(id);
-        request.setAttribute("list", Task.getsearchTask(keyword, id));
-        getServletContext().getRequestDispatcher("/Student_View.jsp").forward(request, response);
+        String prop = request.getParameter("prop") == null ? "" : request.getParameter("prop");
+                long id = ((Student) (request.getSession(false).getAttribute("student"))).getStudentId();
+        switch (prop) {
+            case "nearest":
+                System.out.println(id+"nearset"+" :: "+Task.getSearchNearTask(id, keyword));
+                request.setAttribute("list", Task.getSearchNearTask(id, keyword));
+                break;
+            case "latest":
+                System.out.println(id+"nearset"+" :: "+Task.getSearchLatestTask(id, keyword));
+                request.setAttribute("list", Task.getSearchLatestTask(id, keyword));
+                break;
+            case "":
+                System.out.println(id);
+                request.setAttribute("list", Task.getsearchTask(keyword, id));
+                break;
+            default:
+                break;
+        }
+        
+                getServletContext().getRequestDispatcher("/Student_View.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
