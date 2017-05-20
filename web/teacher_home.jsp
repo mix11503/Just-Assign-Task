@@ -51,10 +51,11 @@
                 font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 font-weight: 500;
             }
-            .modal-content{
+            .modal-content2{
                 padding: 30px;
                 font-size: 35px;
                 text-align: center;
+                background-color: #fff;
             }
             .navbar-custom-menu{
                 text-align: center;
@@ -342,8 +343,8 @@
         </div>
        <div class="modal fade" id="message-modal">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <i class="fa fa-exclamation-circle"></i>
+                <div class="modal-content2">
+                    <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;
                     <span>${message}</span>
                 </div>
             </div>
