@@ -243,18 +243,11 @@
                         </li>    
                             <ul class="treeview-menu">
                                 
+                                
                                 <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
                                                                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
                                                                 <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
-                                <c:forEach items="${subjects}" var="s" >
-                                    <li>
-                                        <a href="#">${s.subjectId} ${s.subjectName} </a>
-
-
-                                    </li>
-
-
-                                </c:forEach>
+                                
 
 
 
@@ -274,7 +267,25 @@
                         
                         <small>Control panel</small>
                     </h1>
-                </section>
+                                <h1>HEAD</h1>
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            
+                                            <th>SubjectId</th>
+                                            <th>SubjectName</th> 
+                                            <th>Subscribe</th>
+                                        </tr>
+                                        <c:forEach items="${subjects}" var="s" varStatus="vs">
+                                            <tr>
+                                                <td>${s.subjectId}</td>
+                                                <td>${s.subjectName}</td>
+                                                <td><a href ="SubSubjectServlet?subjectId=${s.subjectId}&studentId="${student.studentId}><button>Subscribe</button></a></td>
+                                              </tr>
+                                        </c:forEach>
+                                    </table>
+                                </div><!-- /.box-body -->
+                                                </section>
 
                 <!-- Main content -->
                 <section class="content">

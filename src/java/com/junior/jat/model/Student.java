@@ -146,4 +146,18 @@ public class Student {
             System.out.println(e);
         }
     }
+    public static void subSubject(long id, String subjectId){
+         try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "INSERT INTO `map_st_subj`(`studentId`, `subjectId`, `approve_state`) VALUES ( ?, ?,'OK')";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            pstm.setLong(1, id);
+            pstm.setString(2, subjectId);
+
+            pstm.executeUpdate();
+
+        } catch (SQLException se) {
+            System.out.println(se);
+        }
+    }
 }

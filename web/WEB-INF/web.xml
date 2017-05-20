@@ -92,6 +92,18 @@
         <servlet-name>SearchTaskServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.SearchTaskServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllTaskServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.AllTaskServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubSubjectServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.SubSubjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubSubjectRedirectServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.SubSubjectRedirectServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -183,6 +195,18 @@
     <servlet-mapping>
         <servlet-name>SearchTaskServlet</servlet-name>
         <url-pattern>/SearchTaskServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllTaskServlet</servlet-name>
+        <url-pattern>/AllTaskServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubSubjectServlet</servlet-name>
+        <url-pattern>/SubSubjectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubSubjectRedirectServlet</servlet-name>
+        <url-pattern>/SubSubjectRedirectServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
