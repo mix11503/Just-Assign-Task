@@ -11,6 +11,7 @@ import com.junior.jat.model.Teacher;
 import com.junior.jat.model.Admin;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +42,8 @@ public class Admin_LoginServlet extends HttpServlet {
         Admin a = Admin.login(id, pass);
         if(a != null){
             request.getSession(true).setAttribute("admin", a);
+            ArrayList<Subject> subjects = Subject.getSubject();
+            request.setAttribute("subjects", subjects);
             target = "/admin_home.jsp";
         }
         else{

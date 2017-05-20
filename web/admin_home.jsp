@@ -254,79 +254,81 @@
                         User Lists
                         <small>Control panel</small>
                     </h1><br>
-                    <%}%>
-                    <%if(request.getAttribute("subjects")!=null){ %>
-                    <h1>
+                    <%}
+                    else{%>
+                        <h1>
                         Subject Lists
                         <small>Control panel</small>
-                    </h1><br>
-                    <%}%>
+                        </h1><br>
+                    <%}%>                
                 </section>
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
-                                <%if(request.getAttribute("students")!=null){ %>
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>Student ID</th>
-                                            <th>Name</th>
-                                            <th>Delete</th>
-                                            <th>Edit</th>
-                                        </tr>
-                                        <c:forEach items="${students}" var="s" varStatus="vs">
+                                <%if(request.getAttribute("students")!=null | request.getAttribute("teachers")!=null){ %>
+                                    <%if(request.getAttribute("students")!=null){ %>
+                                        <div class="box-body table-responsive no-padding">
+                                            <table class="table table-hover">
+                                                <tr>
+                                                    <th>Student ID</th>
+                                                    <th>Name</th>
+                                                    <th>Delete</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                                <c:forEach items="${students}" var="s" varStatus="vs">
+                                                    <tr>
+                                                        <td>${s.studentId}</td>
+                                                        <td>${s.name}</td>
+                                                        <td><a href = "Admin_DeleteStudentServlet?studentId=${s.studentId}"><button onclick="return confirm('Are you sure you want to delete this user?')">Delete</button></a></td>
+                                                        <td><a href = "admin_editUser.jsp"><button>Edit</button></a></td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </table>
+                                        </div><!-- /.box-body -->
+                                    <%}%>
+                                    <%if(request.getAttribute("teachers")!=null){ %>
+                                        <div class="box-body table-responsive no-padding">
+                                            <table class="table table-hover">
+                                                <tr>
+                                                    <th>Teacher ID</th>
+                                                    <th>Name</th>
+                                                    <th>Delete</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                                <c:forEach items="${teachers}" var="t" varStatus="vs">
+                                                    <tr>
+                                                        <td>${t.teacherId}</td>
+                                                        <td>${t.name}</td>
+                                                        <td><a href = "Admin_DeleteTeacherServlet?teacherId=${t.teacherId}"><button onclick="return confirm('Are you sure you want to delete this user?')">Delete</button></a></td>
+                                                        <td><a href = "admin_editUser.jsp"><button>Edit</button></a></td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </table>
+                                        </div><!-- /.box-body -->
+                                    <%}%>
+                                <%}
+                                else{%>
+                                    <div class="box-body table-responsive no-padding">
+                                        <table class="table table-hover">
                                             <tr>
-                                                <td>${s.studentId}</td>
-                                                <td>${s.name}</td>
-                                                <td><a href = "Admin_DeleteStudentServlet?studentId=${s.studentId}"><button onclick="return confirm('Are you sure you want to delete this user?')">Delete</button></a></td>
-                                                <td><a href = "admin_editUser.jsp"><button>Edit</button></a></td>
+                                                <th>Subject ID</th>
+                                                <th>Subject Name</th>
+                                                <th>Teacher Id</th>
+                                                <th>Delete</th>
                                             </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div><!-- /.box-body -->
+                                            <c:forEach items="${subjects}" var="u" varStatus="vs">
+                                                <tr>
+                                                    <td>${u.subjectId}</td>
+                                                    <td>${u.subjectName}</td>
+                                                    <td>${u.teacherId}</td>
+                                                    <td><a href = "Admin_DeleteSubjectServlet?subjectId=${u.subjectId}"><button onclick="return confirm('Are you sure you want to delete this subject?')">Delete</button></a></td>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+                                    </div>
                                 <%}%>
-                                <%if(request.getAttribute("teachers")!=null){ %>
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>Teacher ID</th>
-                                            <th>Name</th>
-                                            <th>Delete</th>
-                                            <th>Edit</th>
-                                        </tr>
-                                        <c:forEach items="${teachers}" var="t" varStatus="vs">
-                                            <tr>
-                                                <td>${t.teacherId}</td>
-                                                <td>${t.name}</td>
-                                                <td><a href = "Admin_DeleteTeacherServlet?teacherId=${t.teacherId}"><button onclick="return confirm('Are you sure you want to delete this user?')">Delete</button></a></td>
-                                                <td><a href = "admin_editUser.jsp"><button>Edit</button></a></td>
-                                            </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div><!-- /.box-body -->
-                                <%}%>
-                                <%if(request.getAttribute("subjects")!=null | request.getAttribute("admin")!=null){ %>
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>Subject ID</th>
-                                            <th>Subject Name</th>
-                                            <th>Teacher Id</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                        <c:forEach items="${subjects}" var="u" varStatus="vs">
-                                            <tr>
-                                                <td>${u.subjectId}</td>
-                                                <td>${u.subjectName}</td>
-                                                <td>${u.teacherId}</td>
-                                                <td><a href = "Admin_DeleteSubjectServlet?subjectId=${u.subjectId}"><button onclick="return confirm('Are you sure you want to delete this subject?')">Delete</button></a></td>
-                                            </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div><!-- /.box-body -->
-                                <%}%> 
                             </div><!-- /.box -->
                         </div>
                     </div>
