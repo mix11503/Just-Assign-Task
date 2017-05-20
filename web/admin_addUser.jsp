@@ -213,7 +213,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="Admin_RedirectServlet">
+                            <a href="Admin_RedirectServlet?option=createSubject">
                                 <i class="fa fa-pencil"></i> <span>Create Subject</span>
                             </a>
                         </li>

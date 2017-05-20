@@ -80,6 +80,6 @@
                     increaseArea: '20%' // optional
                 });
             });
-        </script>a
+        </script>
     </body>
 </html>

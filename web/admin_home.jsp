@@ -215,7 +215,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="Admin_RedirectServlet">
+                            <a href="Admin_RedirectServlet?option=createSubject">
                                 <i class="fa fa-pencil"></i> <span>Create Subject</span>
                             </a>
                         </li>
@@ -290,7 +290,7 @@
                                                         <td>${s.studentId}</td>
                                                         <td>${s.name}</td>
                                                         <td><a href = "Admin_DeleteStudentServlet?studentId=${s.studentId}"><button onclick="return confirm('Are you sure you want to delete this user?')">Delete</button></a></td>
-                                                        <td><a href = "admin_editUser.jsp"><button>Edit</button></a></td>
+                                                        <td><a href = "admin_editUser.jsp?id=${s.studentId}&status=Student"><button>Edit</button></a></td>
                                                     </tr>
                                                 </c:forEach>
                                             </table>
@@ -310,7 +310,7 @@
                                                         <td>${t.teacherId}</td>
                                                         <td>${t.name}</td>
                                                         <td><a href = "Admin_DeleteTeacherServlet?teacherId=${t.teacherId}"><button onclick="return confirm('Are you sure you want to delete this user?')">Delete</button></a></td>
-                                                        <td><a href = "admin_editUser.jsp"><button>Edit</button></a></td>
+                                                        <td><a href = "admin_editUser.jsp?id=${t.teacherId}&status=Teacher"><button>Edit</button></a></td>
                                                     </tr>
                                                 </c:forEach>
                                             </table>
