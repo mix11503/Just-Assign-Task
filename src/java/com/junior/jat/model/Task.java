@@ -118,8 +118,8 @@ public class Task {
         return tasks;
     }
 
-    public static void insertTask(String subjectId, String taskName, String taskDescription, Date taskCreateDate, Date taskDeadlineDate) {
-
+    public static int insertTask(String subjectId, String taskName, String taskDescription, Date taskCreateDate, Date taskDeadlineDate) {
+        int result = 0;
         try {
             Connection conn = BuildConnection.getConnection();
             String sqlCmd = "INSERT INTO task (subjectId, taskName, taskDescription, status, taskCreateDate, taskDeadlineDate )"
@@ -132,30 +132,33 @@ public class Task {
             pstm.setDate(5, taskCreateDate);
             pstm.setDate(6, taskDeadlineDate);
 
-            pstm.executeUpdate();
+            result = pstm.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
         }
         //test push
-
+        return result;
     }
 
-    public static void deleteTask(int taskId) {
+    public static int deleteTask(int taskId) {
+        int result = 0;
         try {
             Connection conn = BuildConnection.getConnection();
             String sqlCmd = "DELETE FROM task WHERE taskId = ?";
             PreparedStatement pstm = conn.prepareStatement(sqlCmd);
             pstm.setInt(1, taskId);
 
-            pstm.executeUpdate();
+            result = pstm.executeUpdate();
 
         } catch (SQLException se) {
             System.out.println(se);
         }
+        return result;
     }
 
-    public static void editTask(String taskName, String taskDescription, int status, Date taskDeadlineDate, int taskId) {
+    public static int editTask(String taskName, String taskDescription, int status, Date taskDeadlineDate, int taskId) {
+        int result = 0;
         try {
             Connection conn = BuildConnection.getConnection();
             String updateCmd = "UPDATE task SET taskName = ? ,taskDescription = ? , status = ? "
@@ -167,11 +170,12 @@ public class Task {
             pstm.setDate(4, taskDeadlineDate);
             pstm.setInt(5, taskId);
 
-            pstm.executeUpdate();
+            result = pstm.executeUpdate();
 
         } catch (SQLException se) {
             System.out.println(se);
         }
+        return result;
     }
 
     public static Task getSingleTask(int taskId) {

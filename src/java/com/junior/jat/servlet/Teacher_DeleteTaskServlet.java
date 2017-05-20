@@ -35,7 +35,15 @@ public class Teacher_DeleteTaskServlet extends HttpServlet {
         String option = request.getParameter("option");
         int taskId = Integer.parseInt(request.getParameter("taskid"));
         long teacherId = Long.parseLong(request.getParameter("teacherId"));
-        Task.deleteTask(taskId);
+        int result = Task.deleteTask(taskId);
+        String message = "";
+        if(result==1){
+            message = "Teacher delete successful";
+            request.setAttribute("message", message);
+        }else{
+            message = "Teacher delete fail";
+            request.setAttribute("message", message);
+        }
         switch(option) {
             case "AllTask":;
                 request.setAttribute("tasks", Task.getAllTask(teacherId));
