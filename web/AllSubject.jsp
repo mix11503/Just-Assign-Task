@@ -187,7 +187,7 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                   
+
                                 </a>
                                 <a href ="Logout">Logout</a>
                             </li>
@@ -212,9 +212,9 @@
                     <form action="#" method="get" class="sidebar-form">
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
+                            <!--                            <span class="input-group-btn">
+                                                            <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                                                        </span>-->
                         </div>
                     </form>
                     <!-- /.search form -->
@@ -232,26 +232,26 @@
                         <li>
                             <a href="GetNearestSrevlet">
                                 <i class="glyphicon glyphicon-time"></i> <span>Nearest</span> 
-                                
+
                             </a>
                         </li>  
                         <li>
                             <a href="GetLatestServlet">
                                 <i class="glyphicon glyphicon-time"></i> <span>Latest</span> 
-                                
+
                             </a>
                         </li>    
-                            <ul class="treeview-menu">
-                                
-                                
-                                <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
-                                                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
-                                                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
-                                
+                        <ul class="treeview-menu">
+
+
+                            <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
+                                                            <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
+                                                            <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
 
 
 
-                            </ul>
+
+                        </ul>
                         </li>
                     </ul>
                 </section>
@@ -262,46 +262,54 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                   
+
                     <h1>
-                        
+
                         <small>Control panel</small>
                     </h1>
-                                <h1>HEAD</h1>
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr>
-                                            
-                                            <th>SubjectId</th>
-                                            <th>SubjectName</th> 
-                                            <th>Subscribe</th>
-                                        </tr>
-                                        <c:forEach items="${subjects}" var="s" varStatus="vs">
-                                            <tr>
-                                                <td>${s.subjectId}</td>
-                                                <td>${s.subjectName}</td>
-                                                <td><a href ="SubSubjectServlet?subjectId=${s.subjectId}&studentId="${student.studentId}><button>Subscribe</button></a></td>
-                                              </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div><!-- /.box-body -->
-                                                </section>
+                    <h1>HEAD</h1>
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+
+                                <th>SubjectId</th>
+                                <th>SubjectName</th> 
+                                <th>Subscribe</th>
+                            </tr>
+                            <c:forEach items="${subjects}" var="s" varStatus="vs">
+                                <tr>
+                                    <td>${s.subjectId}</td>
+                                    <td>${s.subjectName}</td>
+                                    <c:choose>
+                                        <c:when test="${s.state == 'OK'}" >
+                                            <td><a href ="UnsubServlet?subjectId=${s.subjectId}&studentId="${student.studentId}><button>Unsubscribe</button></a></td>
+                                        </c:when>
+                                        <c:when test="${s.state != 'OK'}">
+                                            <td><a href ="SubSubjectServlet?subjectId=${s.subjectId}&studentId="${student.studentId}><button>Subscribe</button></a></td>
+                                        </c:when>
+                                    </c:choose>
+
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </div><!-- /.box-body -->
+                </section>
 
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
                         <div class="col-xs-12"> 
                             <div class="box">
-                                
+
                                 <%if(request.getAttribute("task")!=null){ %>
                                 <center><h2>${task.subjectId} ${task.taskName}</h2></center>
                                 <br><h2>Description</h2>
-                                    <font color ="red">${task.taskDescription}</font>
-                                    <br><h3>CreateDate</h3>
-                                    <font color ="red">${task.taskCreateDate}</font>
-                                    <br><h3>DeadlineDate</h3>
-                                    <font color ="red">${task.taskDeadlineDate}</font>
-                                   
+                                <font color ="red">${task.taskDescription}</font>
+                                <br><h3>CreateDate</h3>
+                                <font color ="red">${task.taskCreateDate}</font>
+                                <br><h3>DeadlineDate</h3>
+                                <font color ="red">${task.taskDeadlineDate}</font>
+
 
                                 <%}%>
                             </div><!-- /.box -->
@@ -316,7 +324,7 @@
                 <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
             </footer>
         </div><!-- ./wrapper -->
-        
+
         <!-- jQuery 2.1.3 -->
         <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- jQuery UI 1.11.2 -->

@@ -156,4 +156,19 @@ public class Student {
             System.out.println(se);
         }
     }
+     public static void UnsubSubject(long id, String subjectId){
+         try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "DELETE FROM `map_st_subj` WHERE `studentId` = ? AND `subjectId` = ?;";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            
+            pstm.setLong(1, id);
+            pstm.setString(2, subjectId);
+
+            pstm.executeUpdate();
+
+        } catch (SQLException se) {
+            System.out.println(se);
+        }
+    }
 }

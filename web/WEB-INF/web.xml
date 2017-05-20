@@ -112,6 +112,14 @@
         <servlet-name>Admin_RedirectServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.Admin_RedirectServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchNearTaskServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.SearchNearTaskServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UnsubServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.UnsubServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -223,6 +231,14 @@
     <servlet-mapping>
         <servlet-name>Admin_RedirectServlet</servlet-name>
         <url-pattern>/Admin_RedirectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchNearTaskServlet</servlet-name>
+        <url-pattern>/SearchNearTaskServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UnsubServlet</servlet-name>
+        <url-pattern>/UnsubServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

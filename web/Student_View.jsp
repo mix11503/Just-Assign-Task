@@ -281,8 +281,10 @@
                                     <h3 class="box-title">Responsive Hover Table</h3>
                                     <div class="box-tools">
                                         <form action="SearchTaskServlet">
+                                        
                                         <div class="input-group">
                                             <input type="text" name="keyword" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                            <input type="hidden" name="prop" value="${prop}"
                                             <div class="input-group-btn">
                                                 <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></button>
                                                 
