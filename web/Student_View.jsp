@@ -7,6 +7,7 @@
 <%@page import="com.junior.jat.model.Task"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -214,7 +215,7 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="#">
+                            <a href="AllTaskServlet">
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
                         </li>
@@ -234,6 +235,12 @@
                                 
                             </a>
                         </li>    
+                        <li>
+                            <a href="SubSubjectRedirectServlet">
+                                <i class="glyphicon glyphicon-time"></i> <span>Subscribe</span> 
+                                
+                            </a>
+                        </li>    
                             <ul class="treeview-menu">
                                 
                                 <!--                                <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
@@ -242,11 +249,7 @@
                                 <c:forEach items="${subjects}" var="s" >
                                     <li>
                                         <a href="#">${s.subjectId} ${s.subjectName} </a>
-
-
                                     </li>
-
-
                                 </c:forEach>
 
 
@@ -277,12 +280,15 @@
                                 <div class="box-header">
                                     <h3 class="box-title">Responsive Hover Table</h3>
                                     <div class="box-tools">
+                                        <form action="SearchTaskServlet">
                                         <div class="input-group">
-                                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                            <input type="text" name="keyword" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
                                             <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                                <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                                
                                             </div>
                                         </div>
+                                            </form>
                                     </div>
                                 </div><!-- /.box-header -->
                                 <%if(request.getAttribute("list")!=null){ %>

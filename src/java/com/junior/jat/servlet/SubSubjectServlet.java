@@ -6,7 +6,7 @@
 package com.junior.jat.servlet;
 
 import com.junior.jat.model.Student;
-import com.junior.jat.model.Task;
+import com.junior.jat.model.Subject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author maypt
  */
-public class SearchTaskServlet extends HttpServlet {
+public class SubSubjectServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,14 +31,12 @@ public class SearchTaskServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-        String keyword = request.getParameter("keyword");
-//        long id = Long.parseLong(request.getParameter("studentId"));Ï
-        long id = ((Student) (request.getSession(false).getAttribute("student"))).getStudentId();
-        System.out.println(id);
-        request.setAttribute("list", Task.getsearchTask(keyword, id));
-        getServletContext().getRequestDispatcher("/Student_View.jsp").forward(request, response);
+        String subjectId=request.getParameter("subjectId");
+        long id= ((Student)(request.getSession(false).getAttribute("student"))).getStudentId();
+       
+        Student.subSubject(id , subjectId);
+         getServletContext().getRequestDispatcher("/Student_View.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

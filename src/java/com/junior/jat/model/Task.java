@@ -184,6 +184,7 @@ public class Task {
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 task.setTaskName(rs.getString("taskName"));
+                task.setSubjectId(rs.getString("subjectId"));
                 task.setTaskDescription(rs.getString("taskDescription"));
                 task.setStatus(rs.getString("status"));
                 task.setTaskCreateDate(rs.getDate("taskCreateDate"));
