@@ -261,7 +261,7 @@
                 <section class="content">
                     <form action="Admin_AddUser">
                         ID:<br>
-                        <input type="number" name="id" required><br>
+                        <input type="number" name="id" required ><br>
                         Password:<br>
                         <input type="password" name="password" required><br>
                         Name:<br>
