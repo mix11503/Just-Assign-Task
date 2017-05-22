@@ -14,7 +14,7 @@ public class Admin_AddUserServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         String password = request.getParameter("password");
         String name = request.getParameter("name");

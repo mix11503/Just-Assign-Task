@@ -31,39 +31,36 @@ public class Teacher_EditTaskServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-            String option = request.getParameter("option");
-            int taskId = Integer.parseInt(request.getParameter("taskId")); 
-            //long teacherId = Long.parseLong(request.getParameter("teacherId"));
-            switch(option){ 
-                case "sendEdit" : 
-                    long teacherId = Long.parseLong(request.getParameter("teacherId"));                 
-                    String taskName = request.getParameter("taskName");
-                    String taskDescription = request.getParameter("taskDescription");
-                    int status = Integer.parseInt(request.getParameter("status"));
-                    Date taskDeadlineDate = Date.valueOf(request.getParameter("taskDeadlineDate"));
-                    int result = Task.editTask(taskName, taskDescription, status, taskDeadlineDate, taskId);
-                    String message = "";
-                    if(result==1){
-                        message = "Teacher edit successful";
-                        request.setAttribute("message", message);
-                    }
-                    else{
-                        message = "Teacher edit fail";
-                        request.setAttribute("message", message);
-                    }
-                    request.setAttribute("tasks", Task.getAllTask(teacherId));
-                    getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
-                    break; 
-                case "getForEdit" :
-                    Task task = new Task();
-                    task = Task.getSingleTask(Integer.parseInt(request.getParameter("taskId")));
-                    request.setAttribute("task", task);
-                    getServletContext().getRequestDispatcher("/teacher_editTask.jsp").forward(request, response);
-                    break;
-            }
-                   
-           
+        request.setCharacterEncoding("UTF-8");
+        String option = request.getParameter("option");
+        int taskId = Integer.parseInt(request.getParameter("taskId"));
+        //long teacherId = Long.parseLong(request.getParameter("teacherId"));
+        switch (option) {            
+            case "sendEdit":                
+                long teacherId = Long.parseLong(request.getParameter("teacherId"));                
+                String taskName = request.getParameter("taskName");
+                String taskDescription = request.getParameter("taskDescription");
+                int status = Integer.parseInt(request.getParameter("status"));
+                Date taskDeadlineDate = Date.valueOf(request.getParameter("taskDeadlineDate"));
+                int result = Task.editTask(taskName, taskDescription, status, taskDeadlineDate, taskId);
+                String message = "";
+                if (result == 1) {
+                    message = "Teacher edit successful";
+                    request.setAttribute("message", message);
+                } else {
+                    message = "Teacher edit fail";
+                    request.setAttribute("message", message);
+                }
+                request.setAttribute("tasks", Task.getAllTask(teacherId));
+                getServletContext().getRequestDispatcher("/teacher_home.jsp").forward(request, response);
+                break;            
+            case "getForEdit":
+                Task task = new Task();
+                task = Task.getSingleTask(Integer.parseInt(request.getParameter("taskId")));
+                request.setAttribute("task", task);
+                getServletContext().getRequestDispatcher("/teacher_editTask.jsp").forward(request, response);
+                break;
+        }
         
     }
 

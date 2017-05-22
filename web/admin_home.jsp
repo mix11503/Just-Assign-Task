@@ -295,7 +295,7 @@
                                                         <td>${s.studentId}</td>
                                                         <td>${s.name}</td>
                                                         <td><a href = "Admin_DeleteStudentServlet?studentId=${s.studentId}"><button onclick="return confirm('Are you sure you want to delete this user?')">Delete</button></a></td>
-                                                        <td><a href = "admin_editUser.jsp?id=${s.studentId}&status=Student"><button>Edit</button></a></td>
+                                                        <td><a href = "admin_editUser.jsp?id=${s.studentId}&status=Student&name=${s.name}"><button>Edit</button></a></td>
                                                     </tr>
                                                 </c:forEach>
                                             </table>

@@ -220,7 +220,7 @@ pageContext.setAttribute("task", task);
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="Teacher_GetTask?option=AllTask&teacherId=${teacher.teacherId}"">
+                            <a href="Teacher_GetTask?option=AllTask&teacherId=${teacher.teacherId}">
                                 <i class="fa fa-tasks"></i> <span>All Task</span>
                             </a>
                         </li>
@@ -266,7 +266,7 @@ pageContext.setAttribute("task", task);
                                                         <p>Topic :</p>
                                                         <input class="form-control" name="taskName" required="" placeholder="Title" type="text" value="${task.taskName}"/><br/>
                                                     <p>Description :</p>
-                                                    <textarea class="form-control" name="taskDescription" required="" placeholder="Description" rows="3" value="${task.taskDescription}"></textarea><br/>
+                                                    <textarea class="form-control" name="taskDescription" required="" placeholder="Description" rows="3" >${task.taskDescription}</textarea><br/>
                                                     <p>Deadline Date :</p>
                                                     <input class="form-control" name="taskDeadlineDate" required="" placeholder="" type="date" value="${task.taskDeadlineDate}"/><br/>
                                                     <input name="taskId" type="hidden" value="${task.taskId}"/>

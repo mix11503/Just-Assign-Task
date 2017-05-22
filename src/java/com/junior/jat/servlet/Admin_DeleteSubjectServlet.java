@@ -6,8 +6,10 @@
 package com.junior.jat.servlet;
 
 import com.junior.jat.model.Admin;
+import com.junior.jat.model.Subject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +38,8 @@ public class Admin_DeleteSubjectServlet extends HttpServlet {
         int result = Admin.deleteSubject(subjectId);
         String message = "";
         if(result==1){
+            ArrayList<Subject> subjects = Subject.getSubject();
+            request.setAttribute("subjects", subjects);
             message = "delete success";
             request.setAttribute("message", message);
         }
