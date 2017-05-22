@@ -258,9 +258,10 @@
                                 <div class="box-header">
                                     <h3 class="box-title"></h3>
                                     <div class="box-tools">
-                                        <form action="SearchTaskServlet">
+                                        <form action="SearchSubjectServlet">
                                             <div class="input-group">
                                                 <input type="text" name="keyword" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                                <input type="hidden" name="prop" value="forsub"/>
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></button>
                                                 </div>

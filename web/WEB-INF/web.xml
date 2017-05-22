@@ -120,6 +120,10 @@
         <servlet-name>UnsubServlet</servlet-name>
         <servlet-class>com.junior.jat.servlet.UnsubServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchSubjectServlet</servlet-name>
+        <servlet-class>com.junior.jat.servlet.SearchSubjectServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
         <url-pattern>/GetTaskServlet</url-pattern>
@@ -239,6 +243,10 @@
     <servlet-mapping>
         <servlet-name>UnsubServlet</servlet-name>
         <url-pattern>/UnsubServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchSubjectServlet</servlet-name>
+        <url-pattern>/SearchSubjectServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

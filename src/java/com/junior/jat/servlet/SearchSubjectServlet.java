@@ -6,6 +6,7 @@
 package com.junior.jat.servlet;
 
 import com.junior.jat.model.Student;
+import com.junior.jat.model.Subject;
 import com.junior.jat.model.Task;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author maypt
+ * @author PNattawut
  */
-public class SearchTaskServlet extends HttpServlet {
+public class SearchSubjectServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,31 +32,18 @@ public class SearchTaskServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String keyword = request.getParameter("keyword");
-//        long id = Long.parseLong(request.getParameter("studentId"));Ï
         String prop = request.getParameter("prop") == null ? "" : request.getParameter("prop");
-        long id = ((Student) (request.getSession(false).getAttribute("student"))).getStudentId();
         switch (prop) {
-            case "nearest":
-                request.setAttribute("list", Task.getSearchNearTask(id, keyword));
-                break;
-            case "latest":
-                request.setAttribute("list", Task.getSearchLatestTask(id, keyword));
-                break;
             case "forsub":
-                request.setAttribute("list", Task.getSearchLatestTask(id, keyword));
-                 getServletContext().getRequestDispatcher("/AllSubject.jsp").forward(request, response);
-                 return;
-            case "":
-                System.out.println(id);
-                request.setAttribute("list", Task.getsearchTask(keyword, id));
+                request.setAttribute("subjects", Subject.getSearchSubject(keyword));
                 break;
             default:
+                System.out.println("No Such Case.");
                 break;
         }
-
-        getServletContext().getRequestDispatcher("/Student_View.jsp").forward(request, response);
+                 getServletContext().getRequestDispatcher("/AllSubject.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

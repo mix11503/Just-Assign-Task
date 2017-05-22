@@ -105,6 +105,28 @@ public class Subject {
         return subjects;
     }
     
+    public static ArrayList getSearchSubject(String keyword){
+        ArrayList subjects = new ArrayList();
+        Subject subject = new Subject();
+        try {
+            Connection conn = BuildConnection.getConnection();
+            String sqlCmd = "SELECT * FROM subject WHERE subjectName like ?";
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            pstm.setString(1, "%"+keyword+"%");
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                subject = new Subject();
+                subject.setSubjectId(rs.getString("subjectId"));
+                subject.setSubjectName(rs.getString("subjectName"));
+                subject.setTeacherId(rs.getLong("teacherId"));
+                subjects.add(subject);
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(Subject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return subjects;
+    }
+    
     public static ArrayList getSubjectWithState(long studentId){
         ArrayList subjects = new ArrayList();
         Subject subject = new Subject();
