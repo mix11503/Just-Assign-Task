@@ -270,11 +270,7 @@ pageContext.setAttribute("task", task);
                                                     <p>Deadline Date :</p>
                                                     <input class="form-control" name="taskDeadlineDate" required="" placeholder="" type="date" value="${task.taskDeadlineDate}"/><br/>
                                                     <input name="taskId" type="hidden" value="${task.taskId}"/>
-                                                    <p>Status :</p>
-                                                    <select name="status">
-                                                        <option value="1">In Progress</option>
-                                                        <option value="2">Done</option>
-                                                    </select>
+                                                   
                                                 </div>
                                                 <br>
                                                 <div class="footbodybox">                                                    

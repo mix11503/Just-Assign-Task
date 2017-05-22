@@ -40,9 +40,8 @@ public class Teacher_EditTaskServlet extends HttpServlet {
                 long teacherId = Long.parseLong(request.getParameter("teacherId"));                
                 String taskName = request.getParameter("taskName");
                 String taskDescription = request.getParameter("taskDescription");
-                int status = Integer.parseInt(request.getParameter("status"));
                 Date taskDeadlineDate = Date.valueOf(request.getParameter("taskDeadlineDate"));
-                int result = Task.editTask(taskName, taskDescription, status, taskDeadlineDate, taskId);
+                int result = Task.editTask(taskName, taskDescription, 0, taskDeadlineDate, taskId);
                 String message = "";
                 if (result == 1) {
                     message = "Teacher edit successful";
