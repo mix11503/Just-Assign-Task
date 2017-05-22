@@ -293,7 +293,7 @@
                                                 <td>${t.taskCreateDate}</td>
                                                 <td><font color="red">${t.taskDeadlineDate}</font></td>
                                                 <c:choose>
-                                                    <c:when test='${todayFmt >= t.taskDeadlineDate}'>
+                                                    <c:when test='${todayFmt <= t.taskDeadlineDate}'>
                                                         <td><span class="label label-primary">In Progress...</span></td>
                                                     </c:when>
                                                     <c:otherwise>
