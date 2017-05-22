@@ -17,7 +17,7 @@ public class Admin_EditUserServlet extends HttpServlet {
         String password = request.getParameter("password");
         String name = request.getParameter("name");
         String status = request.getParameter("status");
-
+        System.out.println(status);
         int result = Admin.editUser(id, password, name, status);
         String message = "";
         if(result==1){

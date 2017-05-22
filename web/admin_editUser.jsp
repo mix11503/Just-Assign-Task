@@ -269,7 +269,7 @@
                         Name :<br>
                         <input type="text" name="name" required><br><br>
                         User status :<br>
-                        <input type="text" name="status" value="${param.status}" disabled><br><br>
+                        <input type="text" name="status" value="${param.status}" readonly><br><br>
                         <input type="submit" name="submit" onclick="return confirm('Are you sure?')">
                     </form>
                 </section><!-- /.content -->

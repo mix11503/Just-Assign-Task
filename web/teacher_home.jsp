@@ -218,7 +218,7 @@
                         </div>
                     </div>
                     <!-- search form -->
-                    
+
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
@@ -269,26 +269,33 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="box">
-                                    <%if(request.getAttribute("tasks")!=null){ %>
-                                        <div class="box-body table-responsive no-padding">
-                                            <table class="table table-hover">
-                                                <tr>
-                                                    <th>Topic</th>
-                                                    <th>Subject</th>
-                                                    <th>Start</th>
-                                                    <th>Deadline</th>
-                                                    <th>Status</th>
-                                                    <th>Details</th> 
-                                                    <th>Edit</th>
-                                                <th>Delete</th> 
-                                                </tr>
+                                <%if(request.getAttribute("tasks")!=null){ %>
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <th>Topic</th>
+                                            <th>Subject</th>
+                                            <th>Start</th>
+                                            <th>Deadline</th>
+                                            <th>Status</th>
+                                            <th>Details</th> 
+                                            <th>Edit</th>
+                                            <th>Delete</th> 
+                                        </tr>
                                         <c:forEach items="${tasks}" var="t" varStatus="vs">
                                             <tr>
                                                 <td>${t.taskName}</td>
                                                 <td>${t.subjectId}</td>
                                                 <td>${t.taskCreateDate}</td>
                                                 <td><font color="red">${t.taskDeadlineDate}</font></td>
+                                                <c:choose>
+                                                    <c:when test=''>
                                                 <td><span class="label label-primary">In Progress...</span></td>
+                                                </c:when>
+                                                <c:otherwise>
+                                                <td><span class="label label-primary">In Progress...</span></td>
+                                                </c:otherwise>
+                                                </c:choose>
                                                 <td><a href = "Teacher_ViewDetailServlet?taskId=${t.taskId}"><button>Details</button></a></td>
                                                 <td><a href = "Teacher_EditTaskServlet?taskId=${t.taskId}&option=getForEdit"><button>Edit</button></a></td>
                                                 <td><a href = "Teacher_DeleteTaskServlet?taskid=${t.taskId}&option=AllTask&teacherId=${teacher.teacherId}"><button onclick="return confirm('Do you want to delete?')">Delete</button></a></td>                                              
@@ -341,7 +348,7 @@
                 </div>
             </div>
         </div>
-       <div class="modal fade" id="message-modal">
+        <div class="modal fade" id="message-modal">
             <div class="modal-dialog">
                 <div class="modal-content2">
                     <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;
@@ -393,11 +400,11 @@
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js" type="text/javascript"></script>
         <% if(request.getAttribute("message") != null){%>
-            <script>
-                $('document').ready(function () {
-                    $('#message-modal').modal();
-                });
-            </script>
+        <script>
+                                                $('document').ready(function () {
+                                                    $('#message-modal').modal();
+                                                });
+        </script>
         <%}%>
     </body>
 </html>

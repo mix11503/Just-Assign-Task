@@ -107,6 +107,7 @@ public class Admin {
         try {
             Connection conn = BuildConnection.getConnection();
             String sql = "";
+            
             if (status.equals("Student")) {
                 sql = "UPDATE `student` SET `pass` = ?, `name` = ? WHERE `student`.`studentId` = ?;";
             } 
