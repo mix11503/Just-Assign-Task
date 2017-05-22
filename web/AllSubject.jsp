@@ -216,7 +216,7 @@
                         </li>
                         <li>
                             <a href="GetNearestSrevlet">
-                                <i class="fa fa-info-circle"></i> <span>Deadline</span>
+                                <i class="fa fa-info-circle"></i> <span>On Going</span>
 
                             </a>
                         </li>

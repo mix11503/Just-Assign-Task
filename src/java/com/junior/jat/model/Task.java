@@ -332,7 +332,7 @@ public class Task {
             String sql = "SELECT t.* FROM `map_st_subj` mts JOIN `task` t ON mts.subjectId = t.subjectId WHERE mts.studentId = ? AND t.taskName like  ?;";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setLong(1, studentId);
-            pst.setString(2, keyword+"%");
+            pst.setString(2, "%"+keyword+"%");
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 task = new Task();
