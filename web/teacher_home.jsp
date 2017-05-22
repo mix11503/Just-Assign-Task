@@ -4,6 +4,8 @@
     Author     : Mix
 --%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.junior.jat.model.Task"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -282,6 +284,8 @@
                                             <th>Edit</th>
                                             <th>Delete</th> 
                                         </tr>
+                                        <% String todayFmt = new SimpleDateFormat("yyy-MM-dd").format(new Date(System.currentTimeMillis()));
+        pageContext.setAttribute("todayFmt", todayFmt); %>
                                         <c:forEach items="${tasks}" var="t" varStatus="vs">
                                             <tr>
                                                 <td>${t.taskName}</td>
@@ -289,12 +293,12 @@
                                                 <td>${t.taskCreateDate}</td>
                                                 <td><font color="red">${t.taskDeadlineDate}</font></td>
                                                 <c:choose>
-                                                    <c:when test=''>
-                                                <td><span class="label label-primary">In Progress...</span></td>
-                                                </c:when>
-                                                <c:otherwise>
-                                                <td><span class="label label-primary">In Progress...</span></td>
-                                                </c:otherwise>
+                                                    <c:when test='${todayFmt >= t.taskDeadlineDate}'>
+                                                        <td><span class="label label-primary">In Progress...</span></td>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <td><span class="label label-success">Closed</span></td>
+                                                    </c:otherwise>
                                                 </c:choose>
                                                 <td><a href = "Teacher_ViewDetailServlet?taskId=${t.taskId}"><button>Details</button></a></td>
                                                 <td><a href = "Teacher_EditTaskServlet?taskId=${t.taskId}&option=getForEdit"><button>Edit</button></a></td>
@@ -401,9 +405,9 @@
         <script src="dist/js/demo.js" type="text/javascript"></script>
         <% if(request.getAttribute("message") != null){%>
         <script>
-                                                $('document').ready(function () {
-                                                    $('#message-modal').modal();
-                                                });
+                                                    $('document').ready(function () {
+                                                        $('#message-modal').modal();
+                                                    });
         </script>
         <%}%>
     </body>

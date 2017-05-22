@@ -5,6 +5,8 @@
 --%>
 <%@page import="java.util.List"%>
 <%@page import="com.junior.jat.model.Task"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -231,9 +233,9 @@
                             </a>
                         </li>
                         <ul class="treeview-menu">
-                                <!--                            <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
-                                                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
-                                                                <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
+                            <!--                            <li><a href="index.html"><i class="fa fa-circle-o"></i> INT 301 dfsdfsfdsf</a></li>
+                                                            <li><a href="index2.html"><i class="fa fa-circle-o"></i> INT 555 sdasdafdfs </a></li>
+                                                            <li><a href="index2.html"><i class="fa fa-plus-circle"></i> Create New Subject... </a></li>-->
                             <c:forEach items="${subjects}" var="s" >
                                 <li>
                                     <a href="#">${s.subjectId} ${s.subjectName} </a>
@@ -265,16 +267,18 @@
                                     <div class="box-tools">
                                         <form action="SearchTaskServlet">
 
-                                        <div class="input-group">
-                                            <input type="text" name="keyword" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                            <input type="hidden" name="prop" value="${prop}"
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></button>
-                                            </div>
+                                            <div class="input-group">
+                                                <input type="text" name="keyword" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                                <input type="hidden" name="prop" value="${prop}"
+                                                       <div class="input-group-btn">
+                                                    <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                                </div>
                                         </form>
                                     </div>
                                 </div><!-- /.box-header -->
                                 <%if(request.getAttribute("list")!=null){ %>
+                                <% String todayFmt = new SimpleDateFormat("yyy-MM-dd").format(new Date(System.currentTimeMillis()));
+        pageContext.setAttribute("todayFmt", todayFmt); %>
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>
@@ -291,7 +295,14 @@
                                                 <td>${t.subjectId}</td>
                                                 <td>${t.taskCreateDate}</td>
                                                 <td><font color="red">${t.taskDeadlineDate}</font></td>
-                                                <td><span class="label label-primary">Waiting</span></td>
+                                                    <c:choose>
+                                                        <c:when test='${todayFmt <= t.taskDeadlineDate}'>
+                                                        <td><span class="label label-primary">Pending...</span></td>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <td><span class="label label-success">Closed</span></td>
+                                                    </c:otherwise>
+                                                </c:choose>
                                                 <td><a href ="GetTaskDetailServlet?taskId=${t.taskId}"><button>Detail</button></a></td>
                                             </tr>
                                         </c:forEach>
