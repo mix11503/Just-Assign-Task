@@ -359,7 +359,7 @@ public class Task {
         try {
             Connection conn = BuildConnection.getConnection();
             String sqlCmd = "SELECT * FROM task ta JOIN subject st ON ta.subjectId = st.subjectId JOIN teacher "
-                    + "te ON te.teacherId = st.teacherId WHERE te.teacherId = ?;";
+                    + "te ON te.teacherId = st.teacherId WHERE te.teacherId = ? ORDER BY ta.taskDeadlineDate DESC;";
             PreparedStatement pstm = conn.prepareStatement(sqlCmd);
             pstm.setLong(1, teacherId);
             ResultSet rs = pstm.executeQuery();

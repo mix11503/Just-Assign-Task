@@ -72,7 +72,7 @@ public class Student {
 
             Task task = null;
             Connection conn = BuildConnection.getConnection();
-            String sql = "SELECT t.* FROM `map_st_subj` mts JOIN `task` t ON mts.subjectId = t.subjectId WHERE mts.studentId = ?;";
+            String sql = "SELECT t.* FROM `map_st_subj` mts JOIN `task` t ON mts.subjectId = t.subjectId WHERE mts.studentId = ? ORDER BY t.taskDeadlineDate DESC;";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setLong(1, studentId);
             ResultSet rs = pst.executeQuery();
