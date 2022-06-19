@@ -1,1 +1,2 @@
 this is new doc 2
+add line from master branch
